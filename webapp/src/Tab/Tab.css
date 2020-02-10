@@ -1,0 +1,32 @@
+.tab {
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    display: flex;
+    border-bottom: 1px solid hsla(0, 0%, 92%, .5);
+    font-size: 16px;
+    position: relative;
+}
+
+.tab-item {
+    flex: 1;
+}
+
+.tab-item.active {
+    font-weight: 700;
+}
+
+.tab-line {
+    width: 25vw;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+}
+
+.tab-line-center {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #f85959;
+    transition: all .3s ease-in-out;
+}

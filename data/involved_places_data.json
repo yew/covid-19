@@ -1,0 +1,126 @@
+{
+    "上海市": {
+        "黄埔": [
+            {
+                "name": "陕西南路地铁站",
+                "category": "public",
+                "date": "20200206"
+            }
+        ],
+        "长宁": [
+            {
+                "name": "虹桥街道虹桥路1024弄",
+                "category": "community",
+                "date": "20200206"
+            }
+        ],
+        "徐汇": [
+            {
+                "name": "枫林路街道东安二村",
+                "category": "community",
+                "date": "20200206"
+            },
+            {
+                "name": "安吉斯铭汽车销售服务有限公司",
+                "category": "public",
+                "date": "20200206"
+            }
+        ],
+        "普陀": [
+            {
+                "name": "连亮路111弄",
+                "category": "community",
+                "date": "20200206"
+            }
+        ],
+        "杨浦": [
+            {
+                "name": "定海路街道宁武路218弄",
+                "category": "community",
+                "date": "20200206"
+            }
+        ],
+        "浦东": [
+            {
+                "name": "阳光花城",
+                "category": "community",
+                "date": "20200206"
+            },
+            {
+                "name": "北蔡芳草路欧麦克KTV",
+                "category": "public",
+                "date": "20200206"
+            },
+            {
+                "name": "民乐城兰丽苑",
+                "category": "community",
+                "date": "20200206"
+            },
+            {
+                "name": "金京路地铁站",
+                "category": "public",
+                "date": "20200206"
+            },
+            {
+                "name": "新高苑",
+                "category": "community",
+                "date": "20200206"
+            },
+            {
+                "name": "惠南镇锦江之星宾馆",
+                "category": "community",
+                "date": "20200206"
+            }
+        ],
+        "嘉定": [
+            {
+                "name": "江桥镇金园一路1118弄",
+                "category": "community",
+                "date": "20200206"
+            },
+            {
+                "name": "首创旭辉城",
+                "category": "community",
+                "date": "20200206"
+            }
+        ],
+        "宝山": [
+            {
+                "name": "海尚菊苑",
+                "category": "community",
+                "date": "20200206"
+            },
+            {
+                "name": "采菊苑",
+                "category": "community",
+                "date": "20200206"
+            }
+        ],
+        "奉贤": [
+            {
+                "name": "南行贤苑",
+                "category": "community",
+                "date": "20200206"
+            }
+        ],
+        "松江": [
+            {
+                "name": "新桥镇华兴小区",
+                "category": "community",
+                "date": "20200206"
+            },
+            {
+                "name": "沃天百联生活超市(新桥店)",
+                "category": "public",
+                "date": "20200206"
+            }
+        ],
+        "闵行": [
+            {
+                "name": "虹桥火车站",
+                "category": "public",
+                "date": "20200206"
+            }
+        ]
+    }
+}
