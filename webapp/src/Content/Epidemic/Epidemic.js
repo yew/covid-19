@@ -8,7 +8,6 @@ import moment from "moment";
 
 class Epidemic extends React.Component {
     render() {
-        console.log(this.props);
         return (
             <div>
                 <div className="header" style={{backgroundImage: `url("${EpidemicBannerImg}")`}}>
@@ -19,8 +18,7 @@ class Epidemic extends React.Component {
                     <div className="block-title">
                         <p className="title">上海疫情</p>
                         <p className="update-time">
-                            {/*更新时间 2020/02/10 20:41*/}
-                            {moment(this.props.shanghaiData.updateTime * 1000).format("YYYY/MM/DD h:mm")}
+                            更新时间 {moment(this.props.shanghaiData.updateTime * 1000).format("YYYY/MM/DD h:mm")}
                             {/*<i style={{backgroundImage: `url("${QuestionMarkImg}")`}}/>*/}
                         </p>
                     </div>

@@ -27,9 +27,8 @@ class Tab extends React.Component {
                         )
                     })
                 }
-                <div className="tab-line">
-                    <div className="tab-line-center"
-                         style={{transform: `translate3d(${this.state.active * 25}vw, 0px, 0px)`}}/>
+                <div className="tab-line" style={{transform: `translate3d(${this.state.active * 100}%, 0px, 0px)`}}>
+                    <div className="tab-line-center"/>
                 </div>
             </div>
         );
