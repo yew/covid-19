@@ -10,7 +10,8 @@ class Content extends React.Component {
         let content = "";
         switch (this.props.active) {
             case 0:
-                content = <Epidemic/>;
+                if (this.props.shanghaiData)
+                    content = <Epidemic shanghaiData={this.props.shanghaiData}/>;
                 break;
             case 1:
                 content = <Community/>;

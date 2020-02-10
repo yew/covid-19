@@ -1,0 +1,78 @@
+.header {
+    width: 100%;
+    height: 110px;
+    padding-top: 25px;
+    padding-left: 25px;
+    background-size: cover;
+}
+
+.header p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.header img {
+    width: 300px;
+    margin-top: 10px;
+}
+
+.pneumonia-block-container .block-title {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pneumonia-block-container .block-title .title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.pneumonia-block-container .block-title .update-time {
+    font-size: 13px;
+    color: #999999;
+}
+
+.pneumonia-block-container .block-title .update-time i {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    transform: translateY(-1px);
+    vertical-align: middle;
+    background-size: contain;
+    margin-left: 2px;
+}
+
+.pneumonia-block-container .total {
+    display: flex;
+    text-align: center;
+    padding: 10px 40px 15px;
+    justify-content: space-between;
+}
+
+.total .num {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.total-confirm .num {
+    color: #d96322;
+}
+
+.total-dead .num {
+    color: #0f3046;
+}
+
+.total-heal .num {
+    color: #39c4c4;
+}
+
+.pneumonia-block-container .total .text {
+    font-size: 14px;
+    width: 80px;
+    margin: 0 auto;
+    background: rgba(216, 216, 216, 0.2);
+    border-radius: 3px;
+    color: #222222;
+}
