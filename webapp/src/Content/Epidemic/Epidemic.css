@@ -76,3 +76,53 @@
     border-radius: 3px;
     color: #222222;
 }
+
+.epidemic-trends {
+    position: relative;
+    padding: 20px 15px;
+}
+
+.epidemic-trends-legend {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.epidemic-trends-legend span {
+    font-size: 8px;
+    margin-left: 10px;
+}
+
+.epidemic-trends-legend .confirmed {
+    color: #d96322;
+}
+
+.epidemic-trends-legend .heal {
+    color: #39c4c4;
+}
+
+.epidemic-trends-legend .dead {
+    color: #0f3046;
+}
+
+.epidemic-trends-legend span::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateY(-1px);
+    width: 6px;
+    height: 6px;
+    margin-right: 4px;
+}
+
+.epidemic-trends-legend .confirmed::before {
+    background-color: #d96322;
+}
+
+.epidemic-trends-legend .heal::before {
+    background-color: #39c4c4;
+}
+
+.epidemic-trends-legend .dead::before {
+    background-color: #0f3046;
+}
