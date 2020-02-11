@@ -54,27 +54,37 @@
 .total .num {
     font-size: 24px;
     font-weight: bold;
+    line-height: 24px;
+    margin-bottom: 5px;
 }
 
-.total-confirm .num {
+.total .compare span {
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: bold;
+    color: #808080;
+}
+
+.total-confirm .num, .total-confirm .compare .num {
     color: #d96322;
 }
 
-.total-dead .num {
+.total-dead .num, .total-dead .compare .num {
     color: #0f3046;
 }
 
-.total-heal .num {
+.total-heal .num, .total-heal .compare .num {
     color: #39c4c4;
 }
 
 .pneumonia-block-container .total .text {
     font-size: 14px;
+    font-weight: bold;
     width: 80px;
     margin: 0 auto;
     background: rgba(216, 216, 216, 0.2);
     border-radius: 3px;
-    color: #222222;
+    color: #505050;
 }
 
 .epidemic-trends {

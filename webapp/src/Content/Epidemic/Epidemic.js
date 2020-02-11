@@ -9,6 +9,10 @@ import ReactEcharts from "echarts-for-react";
 
 class Epidemic extends React.Component {
     render() {
+        const confirmedIncr = `+${this.props.shanghaiData.cityIncr.confirmedIncr}`;
+        const deathsIncr = `+${this.props.shanghaiData.cityIncr.deathsIncr}`;
+        const curesIncr = `+${this.props.shanghaiData.cityIncr.curesIncr}`;
+
         return (
             <div>
                 <div className="header" style={{backgroundImage: `url("${EpidemicBannerImg}")`}}>
@@ -25,16 +29,28 @@ class Epidemic extends React.Component {
                     </div>
                     <div className="total">
                         <div className="total-confirm">
+                            <p className="compare">
+                                <span>较昨日</span>
+                                <span className="num">{confirmedIncr}</span>
+                            </p>
                             <p className="num">{this.props.shanghaiData.cityTotal.confirmedTotal}</p>
-                            <p className="text">确诊人数</p>
+                            <p className="text">累计确诊</p>
                         </div>
                         <div className="total-dead">
+                            <p className="compare">
+                                <span>较昨日</span>
+                                <span className="num">{deathsIncr}</span>
+                            </p>
                             <p className="num">{this.props.shanghaiData.cityTotal.deathsTotal}</p>
-                            <p className="text">死亡人数</p>
+                            <p className="text">死亡</p>
                         </div>
                         <div className="total-heal">
+                            <p className="compare">
+                                <span>较昨日</span>
+                                <span className="num">{curesIncr}</span>
+                            </p>
                             <p className="num">{this.props.shanghaiData.cityTotal.curesTotal}</p>
-                            <p className="text">治愈人数</p>
+                            <p className="text">治愈</p>
                         </div>
                     </div>
                 </div>
