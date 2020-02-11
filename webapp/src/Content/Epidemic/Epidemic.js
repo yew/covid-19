@@ -14,7 +14,7 @@ class Epidemic extends React.Component {
         const curesIncr = `+${this.props.shanghaiData.cityIncr.curesIncr}`;
 
         return (
-            <div>
+            <div className="pneumonia-container">
                 <div className="header" style={{backgroundImage: `url("${EpidemicBannerImg}")`}}>
                     <p>上海市</p>
                     <img src={EpidemicTitleImg} alt="新型冠状病毒疫情追踪"/>
@@ -53,13 +53,41 @@ class Epidemic extends React.Component {
                             <p className="text">治愈</p>
                         </div>
                     </div>
+                    <div className="epidemic-trends">
+                        <ReactEcharts option={this.getOption()} style={{height: "250px"}}/>
+                        <div className="epidemic-trends-legend">
+                            <span className="confirmed">确诊</span>
+                            <span className="heal">治愈</span>
+                            <span className="dead">死亡</span>
+                        </div>
+                    </div>
                 </div>
-                <div className="epidemic-trends">
-                    <ReactEcharts option={this.getOption()} style={{height: "250px"}}/>
-                    <div className="epidemic-trends-legend">
-                        <span className="confirmed">确诊</span>
-                        <span className="heal">治愈</span>
-                        <span className="dead">死亡</span>
+                <div className="pneumonia-block-container">
+                    <div className="block-title">
+                        <p className="title">区县分布</p>
+                        <p className="update-time">依据卫健委数据按日更新，非实时数据</p>
+                    </div>
+                    <div className="pneumonia-table-container">
+                        <div className="table-head">
+                            <p className="th-1">区县</p>
+                            <p className="th-2">确诊</p>
+                            <p className="th-3">死亡</p>
+                            <p className="th-4">治愈</p>
+                        </div>
+                        <div className="table-content">
+                            {
+                                this.props.shanghaiData.cities.map((city, index) => {
+                                    return (
+                                        <div className="table-item" key={index}>
+                                            <p className="p1">{city.name}</p>
+                                            <p className="p2">{city.confirmedNum === 0 ? "" : city.confirmedNum}</p>
+                                            <p className="p3">{city.deathsNum === 0 ? "" : city.deathsNum}</p>
+                                            <p className="p4">{city.curesNum === 0 ? "" : city.curesNum}</p>
+                                        </div>
+                                    );
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

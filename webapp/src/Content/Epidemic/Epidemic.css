@@ -1,3 +1,13 @@
+.pneumonia-container {
+    background-color: #f8f8f8;
+}
+
+.pneumonia-block-container {
+    margin-bottom: 8px;
+    background-color: #fff;
+    padding: 10px 15px 10px;
+}
+
 .header {
     width: 100%;
     height: 110px;
@@ -18,14 +28,14 @@
 }
 
 .pneumonia-block-container .block-title {
-    padding: 10px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 10px;
 }
 
 .pneumonia-block-container .block-title .title {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -47,7 +57,7 @@
 .pneumonia-block-container .total {
     display: flex;
     text-align: center;
-    padding: 10px 40px 15px;
+    padding: 10px 20px 10px;
     justify-content: space-between;
 }
 
@@ -89,7 +99,7 @@
 
 .epidemic-trends {
     position: relative;
-    padding: 20px 15px;
+    padding: 10px 5px;
 }
 
 .epidemic-trends-legend {
@@ -135,4 +145,70 @@
 
 .epidemic-trends-legend .dead::before {
     background-color: #0f3046;
+}
+
+.pneumonia-table-container {
+    border: .5px solid #e5e5e5;
+}
+
+.pneumonia-table-container .table-head {
+    display: flex;
+    line-height: 35px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pneumonia-table-container .table-head .th-1 {
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    color: #222222;
+    background-color: #f4f4f4;
+}
+
+.pneumonia-table-container .table-head .th-2 {
+    width: 72px;
+    color: #d96322;
+    background: rgba(255, 117, 40, 0.1);
+}
+
+.pneumonia-table-container .table-head .th-3 {
+    width: 72px;
+    color: #0f3046;
+    background: rgba(26, 116, 255, 0.1);
+}
+
+.pneumonia-table-container .table-head .th-4 {
+    width: 72px;
+    color: #39c460;
+    background: rgba(0, 171, 171, 0.1);
+}
+
+
+.pneumonia-table-container .table-content .table-item {
+    display: flex;
+    line-height: 35px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pneumonia-table-container .table-content .table-item .p1 {
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    font-weight: normal;
+}
+
+.pneumonia-table-container .table-content .table-item .p2 {
+    width: 72px;
+}
+
+.pneumonia-table-container .table-content .table-item .p3 {
+    width: 72px;
+}
+
+.pneumonia-table-container .table-content .table-item .p4 {
+    width: 72px;
 }
