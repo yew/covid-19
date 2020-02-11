@@ -56,7 +56,7 @@ class Epidemic extends React.Component {
         });
 
         const xAxis = series.map((item) => {
-            return item.date;
+            return item.date.slice(5);
         });
         const confirmedSeries = series.map((item) => {
             return item.confirmedNum;
@@ -89,28 +89,64 @@ class Epidemic extends React.Component {
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
+                axisLabel: {
+                    rotate: 40,
+                    interval: 1,
+                    color: "#9e9e9e",
+                    fontSize: 9,
+                    showMaxLabel: true
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
                 data: xAxis
             },
             yAxis: {
-                type: 'value'
+                type: 'value',
+                axisLabel: {
+                    color: "#505050",
+                    fontSize: 10,
+                    showMaxLabel: true
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
             },
             series: [
                 {
                     name: '确诊',
                     type: 'line',
                     smooth: true,
+                    showAllSymbol: false,
                     data: confirmedSeries
                 },
                 {
                     name: '死亡',
                     type: 'line',
                     smooth: true,
+                    showAllSymbol: false,
                     data: deathsSeries
                 },
                 {
                     name: '治愈',
                     type: 'line',
                     smooth: true,
+                    showAllSymbol: false,
                     data: curesSeries
                 }
             ]
