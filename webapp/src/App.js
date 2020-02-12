@@ -11,13 +11,15 @@ class App extends React.Component {
         super(props);
         this.state = {
             active: 0,
-            shanghaiData: null
+            shanghaiData: null,
+            news: null
         }
     }
 
     async componentDidMount() {
         this.setState({
-            shanghaiData: (await Axios.get(API.shanghaiData)).data
+            shanghaiData: (await Axios.get(API.shanghai)).data,
+            news: (await Axios.get(API.news)).data
         });
     };
 
@@ -25,7 +27,11 @@ class App extends React.Component {
         return (
             <div className="app">
                 <Tab active={this.state.active} changeTab={this.changeTab}/>
-                <Content active={this.state.active} shanghaiData={this.state.shanghaiData}/>
+                <Content
+                    active={this.state.active}
+                    shanghaiData={this.state.shanghaiData}
+                    news={this.state.news}
+                />
             </div>
         );
     }

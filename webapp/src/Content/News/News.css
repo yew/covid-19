@@ -1,0 +1,100 @@
+.pneumonia-container .header .news-title {
+    width: 180px;
+    margin-top: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    border-left: 2px solid #f4f5f3;
+    font-size: 15px;
+    margin-left: 8px;
+    padding: 10px 0 0 20px;
+}
+
+.timeline-item:first-child::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 38px;
+    left: -2px;
+    width: 2px;
+    background-color: #fff;
+}
+
+.timeline-item:last-child::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 45px;
+    bottom: 0;
+    left: -2px;
+    width: 2px;
+    background-color: #fff;
+}
+
+.timeline-item::after {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqBAMAAAA37dRoAAAAKlBMVEUAAAD5WVn5Wlr4Wlr4WVn7W1v4Wlr7XFz4WVn/////7+/9zc36gYH8qalB+i5yAAAACHRSTlMA8djAmkMlPXIsu/oAAAB0SURBVCjPYxgFqIDVSVAlAF2QzaKjo6M5AU20sAMExNGUSoBFG1EVM3d0nF61p6PDAEU0oqN35syZNzpaUUQ9Ok4CRed0tKCIanTsBIrO7mhCEZXoWAkUndXRSFgUYQJh2xAuI+wLhI8Jhg4iJLGH+ihAAQDZTEUzUI7FUQAAAABJRU5ErkJggg==);
+    position: absolute;
+    top: 30px;
+    left: -12px;
+    background-size: contain;
+}
+
+.timeline-item .bot-background {
+    position: relative;
+    border-radius: 6px;
+    padding: 12px 12px 10px 12px;
+    color: #999;
+    background-color: #f4f5f6;
+}
+
+.timeline-item .bot-background .bot-cor {
+    width: 0;
+    height: 0;
+    font-size: 0;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent #f4f5f6 transparent transparent;
+    overflow: hidden;
+    position: absolute;
+    left: -12px;
+    top: 25px;
+}
+
+.timeline-item .bot-background .item-timestamp {
+    color: #999;
+    font-size: 12px;
+}
+
+.timeline-item .bot-background .item-description {
+    color: #222;
+    text-align: justify;
+    line-height: 22px;
+    margin-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.timeline-item .bot-background .base_image {
+    width: 65%;
+    max-height: 360px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.timeline-item .bot-background .base_image .base_image-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.list-bottom {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 14px;
+    color: #999;
+}

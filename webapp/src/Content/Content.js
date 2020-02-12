@@ -17,7 +17,8 @@ class Content extends React.Component {
                 content = <Community/>;
                 break;
             case 2:
-                content = <News/>;
+                if (this.props.news)
+                    content = <News news={this.props.news}/>;
                 break;
             case 3:
                 content = <Safeguard/>;

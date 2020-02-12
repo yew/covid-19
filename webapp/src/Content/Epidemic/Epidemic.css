@@ -1,42 +1,6 @@
-.pneumonia-container {
-    background-color: #f8f8f8;
-}
-
-.pneumonia-block-container {
-    margin-bottom: 8px;
-    background-color: #fff;
-    padding: 10px 15px 10px;
-}
-
-.header {
-    width: 100%;
-    height: 110px;
-    padding-top: 25px;
-    padding-left: 25px;
-    background-size: cover;
-}
-
-.header p {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffffff;
-}
-
 .header img {
     width: 300px;
     margin-top: 10px;
-}
-
-.pneumonia-block-container .block-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-}
-
-.pneumonia-block-container .block-title .title {
-    font-size: 20px;
-    font-weight: bold;
 }
 
 .pneumonia-block-container .block-title .update-time {

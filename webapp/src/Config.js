@@ -1,7 +1,8 @@
 const server = "http://localhost:8000/api/";
 
 const API = {
-    shanghaiData: server + "data/shanghai"
+    shanghai: server + "data/shanghai",
+    news: server + "data/news"
 };
 
 export default API;
