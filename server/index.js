@@ -5,7 +5,7 @@ const app = express();
 
 app.get("/", (req, res) => {
     res.send("OK");
-})
+});
 
 app.get("/api/data/shanghai", async (req, res) => {
     utils.log(req);
@@ -22,7 +22,7 @@ app.get("/api/data/shanghai", async (req, res) => {
     ret["cities"] = data_shanghai.cities;
 
     res.json(ret);
-})
+});
 
 app.get("/api/data/news", async (req, res) => {
     utils.log(req);
@@ -46,7 +46,7 @@ app.get("/api/data/news", async (req, res) => {
     });
 
     res.json(news);
-})
+});
 
 app.get("/api/data/track_list", async (req, res) => {
     utils.log(req);
@@ -54,11 +54,45 @@ app.get("/api/data/track_list", async (req, res) => {
     res.append("access-control-allow-origin", "*");
     const result = await axios.get("https://i.snssdk.com/toutiao/normandy/pneumonia_trending/track_list/?city_code=310000");
     const ret = result.data.data.list;
-    console.log(ret)
     res.json(ret);
-})
+});
+
+app.get("/api/data/safeguard", async (req, res) => {
+    utils.log(req);
+
+    res.append("access-control-allow-origin", "*");
+    const result = await axios.get("https://i.snssdk.com/api/feed/forum_flow/v1/?query_id=1656806647707693&tab_id=1656806647707709&category=forum_flow_subject&is_preview=0&stream_api_version=82&aid=13&offset=0&count=20");
+    const ret = result.data.data.map(block => {
+        const block_content = JSON.parse(block.content);
+        const article_list = block_content.sub_raw_datas.map(article => {
+
+            const forum_extra_data = JSON.parse(article.forum_extra_data);
+            let img_url = "";
+            if (forum_extra_data.middle_image) {
+                img_url = forum_extra_data.middle_image.url;
+            } else {
+                img_url = article.middle_image.url
+            }
+
+            return {
+                title: forum_extra_data.title,
+                img_url: forum_extra_data.middle_image,
+                url: article.display_url,
+                has_video: article.has_video,
+                video_duration: article.video_duration
+            }
+        });
+
+        return {
+            block_title: block_content.raw_data.card_header.title,
+            article_list
+        };
+    });
+
+    res.json(ret);
+});
 
 app.listen(8000, () => {
     console.log("Server Start:");
     console.log("http://localhost:8000");
-})
+});
