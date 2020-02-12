@@ -100,7 +100,7 @@ class Epidemic extends React.Component {
         });
 
         const xAxis = series.map((item) => {
-            return item.date.slice(5);
+            return item.date.slice(5).replace("-", ".");
         });
         const confirmedSeries = series.map((item) => {
             return item.confirmedNum;
