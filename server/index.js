@@ -24,6 +24,31 @@ app.get("/api/data/shanghai", async (req, res) => {
     res.json(ret);
 })
 
+app.get("/api/data/news", async (req, res) => {
+    utils.log(req);
+
+    res.append("access-control-allow-origin", "*");
+    const result = await axios.get("https://i.snssdk.com/api/feed/forum_flow/v1/?query_id=1656810113086509&tab_id=1656810113086525&category=forum_flow_subject&is_preview=0&stream_api_version=82&aid=13&offset=0&count=20");
+
+    // const ret = JSON.parse(result.data.data);
+    const origin_news = JSON.parse(result.data.data[0].content).sub_raw_datas;
+    const news = origin_news.map(item => {
+        delete item.raw_data.content_id;
+        delete item.raw_data.content_id_str;
+        delete item.raw_data.schema;
+        delete item.raw_data.source;
+        delete item.raw_data.time_show_type;
+        if (item.raw_data.event_image) {
+            item.raw_data.event_image_url = item.raw_data.event_image.url;
+        }
+        delete item.raw_data.event_image;
+
+        return item.raw_data;
+    });
+
+    res.json(news);
+})
+
 app.listen(8000, () => {
     console.log("Server Start:");
     console.log("http://localhost:8000");
