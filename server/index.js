@@ -78,6 +78,7 @@ app.get("/api/data/safeguard", async (req, res) => {
                 title: forum_extra_data.title,
                 url: article.display_url,
                 img_url,
+                source: article.source,
                 has_video: article.has_video,
                 video_duration: article.video_duration
             }
