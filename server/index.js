@@ -65,8 +65,8 @@ app.get("/api/data/safeguard", async (req, res) => {
     const ret = result.data.data.map(block => {
         const block_content = JSON.parse(block.content);
         const article_list = block_content.sub_raw_datas.map(article => {
-
             const forum_extra_data = JSON.parse(article.forum_extra_data);
+
             let img_url = "";
             if (forum_extra_data.middle_image) {
                 img_url = forum_extra_data.middle_image.url;
@@ -76,8 +76,8 @@ app.get("/api/data/safeguard", async (req, res) => {
 
             return {
                 title: forum_extra_data.title,
-                img_url: forum_extra_data.middle_image,
                 url: article.display_url,
+                img_url,
                 has_video: article.has_video,
                 video_duration: article.video_duration
             }
