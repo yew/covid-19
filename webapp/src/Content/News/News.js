@@ -15,8 +15,6 @@ class News extends React.Component {
                 <div className="pneumonia-block-container">
                     <div className="block-title">
                         <p className="title">疫情追踪</p>
-                        <p className="update-time">
-                        </p>
                     </div>
                     <div className="card-list">
                         {

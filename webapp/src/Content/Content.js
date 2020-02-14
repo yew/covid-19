@@ -21,7 +21,8 @@ class Content extends React.Component {
                     content = <News news={this.props.news}/>;
                 break;
             case 3:
-                content = <Safeguard/>;
+                if (this.props.safeguard)
+                    content = <Safeguard safeguard={this.props.safeguard}/>;
                 break;
             default:
                 break;
