@@ -30,7 +30,7 @@ class Epidemic extends React.Component {
                     <div className="total">
                         <div className="total-confirm">
                             <p className="compare">
-                                <span>较昨日</span>
+                                <span>较{this.props.shanghaiData.cityIncr.confirmedIncrPrefix}</span>
                                 <span className="num">{confirmedIncr}</span>
                             </p>
                             <p className="num">{this.props.shanghaiData.cityTotal.confirmedTotal}</p>
@@ -38,7 +38,7 @@ class Epidemic extends React.Component {
                         </div>
                         <div className="total-dead">
                             <p className="compare">
-                                <span>较昨日</span>
+                                <span>较{this.props.shanghaiData.cityIncr.deathsIncrPrefix}</span>
                                 <span className="num">{deathsIncr}</span>
                             </p>
                             <p className="num">{this.props.shanghaiData.cityTotal.deathsTotal}</p>
@@ -46,7 +46,7 @@ class Epidemic extends React.Component {
                         </div>
                         <div className="total-heal">
                             <p className="compare">
-                                <span>较昨日</span>
+                                <span>较{this.props.shanghaiData.cityIncr.curesIncrPrefix}</span>
                                 <span className="num">{curesIncr}</span>
                             </p>
                             <p className="num">{this.props.shanghaiData.cityTotal.curesTotal}</p>
