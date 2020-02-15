@@ -1,6 +1,6 @@
 .card-list .article-card {
     display: flex;
-    height: 95px;
+    height: 85px;
     border-bottom: .5px solid #e8e8e8;
     padding: 15px 0;
 }
