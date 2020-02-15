@@ -1,0 +1,376 @@
+{
+  "data": {
+    "updateTime": 1581775777,
+    "cityCode": "310000",
+    "cityName": "",
+    "series": [
+      {
+        "date": "2020-02-14",
+        "confirmedNum": 326,
+        "curesNum": 90,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-13",
+        "confirmedNum": 318,
+        "curesNum": 62,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-12",
+        "confirmedNum": 313,
+        "curesNum": 57,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-11",
+        "confirmedNum": 306,
+        "curesNum": 53,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-10",
+        "confirmedNum": 302,
+        "curesNum": 48,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-09",
+        "confirmedNum": 295,
+        "curesNum": 44,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-08",
+        "confirmedNum": 292,
+        "curesNum": 41,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-07",
+        "confirmedNum": 281,
+        "curesNum": 30,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-06",
+        "confirmedNum": 269,
+        "curesNum": 25,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-05",
+        "confirmedNum": 254,
+        "curesNum": 15,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-04",
+        "confirmedNum": 233,
+        "curesNum": 12,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-03",
+        "confirmedNum": 208,
+        "curesNum": 10,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-02",
+        "confirmedNum": 193,
+        "curesNum": 10,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-02-01",
+        "confirmedNum": 182,
+        "curesNum": 10,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-31",
+        "confirmedNum": 153,
+        "curesNum": 9,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-30",
+        "confirmedNum": 128,
+        "curesNum": 5,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-29",
+        "confirmedNum": 101,
+        "curesNum": 5,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-28",
+        "confirmedNum": 80,
+        "curesNum": 4,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-27",
+        "confirmedNum": 53,
+        "curesNum": 1,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-26",
+        "confirmedNum": 40,
+        "curesNum": 1,
+        "deathsNum": 1,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-25",
+        "confirmedNum": 33,
+        "curesNum": 1,
+        "deathsNum": 0,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-24",
+        "confirmedNum": 20,
+        "curesNum": 0,
+        "deathsNum": 0,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-23",
+        "confirmedNum": 16,
+        "curesNum": 0,
+        "deathsNum": 0,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-22",
+        "confirmedNum": 9,
+        "curesNum": 0,
+        "deathsNum": 0,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-21",
+        "confirmedNum": 6,
+        "curesNum": 0,
+        "deathsNum": 0,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      },
+      {
+        "date": "2020-01-20",
+        "confirmedNum": 2,
+        "curesNum": 0,
+        "deathsNum": 0,
+        "curesRatio": 0,
+        "deathsRatio": 0
+      }
+    ],
+    "cityIncr": {
+      "confirmedIncr": 8,
+      "curesIncr": 28,
+      "deathsIncr": 0,
+      "confirmedIncrPrefix": "昨日",
+      "curesIncrPrefix": "昨日",
+      "deathsIncrPrefix": "昨日"
+    },
+    "cityTotal": {
+      "confirmedTotal": 326,
+      "curesTotal": 124,
+      "deathsTotal": 1
+    },
+    "cities": [
+      {
+        "confirmedNum": 109,
+        "curesNum": 35,
+        "deathsNum": 1,
+        "id": "3100xy",
+        "name": "外地来沪",
+        "confirmedIncr": 7
+      },
+      {
+        "confirmedNum": 56,
+        "curesNum": 23,
+        "deathsNum": 0,
+        "id": "310115",
+        "name": "浦东",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 20,
+        "curesNum": 2,
+        "deathsNum": 0,
+        "id": "310113",
+        "name": "宝山",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 18,
+        "curesNum": 5,
+        "deathsNum": 0,
+        "id": "310112",
+        "name": "闵行",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 18,
+        "curesNum": 4,
+        "deathsNum": 0,
+        "id": "310104",
+        "name": "徐汇",
+        "confirmedIncr": 1
+      },
+      {
+        "confirmedNum": 16,
+        "curesNum": 5,
+        "deathsNum": 0,
+        "id": "310106",
+        "name": "静安",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 14,
+        "curesNum": 1,
+        "deathsNum": 0,
+        "id": "310117",
+        "name": "松江",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 13,
+        "curesNum": 3,
+        "deathsNum": 0,
+        "id": "310105",
+        "name": "长宁",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 11,
+        "curesNum": 1,
+        "deathsNum": 0,
+        "id": "310107",
+        "name": "普陀",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 9,
+        "curesNum": 1,
+        "deathsNum": 0,
+        "id": "310120",
+        "name": "奉贤",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 9,
+        "curesNum": 1,
+        "deathsNum": 0,
+        "id": "310114",
+        "name": "嘉定",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 9,
+        "curesNum": 1,
+        "deathsNum": 0,
+        "id": "310110",
+        "name": "杨浦",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 7,
+        "curesNum": 2,
+        "deathsNum": 0,
+        "id": "310109",
+        "name": "虹口",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 6,
+        "curesNum": 1,
+        "deathsNum": 0,
+        "id": "310101",
+        "name": "黄浦",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 5,
+        "curesNum": 3,
+        "deathsNum": 0,
+        "id": "310118",
+        "name": "青浦",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 3,
+        "curesNum": 2,
+        "deathsNum": 0,
+        "id": "310116",
+        "name": "金山",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 3,
+        "curesNum": 0,
+        "deathsNum": 0,
+        "id": "310151",
+        "name": "崇明",
+        "confirmedIncr": 0
+      },
+      {
+        "confirmedNum": 0,
+        "curesNum": 34,
+        "deathsNum": 0,
+        "id": "3100xx",
+        "name": "未公布来源",
+        "confirmedIncr": 0
+      }
+    ]
+  }
+}
