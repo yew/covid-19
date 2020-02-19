@@ -43,7 +43,7 @@ class PoiListModal extends React.Component {
                 if (index === 0) {
                     return ["5公里以内", district];
                 }
-                return [district[0].poi_name, district];
+                return [district[0].area_name, district];
             })
         })
     };
