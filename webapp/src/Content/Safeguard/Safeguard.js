@@ -1,6 +1,7 @@
 import React from "react";
-import SafeguardBannerImg from "../../assets/img/safeguard_banner.jpg";
+// import SafeguardBannerImg from "../../assets/img/safeguard_banner.jpg";
 import SafeguardTitleImg from "../../assets/img/safeguard_title.png";
+import logoImg from "../../assets/img/logo.png";
 import "./Safeguard.css";
 import PlayIcon from "../../assets/img/paly.png";
 import {durationFormat} from "../../Utils/Utils";
@@ -35,9 +36,10 @@ class Safeguard extends React.Component {
         return (
 
             <div className="pneumonia-container">
-                <div className="header" style={{backgroundImage: `url("${SafeguardBannerImg}")`}}>
+                <div className="header" style={{backgroundColor: "#4ea1eb"}}>
                     <p>抗击肺炎</p>
                     <img className="news-title" src={SafeguardTitleImg} alt="最新进展专区"/>
+                    <img className="logo" src={logoImg} alt=""/>
                 </div>
                 {
                     this.props.safeguard.map((block, block_index) => {
