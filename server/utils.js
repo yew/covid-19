@@ -11,12 +11,11 @@ const formatDateTime = (date) => {
     let second = date.getSeconds();
     second = second < 10 ? ('0' + second) : second;
     return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
-}
+};
 
 const log = (req) => {
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const originalUrl = req.originalUrl;
-    console.log(formatDateTime(new Date()), ip, originalUrl);
-}
+    const ip = (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace("::ffff:", "");
+    console.log(formatDateTime(new Date()), ip);
+};
 
-module.exports = { log };
+module.exports = {log};

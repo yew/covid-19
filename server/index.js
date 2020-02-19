@@ -25,8 +25,6 @@ app.get("/api/data/shanghai", async (req, res) => {
 });
 
 app.get("/api/data/news", async (req, res) => {
-    utils.log(req);
-
     res.append("access-control-allow-origin", "*");
     const result = await axios.get("https://i.snssdk.com/api/feed/forum_flow/v1/?query_id=1656810113086509&tab_id=1656810113086525&category=forum_flow_subject&is_preview=0&stream_api_version=82&aid=13&offset=0&count=20");
 
@@ -49,8 +47,6 @@ app.get("/api/data/news", async (req, res) => {
 });
 
 app.get("/api/data/track_list", async (req, res) => {
-    utils.log(req);
-
     res.append("access-control-allow-origin", "*");
     const result = await axios.get("https://i.snssdk.com/toutiao/normandy/pneumonia_trending/track_list/?city_code=310000");
     const ret = result.data.data.list;
@@ -58,8 +54,6 @@ app.get("/api/data/track_list", async (req, res) => {
 });
 
 app.get("/api/data/safeguard", async (req, res) => {
-    utils.log(req);
-
     res.append("access-control-allow-origin", "*");
     const result = await axios.get("https://i.snssdk.com/api/feed/forum_flow/v1/?query_id=1656806647707693&tab_id=1656806647707709&category=forum_flow_subject&is_preview=0&stream_api_version=82&aid=13&offset=0&count=20");
     const ret = result.data.data.map(block => {
