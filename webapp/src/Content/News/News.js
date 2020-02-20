@@ -1,6 +1,7 @@
 import React from "react";
-import NewsBannerImg from "../../assets/img/news_banner.jpg";
+// import NewsBannerImg from "../../assets/img/news_banner.jpg";
 import NewsTitleImg from "../../assets/img/news_title.png";
+import logoImg from "../../assets/img/logo.png";
 import "./News.css";
 
 
@@ -8,15 +9,14 @@ class News extends React.Component {
     render() {
         return (
             <div className="pneumonia-container">
-                <div className="header" style={{backgroundImage: `url("${NewsBannerImg}")`}}>
+                <div className="header" style={{backgroundColor: "#367ccf"}}>
                     <p>抗击肺炎</p>
                     <img className="news-title" src={NewsTitleImg} alt="最新进展专区"/>
+                    <img className="logo" src={logoImg} alt=""/>
                 </div>
                 <div className="pneumonia-block-container">
                     <div className="block-title">
                         <p className="title">疫情追踪</p>
-                        <p className="update-time">
-                        </p>
                     </div>
                     <div className="card-list">
                         {

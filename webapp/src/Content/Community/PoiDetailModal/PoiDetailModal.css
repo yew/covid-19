@@ -1,0 +1,54 @@
+.poi-detail-modal {
+    z-index: 10000;
+}
+
+.poi-detail-modal-mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 199;
+}
+
+.poi-detail-modal-container {
+    position: absolute;
+    bottom: 0;
+    height: 120px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 2000;
+    animation-name: modal-show-animation;
+    animation-duration: .3s;
+    animation-timing-function: cubic-bezier(.32, .94, .6, 1);
+}
+
+@keyframes modal-show-animation {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.poi-item-container {
+    padding: 15px 15px 0 15px;
+}
+
+.poi-item-body {
+    display: flex;
+    align-items: center;
+}
+
+.poi-item-body .poi-item-title-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.poi-item-desc {
+    font-size: 16px;
+    color: #505050;
+}

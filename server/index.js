@@ -60,8 +60,6 @@ app.get("/api/data/news", async (req, res) => {
     //获取本地json数据
     const newsData = require('../data/news.json');
 
-    utils.log(req);
-
     res.append("access-control-allow-origin", "*");
     const result = await axios.get("https://i.snssdk.com/api/feed/forum_flow/v1/?query_id=1656810113086509&tab_id=1656810113086525&category=forum_flow_subject&is_preview=0&stream_api_version=82&aid=13&offset=0&count=20").catch(function (error) {
         console.log("error happens when get result");
@@ -108,8 +106,6 @@ app.get("/api/data/track_list", async (req, res) => {
     //获取本地json数据
     const trackListData = require('../data/track_list.json');
 
-    utils.log(req);
-
     res.append("access-control-allow-origin", "*");
     const result = await axios.get("https://i.snssdk.com/toutiao/normandy/pneumonia_trending/track_list/?city_code=310000").catch(function (error) {
         console.log("error happens when get result");
@@ -144,8 +140,6 @@ app.get("/api/data/safeguard", async (req, res) => {
     //获取本地json数据
     const safeguardData = require('../data/safeguard.json');
 
-    utils.log(req);
-
     res.append("access-control-allow-origin", "*");
     const result = await axios.get("https://i.snssdk.com/api/feed/forum_flow/v1/?query_id=1656806647707693&tab_id=1656806647707709&category=forum_flow_subject&is_preview=0&stream_api_version=82&aid=13&offset=0&count=20").catch(function (error) {
         console.log("error happens when get result");
@@ -154,8 +148,8 @@ app.get("/api/data/safeguard", async (req, res) => {
     const ret = result.data.data.map(block => {
         const block_content = JSON.parse(block.content);
         const article_list = block_content.sub_raw_datas.map(article => {
-
             const forum_extra_data = JSON.parse(article.forum_extra_data);
+
             let img_url = "";
             if (forum_extra_data.middle_image) {
                 img_url = forum_extra_data.middle_image.url;
@@ -165,8 +159,9 @@ app.get("/api/data/safeguard", async (req, res) => {
 
             return {
                 title: forum_extra_data.title,
-                img_url: forum_extra_data.middle_image,
                 url: article.display_url,
+                img_url,
+                source: article.source,
                 has_video: article.has_video,
                 video_duration: article.video_duration
             }

@@ -1,8 +1,8 @@
 import React from "react";
 import "./Epidemic.css";
-import EpidemicBannerImg from "../../assets/img/epidemic_banner.png";
 import EpidemicTitleImg from "../../assets/img/epidemic_title.png";
 // import QuestionMarkImg from "../../assets/img/question_mark.png";
+import logoImg from "../../assets/img/logo.png";
 import moment from "moment";
 import ReactEcharts from "echarts-for-react";
 
@@ -15,9 +15,10 @@ class Epidemic extends React.Component {
 
         return (
             <div className="pneumonia-container">
-                <div className="header" style={{backgroundImage: `url("${EpidemicBannerImg}")`}}>
+                <div className="header" style={{backgroundColor: "#426abd"}}>
                     <p>上海市</p>
-                    <img src={EpidemicTitleImg} alt="新型冠状病毒疫情追踪"/>
+                    <img className="title" src={EpidemicTitleImg} alt="新型冠状病毒疫情追踪"/>
+                    <img className="logo" src={logoImg} alt=""/>
                 </div>
                 <div className="pneumonia-block-container">
                     <div className="block-title">
@@ -30,7 +31,7 @@ class Epidemic extends React.Component {
                     <div className="total">
                         <div className="total-confirm">
                             <p className="compare">
-                                <span>较昨日</span>
+                                <span>较{this.props.shanghaiData.cityIncr.confirmedIncrPrefix}</span>
                                 <span className="num">{confirmedIncr}</span>
                             </p>
                             <p className="num">{this.props.shanghaiData.cityTotal.confirmedTotal}</p>
@@ -38,7 +39,7 @@ class Epidemic extends React.Component {
                         </div>
                         <div className="total-dead">
                             <p className="compare">
-                                <span>较昨日</span>
+                                <span>较{this.props.shanghaiData.cityIncr.deathsIncrPrefix}</span>
                                 <span className="num">{deathsIncr}</span>
                             </p>
                             <p className="num">{this.props.shanghaiData.cityTotal.deathsTotal}</p>
@@ -46,7 +47,7 @@ class Epidemic extends React.Component {
                         </div>
                         <div className="total-heal">
                             <p className="compare">
-                                <span>较昨日</span>
+                                <span>较{this.props.shanghaiData.cityIncr.curesIncrPrefix}</span>
                                 <span className="num">{curesIncr}</span>
                             </p>
                             <p className="num">{this.props.shanghaiData.cityTotal.curesTotal}</p>

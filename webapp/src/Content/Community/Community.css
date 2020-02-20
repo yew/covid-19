@@ -1,0 +1,43 @@
+.amap-logo {
+    opacity: 0;
+}
+
+.amap-copyright {
+    opacity: 0;
+}
+
+.community {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.community #map {
+    width: 100%;
+    flex: 1;
+}
+
+.community .bottom-bar {
+    height: 60px;
+    border-top: .5px solid #d8d8d8;
+    text-align: center;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.community .bottom-bar .tool-item i {
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAAXNSR0IArs4c6QAAA3tJREFUeAHtm7FLelEUx0+/NJBwEQwioTFocRBaxFEwcbTFwX9CCISkQSEIXPsDGloKJ1HBWYTAocVodHBylsSKfnyFK1epzuu+d1PwHIhr77x7/N6P5zz1ec/WZDL5JLFvCfz71iOOGQEBxCSCABJADAHGLRkkgBgCjFsySAAxBBi3ZBADyMf4Hbt7vR51Oh0aDoc0Ho8dz/PyxN3dXTo4OKB4PE6xWMyT0Ftuv2o8PT1RuVymfr/viSCvghwfH1OpVKJoNOoqpCtAjUaDisUivb29uRJha7Lf76erqytKp9PGT2EMCJmTz+cX4Ozs7NDR0RGFw2FjQW4mjkYjenl5oel0Og8DSLe3t8aZZAwom80ulFUul6NCoUCBQGAubhUPXl9fqVqt0t3d3fzpUW4PDw/z/3/zwOhdDBdk/ZoDOBcXFyuHg4XjBYIWaFIGrdBsYkaA8G6lDGWFzFk3gyZoU6ZrVsecjEaA8FauDNecVZeV0qKP0ARtynTN6piT0QiQ/jlnVRdkJ4vTtemancxV5xgBUpM3YRRAzKssgAQQQ4BxSwYJIIYA45YMEkAMAcbt2Q2zn57n/Pycms0mfXx8/HSaY9/29jadnp7S9fW14zmmJ1ovsefnZ6rX657BwUIBGjER27ZZBxSJRCgUCnm+DsREbNtmvcSCwSDVajV6fHxcuLnmZmG4CXZyckKIbdusA8IC9vb2KJPJ2F6LlfjWS8yK6j8MKoAY2AJIADEEGLdkkABiCDBuySABxBBg3JJBDKA/+SR9f39PrVaL3t/fGTnO3D6fj1KpFJ2dnTmb4OIs64AGgwFdXl66kPj11G63O/s+dnh4+PUJHh21XmL4+Rf3b7w2xNR/WvY6vopnPYP29/fp5uaG2u22pyWWTCYJsW2bdUBYQCKRmP3ZXoyN+NZLzIbov4wpgBjaAkgAMQQYt2SQAGIIMG7JIAHEEGDcRhmEnghl2Ly9rqZr0zX/Rq8RIDSMKMPOdmzeXjeDJmhTpmtWx5yMRoDQTaMM2/6xs33dDJr0lgRd82+0GgFCqxG29yvDtv9KpbIWmYTMgZblVgTT9ijjXg1pZlHp8cO4Ce1QRiWmmKEPC61Gerkp36pHaII2N71iWINxiS0DkJbMZSIb8r+rEtsERgKIeZUFkABiCDBuySABxBBg3JJBAoghwLglgxhA/wF2Iht8JRXzwAAAAABJRU5ErkJggg==");
+    background-size: contain;
+    margin: 0 auto;
+}
+
+.community .bottom-bar .tool-item .tool-item-name {
+    font-size: 14px;
+}
