@@ -10,7 +10,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: 0,
+            activeIndex: 0,
             shanghaiData: null,
             news: null,
             safeguard: null
@@ -28,9 +28,9 @@ class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <Tab active={this.state.active} changeTab={this.changeTab}/>
+                <Tab active={this.state.activeIndex} changeTab={this.changeTab}/>
                 <Content
-                    active={this.state.active}
+                    active={this.state.activeIndex}
                     shanghaiData={this.state.shanghaiData}
                     news={this.state.news}
                     safeguard={this.state.safeguard}
@@ -41,7 +41,7 @@ class App extends React.Component {
 
     changeTab = (activeIndex) => {
         this.setState({
-            active: activeIndex
+            activeIndex: activeIndex
         })
     }
 }

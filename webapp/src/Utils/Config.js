@@ -4,7 +4,8 @@ const API = {
     shanghai: server + "data/shanghai",
     track: server + "data/track_list",
     news: server + "data/news",
-    safeguard: server + "data/safeguard"
+    safeguard: server + "data/safeguard",
+    qa: server + "qa",
 };
 
 export default API;
