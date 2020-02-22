@@ -6,8 +6,8 @@ class Tab extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabList: ["上海疫情", "确诊小区", "最新进展", "个人防护"],
-            active: 0
+            tabList: ["上海疫情", "确诊小区", "最新进展", "个人防护", "智能问答"],
+            active: 0,
         }
     }
 

@@ -1,0 +1,100 @@
+.qa-container {
+    font-size: 12px;
+    position: relative;
+    background-color: #f2f3f5;
+    height: 100%;
+}
+
+.qa-container .header{
+    background-color: #335ad3;
+}
+.qa-container .header .qa-title {
+    width: 180px;
+    margin-top: 10px;
+}
+.qa-container .qa-content-area{
+    position: absolute;
+    top: 125px;
+    bottom: 4em;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+}
+.qa-container .qa-content-area .message-out{
+    position: relative;
+    margin: 1em 1em;
+    text-align: right;
+}
+.qa-container .qa-content-area .message-in{
+    position: relative;
+    margin: 1em 1em;
+    text-align: left;
+}
+.qa-container .qa-content-area .message-out .content-wrapper {
+    text-align: left;
+    display: inline-block;
+    padding: 0 0.5em;
+    max-width: 80%;
+    background-color: #335ad3;
+    color: #ffffff;
+    line-height: 2em;
+    border-radius: 0.7em 0.7em 0.1em 0.7em;
+}
+.qa-container .qa-content-area .message-in .content-wrapper {
+    text-align: left;
+    display: inline-block;
+    padding: 0 0.5em;
+    max-width: 80%;
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 2em;
+    border-radius: 0.7em 0.7em 0.7em 0.1em;
+}
+
+.qa-container .qa-input-area {
+    position: fixed;
+    bottom: 1em;
+    left: 0;
+    right: 0;
+    height: 3em;
+    line-height: 3em;
+}
+
+.qa-container .qa-input-area .input-wrapper {
+    box-sizing: border-box;
+    display: inline-block;
+    width: calc(100% - 7em);
+    margin-right: 1em;
+    padding: 0 1em;
+}
+
+.qa-container .qa-input-area .btn-wrapper {
+    display: inline-block;
+    width: 5em;
+    margin-right: 1em;
+}
+
+.qa-container .qa-input-area .input-wrapper input {
+    width: 100%;
+    height: 2em;
+    line-height: 2em;
+    border-radius: 1em;
+    box-shadow: inset 0 0;
+    border: 0;
+    text-indent: 1em;
+}
+
+.qa-container .qa-input-area .input-wrapper input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #c8c8c8;
+}
+
+.qa-container .qa-input-area .btn-wrapper .send-btn {
+    text-align: center;
+    background-color: #335ad3;
+    color: #ffffff;
+    width: 100%;
+    height: 2em;
+    line-height: 2em;
+    border-radius: 1em;
+    margin-right: 1em;
+}

@@ -30,19 +30,24 @@ class Community extends React.Component {
             })
         });
 
-        this.createMap();
+        await this.createMap();
         this.getPosition();
         this.createMarkers();
     };
 
-    createMap = () => {
-        const amap = new AMap.Map("map", {
-            center: this.state.center,
-            resizeEnable: true,
-            mapStyle: "amap://styles/whitesmoke",
-            zoom: 10
-        });
-        this.setState({amap: amap});
+    createMap = async () => {
+        if (!this.state.amap) {
+            const amap = new AMap.Map("map", {
+                center: this.state.center,
+                resizeEnable: true,
+                mapStyle: "amap://styles/whitesmoke",
+                zoom: 10
+            });
+            return new Promise(resolve => {
+                this.setState({amap: amap});
+                resolve();
+            });
+        }
     };
 
     getPosition = () => {

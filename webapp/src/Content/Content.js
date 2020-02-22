@@ -4,6 +4,7 @@ import Epidemic from "./Epidemic/Epidemic";
 import Community from "./Community/Community";
 import News from "./News/News";
 import Safeguard from "./Safeguard/Safeguard";
+import QnA from "./QnA/QnA";
 
 class Content extends React.Component {
     render() {
@@ -23,6 +24,9 @@ class Content extends React.Component {
             case 3:
                 if (this.props.safeguard)
                     content = <Safeguard safeguard={this.props.safeguard}/>;
+                break;
+            case 4:
+                content = <QnA/>;
                 break;
             default:
                 break;
