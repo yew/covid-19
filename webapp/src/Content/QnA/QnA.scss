@@ -1,0 +1,110 @@
+.qa-container {
+  font-size: 15px;
+  position: relative;
+  background-color: #f2f3f5;
+  height: 100%;
+
+  $input-area-height: 4em;
+
+  .qa-input-area {
+    max-width: 640px;
+    margin: 0 auto;
+    height: $input-area-height;
+    line-height: 4em;
+
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px 0 #e6e6e6;
+
+    .input-wrapper {
+      box-sizing: border-box;
+      display: inline-block;
+      width: calc(100% - 7em);
+      margin-right: 1em;
+      padding: 0 1em;
+
+      input {
+        width: 100%;
+        height: 3em;
+        line-height: 3em;
+        border-radius: 1em;
+        box-shadow: inset 0 0;
+        border: 0;
+        text-indent: 1em;
+
+        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+          color: #cccccc;
+        }
+      }
+    }
+
+    .btn-wrapper {
+      display: inline-block;
+      width: 5em;
+      margin-right: 1em;
+
+      .send-btn {
+        text-align: center;
+        background-color: #335ad3;
+        color: #ffffff;
+        width: 100%;
+        height: 3em;
+        line-height: 3em;
+        border-radius: 1em;
+        margin-right: 1em;
+      }
+    }
+
+  }
+
+  .qa-content-area {
+    position: absolute;
+    top: $input-area-height;
+    bottom: 1em; // to avoid iphone home banner
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+
+    .message-out {
+      position: relative;
+      margin: 1em 1em;
+      text-align: right;
+
+      .content-wrapper {
+        text-align: left;
+        display: inline-block;
+        padding: 0 0.5em;
+        max-width: 80%;
+        background-color: #335ad3;
+        color: #ffffff;
+        line-height: 2em;
+        border-radius: 0.7em 0.7em 0.1em 0.7em;
+      }
+    }
+
+    .message-in {
+      position: relative;
+      margin: 1em 1em;
+      text-align: left;
+
+      .content-wrapper {
+        text-align: left;
+        display: inline-block;
+        padding: 0 0.5em;
+        max-width: 80%;
+        background-color: #ffffff;
+        color: #000000;
+        line-height: 2em;
+        border-radius: 0.7em 0.7em 0.7em 0.1em;
+      }
+    }
+  }
+}
+
+//.qa-container .header {
+//  background-color: #335ad3;
+//}
+//
+//.qa-container .header .qa-title {
+//  width: 180px;
+//  margin-top: 10px;
+//}
