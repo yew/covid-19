@@ -95,7 +95,7 @@ class Epidemic extends React.Component {
                         <p className="update-time">依据卫健委数据按日更新，非实时数据</p>
                     </div>
                     <div>
-                        <ReactEcharts option={this.getNestedPiesOption()} style={{height: "450px"}}/>
+                        <ReactEcharts option={this.getNestedPiesOption()} style={{height: "300px"}}/>
                     </div>
                     <div className="pneumonia-table-container">
                         <div className="table-head">
@@ -715,16 +715,40 @@ class Epidemic extends React.Component {
 
 
         return{
+            title:{
+                text: '区域分布比例图',
+                textStyle:{
+                    fontSize:14
+                }
+            },
             tooltip: {
                 trigger: 'item',
                 formatter: '{a} <br/>{b}: {c} ({d}%)'
             },
-            legend: {
-                orient: 'vertical',
-                left:'right',
-                type:'scroll',
-                data: cities_names
-            },
+            color:[
+                '#99CCCC',
+                '#FFCC99',
+                '#669933',
+                '#666666',
+                '#3399CC',
+                '#CC0033',
+                '#99CC99',
+                '#FFCCCC',
+                '#CCCCFF',
+                '#CC99CC',
+                '#FFFFCC',
+                '#663366',
+                '#999933',
+                '#CC9966',
+                '#996633',
+                '#999999',
+                '#333333',
+                '#CCCC99',
+                '#666600',
+                '#339933',
+                '#99CC00',
+                '#666666',
+            ],
             series: [
                 {
                     name: '确诊人数',
@@ -747,36 +771,6 @@ class Epidemic extends React.Component {
                     name: '确诊人数',
                     type: 'pie',
                     radius: ['40%', '55%'],
-                    label: {
-                        formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
-                        backgroundColor: '#eee',
-                        borderColor: '#aaa',
-                        borderWidth: 1,
-                        borderRadius: 4,
-                        rich: {
-                            a: {
-                                color: '#999',
-                                lineHeight: 22,
-                                align: 'center'
-                            },
-                            hr: {
-                                borderColor: '#aaa',
-                                width: '100%',
-                                borderWidth: 0.5,
-                                height: 0
-                            },
-                            b: {
-                                fontSize: 16,
-                                lineHeight: 33
-                            },
-                            per: {
-                                color: '#eee',
-                                backgroundColor: '#334455',
-                                padding: [2, 4],
-                                borderRadius: 2
-                            }
-                        }
-                    },
                     data:cities_list
                 }
             ]
