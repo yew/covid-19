@@ -36,8 +36,6 @@ app.post("/api/qa", async (req, res) => {
 
 app.get("/api/data/shanghai", async (req, res) => {
     utils.log(req);
-
-    res.append("access-control-allow-origin", "*");
     const result_series = await axios.get("https://i.snssdk.com/forum/ncov_data/?data_type=%5B1%5D&city_code=%5B%22310000%22%5D");
     const ret = JSON.parse(result_series.data.ncov_city_data["310000"]);
 
