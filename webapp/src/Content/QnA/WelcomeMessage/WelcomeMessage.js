@@ -10,7 +10,7 @@ class WelcomeMessage extends React.Component {
                     {this.props.related.map((s, idx) => <p
                         key={idx}
                         onClick={this.getHandleClick(idx)}
-                    ><span>🧡</span><span style={{
+                    ><span role="img" aria-label="heart">❤️</span><span style={{
                         marginLeft: "1em",
                         pointer: "cursor",
                         color: "#3764ed",

@@ -1,9 +1,9 @@
 import React from "react";
 // import NewsBannerImg from "../../assets/img/news_banner.jpg";
-import NewsTitleImg from "../../assets/img/news_title.png";
-import logoImg from "../../assets/img/logo.png";
+// import NewsTitleImg from "../../assets/img/news_title.png";
+// import logoImg from "../../assets/img/logo.png";
 import "./QnA.scss";
-import QATitleImg from "../../assets/img/qa_title.png";
+// import QATitleImg from "../../assets/img/qa_title.png";
 import OutboundMessage from "./OutboundMessage/OutboundMessage";
 import InboundMessage from "./InboundMessage/InboundMessage";
 import Axios from "axios";
@@ -97,6 +97,7 @@ class QnA extends React.Component {
                                 related={element.related}
                                 handleClick={(i) => this.sendQ(element.related[i])}/>;
                         }
+                        return null;
                     })}
                     <div style={{float: "left", clear: "both"}}
                          ref={(el) => {

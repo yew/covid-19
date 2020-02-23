@@ -34,7 +34,8 @@ class News extends React.Component {
                                     <div className="timeline-item" key={index}>
                                         <div className="bot-background">
                                             <span className="bot-cor"/>
-                                            <span className="item-timestamp">{item.showtime_string}</span>
+                                            <span
+                                                className="item-timestamp">{item.showtime_string === "未来" ? "刚刚" : item.showtime_string}</span>
                                             <div className="item-description">{item.desc}</div>
                                             {img}
                                         </div>
