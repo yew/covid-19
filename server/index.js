@@ -21,6 +21,9 @@ app.get("/api/data/shanghai", async (req, res) => {
     ret["updateTime"] = data_all.updateTime;
     ret["cities"] = data_shanghai.cities;
 
+    const index_result = await axios.get("http://121.36.4.93:5000/index");
+    ret["index"] = index_result.data.data;
+
     res.json(ret);
 });
 
