@@ -123,6 +123,14 @@
     background-color: #0f3046;
 }
 
+.tooltip-point {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transform: translateY(-1px);
+}
+
 .pneumonia-table-container {
     border: .5px solid #e5e5e5;
 }
