@@ -1,7 +1,8 @@
 import React from "react";
 import "./PoiListModal.css";
 import searchIcon from "../../../assets/img/search.png";
-
+import {getDistance, getDistanceStr} from "../../../Utils/Utils";
+const AMap = window.AMap;
 
 class PoiListModal extends React.Component {
     constructor(props) {
@@ -52,12 +53,35 @@ class PoiListModal extends React.Component {
         this.handleSearch(e.target.value);
     };
 
-    handleSearch = (text) => {
-        const filtered_track_list = this.props.track_list.filter(area => {
-            return area.poi_name.indexOf(text) !== -1 ||
-                (area.city + area.area_name + area.township).indexOf(text) !== -1;
+    getTextPoi = (text) => {
+
+        AMap.plugin('AMap.Geocoder', () => {
+            const geocoder = new AMap.Geocoder({
+                city: "021", //城市设为北京，默认：“全国”
+            });
+            geocoder.getLocation(text, function(status, result) {
+                if (status === 'complete') {
+                    const location = result.geocodes[0].location;
+                    getPositionComplete(location);
+                }
+            });
         });
-        this.getDistrictData(filtered_track_list);
+
+        const getPositionComplete = (data) => {
+            const position = [data.lng,data.lat];
+            this.props.track_list.forEach(area => {
+                area.distance = getDistance(area.poi, position);
+                area.distanceStr = getDistanceStr(area.distance);
+            });
+
+            const track_list = this.props.track_list;
+            this.getDistrictData(track_list);
+        };
+
+    };
+
+    handleSearch = (text) => {
+        this.getTextPoi(text);
     };
 
     render() {

@@ -97,6 +97,18 @@
     color: #0f3046;
 }
 
+.epidemic-trends-legend .new-confirmed {
+    color: #ec0000;
+}
+
+.epidemic-trends-legend .new-heal {
+    color: #FF6666;
+}
+
+.epidemic-trends-legend .new-dead {
+    color: #993333;
+}
+
 .epidemic-trends-legend span::before {
     content: "";
     display: inline-block;
@@ -108,10 +120,6 @@
 }
 
 .epidemic-trends-legend .confirmed::before {
-    background-color: #ae212c;
-}
-
-.epidemic-trends-legend .treating::before {
     background-color: #d96322;
 }
 
@@ -121,6 +129,18 @@
 
 .epidemic-trends-legend .dead::before {
     background-color: #0f3046;
+}
+
+.epidemic-trends-legend .new-confirmed::before {
+    background-color: #ec0000;
+}
+
+.epidemic-trends-legend .new-heal::before {
+    background-color: #FF6666;
+}
+
+.epidemic-trends-legend .new-dead::before {
+    background-color: #993333;
 }
 
 .tooltip-point {

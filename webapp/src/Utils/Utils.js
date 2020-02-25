@@ -45,4 +45,35 @@ const getDistanceStr = (distance) => {
     return distanceStr;
 };
 
-export {durationFormat, getDistance, getDistanceStr};
+const tooltipStyle = {
+    trigger: 'axis',
+    triggerOn: 'click',
+    axisPointer: {
+        lineStyle: {
+            type: 'dashed'
+        }
+    },
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    borderColor: '#ebebeb',
+    borderWidth: 1,
+    textStyle: {
+        color: '#515151'
+    },
+    formatter: function (params) {
+        const date_list = params[0].name.split('.');
+        const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
+
+        const tooltip_items = params.map(param => {
+            return `<div class='tooltip-item'>
+                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
+                        <span>${param.seriesName}</span>
+                        <span>:</span>
+                        <span>${param.value}</span>
+                    </div>`;
+        }).join('');
+
+        return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
+    }
+};
+
+export {durationFormat, getDistance, getDistanceStr, tooltipStyle};

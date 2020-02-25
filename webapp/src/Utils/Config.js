@@ -2,6 +2,7 @@ const server = "http://localhost:8000/api/";
 
 const API = {
     shanghai: server + "data/shanghai",
+    index: server + "data/index",
     track: server + "data/track_list",
     news: server + "data/news",
     safeguard: server + "data/safeguard",

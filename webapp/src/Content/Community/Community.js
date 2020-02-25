@@ -14,7 +14,7 @@ class Community extends React.Component {
         super(props);
         this.state = {
             center: [121.473701, 31.230416],
-            zoom: 10,
+            zoom: 9,
             track_list: [],
             show_poi_modal: false,
             poi_detail: {},
@@ -30,8 +30,8 @@ class Community extends React.Component {
             })
         });
 
-        await this.createMap();
-        this.getPosition();
+        this.createMap();
+        // this.getPosition();
         this.createMarkers();
     };
 
@@ -40,8 +40,8 @@ class Community extends React.Component {
             const amap = new AMap.Map("map", {
                 center: this.state.center,
                 resizeEnable: true,
-                mapStyle: "amap://styles/whitesmoke",
-                zoom: 10
+                mapStyle: "amap://styles/normal",
+                zoom: 9
             });
             return new Promise(resolve => {
                 this.setState({amap: amap});

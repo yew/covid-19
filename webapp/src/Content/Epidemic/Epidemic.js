@@ -5,6 +5,7 @@ import EpidemicTitleImg from "../../assets/img/epidemic_title.png";
 import logoImg from "../../assets/img/logo.png";
 import moment from "moment";
 import ReactEcharts from "echarts-for-react";
+import {tooltipStyle} from "../../Utils/Utils";
 
 
 class Epidemic extends React.Component {
@@ -61,12 +62,23 @@ class Epidemic extends React.Component {
                         </div>
                     </div>
                     <div className="epidemic-trends">
-                        <ReactEcharts option={this.getOption()} style={{height: "250px"}}/>
+                        <ReactEcharts option={this.kLineOption()} style={{height: "250px"}}/>
                         <div className="epidemic-trends-legend">
-                            <span className="confirmed">确诊</span>
-                            <span className="treating">现存</span>
-                            <span className="dead">死亡</span>
-                            <span className="heal">治愈</span>
+                            <span className="confirmed">确诊人数</span>
+                            <span className="heal">治愈人数</span>
+                            <span className="dead">死亡人数</span>
+                            <br/>
+                            <span className="new-confirmed">新增确诊</span>
+                            <span className="new-heal">新增治愈</span>
+                            <span className="new-dead">新增死亡</span>
+                        </div>
+                    </div>
+                    <div className="epidemic-trends">
+                        <ReactEcharts option={this.getAddOption()} style={{height: "250px"}}/>
+                        <div className="epidemic-trends-legend">
+                            <span className="confirmed">新增确诊</span>
+                            <span className="heal">新增治愈</span>
+                            <span className="dead">新增死亡</span>
                         </div>
                     </div>
                 </div>
@@ -74,6 +86,9 @@ class Epidemic extends React.Component {
                     <div className="block-title">
                         <p className="title">区县分布</p>
                         <p className="update-time">依据卫健委数据按日更新，非实时数据</p>
+                    </div>
+                    <div>
+                        <ReactEcharts option={this.getNestedPiesOption()} style={{height: "300px"}}/>
                     </div>
                     <div className="pneumonia-table-container">
                         <div className="table-head">
@@ -104,7 +119,7 @@ class Epidemic extends React.Component {
         );
     }
 
-    getOption = () => {
+    getAddOption = () => {
         const series = this.props.shanghaiData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
@@ -115,9 +130,6 @@ class Epidemic extends React.Component {
         const confirmedSeries = series.map(item => {
             return item.confirmedNum;
         });
-        const treatingSeries = series.map(item => {
-            return item.treatingNum;
-        });
         const deathsSeries = series.map(item => {
             return item.deathsNum;
         });
@@ -125,44 +137,25 @@ class Epidemic extends React.Component {
             return item.curesNum;
         });
 
+        const confirmedAdd = [0];
+        const deathAdd = [0];
+        const cureAdd = [0];
+
+        for (let i = 1; i < confirmedSeries.length; i++) {
+            confirmedAdd.push(confirmedSeries[i] - confirmedSeries[i - 1]);
+            deathAdd.push(deathsSeries[i] - deathsSeries[i - 1]);
+            cureAdd.push(curesSeries[i] - curesSeries[i - 1]);
+        }
+
         return {
             title: {
-                text: '最新疫情趋势',
+                text: '疫情增长趋势',
                 textStyle: {
                     fontSize: 14
                 }
             },
-            tooltip: {
-                trigger: 'axis',
-                triggerOn: 'click',
-                axisPointer: {
-                    lineStyle: {
-                        type: 'dashed'
-                    }
-                },
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                borderColor: '#ebebeb',
-                borderWidth: 1,
-                textStyle: {
-                    color: '#515151'
-                },
-                formatter: function (params, ticket, callback) {
-                    const date_list = params[0].name.split('.');
-                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
-
-                    const tooltip_items = params.map(param => {
-                        return `<div class='tooltip-item'>
-                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
-                        <span>${param.seriesName}</span>
-                        <span>:</span>
-                        <span>${param.value}</span>
-                    </div>`;
-                    }).join('');
-
-                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
-                }
-            },
-            color: ["#ae212c", "#d96322", "#0f3046", "#39c4c4"],
+            tooltip: tooltipStyle,
+            color: ["#d96322", "#0f3046", "#39c4c4"],
             grid: {
                 top: '14%',
                 left: '3%',
@@ -213,36 +206,251 @@ class Epidemic extends React.Component {
             },
             series: [
                 {
+                    name: '新增确诊',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: confirmedAdd
+                },
+                {
+                    name: '新增死亡',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: deathAdd
+                },
+                {
+                    name: '新增治愈',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: cureAdd
+                }
+            ]
+        };
+    };
+    kLineOption = () => {
+        const series = this.props.shanghaiData.series.sort((a, b) => {
+            return new Date(a.date) - new Date(b.date);
+        });
+
+        const xAxis = series.map((item) => {
+            return item.date.slice(5).replace("-", ".");
+        });
+        const confirmedSeries = series.map((item) => {
+            return item.confirmedNum;
+        });
+
+        const deathsSeries = series.map((item) => {
+            return item.deathsNum;
+        });
+
+        const curesSeries = series.map((item) => {
+            return item.curesNum;
+        });
+
+        const confirmedItemSeries = [];
+        const deathItemSeries = [];
+        const cureItemSeries = [];
+
+        confirmedItemSeries.push([xAxis[0], confirmedSeries[0], confirmedSeries[0], confirmedSeries[0], confirmedSeries[0]]);
+        deathItemSeries.push([xAxis[0], deathsSeries[0], deathsSeries[0], deathsSeries[0], deathsSeries[0]]);
+        cureItemSeries.push([xAxis[0], curesSeries[0], curesSeries[0], curesSeries[0], curesSeries[0]]);
+
+        for (let i = 1; i < confirmedSeries.length; i++) {
+            const confirmedItem = [xAxis[i], confirmedSeries[i - 1], confirmedSeries[i], confirmedSeries[i - 1], confirmedSeries[i]];
+            const cureItem = [xAxis[i], curesSeries[i - 1], curesSeries[i], curesSeries[i - 1], curesSeries[i]];
+            const deathItem = [deathsSeries[i - 1], deathsSeries[i], deathsSeries[i - 1], deathsSeries[i]];
+            confirmedItemSeries.push(confirmedItem);
+            deathItemSeries.push(deathItem);
+            cureItemSeries.push(cureItem);
+        }
+
+        const upColor = '#ec0000';
+        const upBorderColor = '#8A0000';
+        const downColor = '#00da3c';
+        const downBorderColor = '#008F28';
+
+        const data0 = splitData(confirmedItemSeries);
+        const data1 = splitData(cureItemSeries);
+        const data2 = splitData(deathItemSeries);
+
+        function splitData(rawData) {
+            const categoryData = [];
+            const values = [];
+            for (var i = 0; i < rawData.length; i++) {
+                categoryData.push(rawData[i].splice(0, 1)[0]);
+                values.push(rawData[i])
+            }
+            return {
+                categoryData: categoryData,
+                values: values
+            };
+        }
+
+        return {
+            title: {
+                text: '最新疫情趋势',
+                textStyle: {
+                    fontSize: 14
+                },
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            grid: {
+                top: '18%',
+                left: '8%',
+                right: '4%',
+                bottom: '10%',
+            },
+            xAxis: {
+                type: 'category',
+                data: xAxis,
+                axisLabel: {
+                    rotate: 40,
+                    interval: 1,
+                    color: "#9e9e9e",
+                    fontSize: 9,
+                    showMaxLabel: true
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                axisTick: {
+                    show: false
+                }
+            },
+            yAxis: {
+                scale: true,
+                splitArea: {
+                    show: true
+                }
+            },
+            series: [
+                {
+                    //确诊新增
+                    type: 'candlestick',
+                    data: data0.values,
+                    itemStyle: {
+                        color: upColor,
+                        color0: downColor,
+                        borderColor: upBorderColor,
+                        borderColor0: downBorderColor
+                    }
+                },
+                {
                     name: '确诊',
                     type: 'line',
+                    data: confirmedSeries,
                     smooth: true,
-                    showAllSymbol: false,
-                    data: confirmedSeries
+                    color: "#d96322",
+                    lineStyle: {
+                        opacity: 0.5
+                    }
                 },
                 {
-                    name: '现存',
-                    type: 'line',
-                    smooth: true,
-                    showAllSymbol: false,
-                    data: treatingSeries
-                },
-                {
-                    name: '死亡',
-                    type: 'line',
-                    smooth: true,
-                    showAllSymbol: false,
-                    data: deathsSeries
+                    //治愈新增
+                    type: 'candlestick',
+                    data: data1.values,
+                    itemStyle: {
+                        color: "#FF6666",
+                        color0: "#FF6666",
+                        borderColor: "#FF6666",
+                        borderColor0: "#FF6666"
+                    }
                 },
                 {
                     name: '治愈',
                     type: 'line',
+                    data: curesSeries,
                     smooth: true,
-                    showAllSymbol: false,
-                    data: curesSeries
+                    color: "#39c4c4",
+                    lineStyle: {
+                        opacity: 0.5
+                    }
+                },
+                {
+                    //死亡新增
+                    type: 'candlestick',
+                    data: data2.values,
+                    itemStyle: {
+                        color: '#993333',
+                        color0: '#993333',
+                        borderColor: '#993333',
+                        borderColor0: '#993333'
+                    }
+                },
+                {
+                    name: '死亡',
+                    type: 'line',
+                    data: deathsSeries,
+                    color: "#0f3046",
+                    smooth: true,
+                    lineStyle: {
+                        opacity: 0.5
+                    }
                 }
             ]
         };
-    }
+
+    };
+    getNestedPiesOption = () => {
+        const cityTotal = this.props.shanghaiData.cityTotal.confirmedTotal;
+
+        const cities = this.props.shanghaiData.cities;
+        const cities_list = [];
+        cities.forEach(city => {
+            if (city.name !== '未公布来源') {
+                const dict = {'value': city.confirmedNum, 'name': city.name};
+                cities_list.push(dict);
+            }
+        });
+
+        const outside_num = cities.filter(city => city.name === "外地来沪")[0].confirmedNum;
+        const local_num = cityTotal - outside_num;
+
+        return {
+            title: {
+                text: '区域分布比例图',
+                textStyle: {
+                    fontSize: 14
+                }
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            color: ["#313e4f", "#394046", "#b63830", "#d6302f", "#d75746", "#447fb4", "#5297d7", "#8549aa", "#935eb3", "#56ab69", "#65c97a", "#4a9e87", "#58b99f", "#d9833b", "#e89f3d", "#eac545", "#828b8d", "#99a6a6"],
+            series: [
+                {
+                    name: '确诊人数',
+                    type: 'pie',
+                    selectedMode: 'single',
+                    radius: [0, '30%'],
+
+                    label: {
+                        position: 'inner'
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        {value: outside_num, name: '外地来沪', selected: true},
+                        {value: local_num, name: '本市'},
+                    ]
+                },
+                {
+                    name: '确诊人数',
+                    type: 'pie',
+                    radius: ['40%', '55%'],
+                    data: cities_list
+                }
+            ]
+        };
+    };
 }
 
 export default Epidemic;
