@@ -9,9 +9,7 @@ import ReactEcharts from "echarts-for-react";
 
 class Epidemic extends React.Component {
     render() {
-        const confirmedIncr = `+${this.props.shanghaiData.cityIncr.confirmedIncr}`;
-        const deathsIncr = `+${this.props.shanghaiData.cityIncr.deathsIncr}`;
-        const curesIncr = `+${this.props.shanghaiData.cityIncr.curesIncr}`;
+        const shanghaiData = this.props.shanghaiData;
 
         return (
             <div className="pneumonia-container">
@@ -24,33 +22,41 @@ class Epidemic extends React.Component {
                     <div className="block-title">
                         <p className="title">上海疫情</p>
                         <p className="update-time">
-                            更新时间 {moment(this.props.shanghaiData.updateTime * 1000).format("YYYY/MM/DD HH:mm")}
+                            更新时间 {moment(shanghaiData.updateTime * 1000).format("YYYY/MM/DD HH:mm")}
                             {/*<i style={{backgroundImage: `url("${QuestionMarkImg}")`}}/>*/}
                         </p>
                     </div>
                     <div className="total">
                         <div className="total-confirm">
                             <p className="compare">
-                                <span>较{this.props.shanghaiData.cityIncr.confirmedIncrPrefix}</span>
-                                <span className="num">{confirmedIncr}</span>
+                                <span>较{shanghaiData.cityIncr.confirmedIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.confirmedIncrStr}</span>
                             </p>
-                            <p className="num">{this.props.shanghaiData.cityTotal.confirmedTotal}</p>
+                            <p className="num">{shanghaiData.cityTotal.confirmedTotal}</p>
                             <p className="text">累计确诊</p>
+                        </div>
+                        <div className="total-treating">
+                            <p className="compare">
+                                <span>较{shanghaiData.cityIncr.treatingIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.treatingIncrStr}</span>
+                            </p>
+                            <p className="num">{shanghaiData.cityTotal.treatingTotal}</p>
+                            <p className="text">现存确诊</p>
                         </div>
                         <div className="total-dead">
                             <p className="compare">
-                                <span>较{this.props.shanghaiData.cityIncr.deathsIncrPrefix}</span>
-                                <span className="num">{deathsIncr}</span>
+                                <span>较{shanghaiData.cityIncr.deathsIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.deathsIncrStr}</span>
                             </p>
-                            <p className="num">{this.props.shanghaiData.cityTotal.deathsTotal}</p>
+                            <p className="num">{shanghaiData.cityTotal.deathsTotal}</p>
                             <p className="text">死亡</p>
                         </div>
                         <div className="total-heal">
                             <p className="compare">
-                                <span>较{this.props.shanghaiData.cityIncr.curesIncrPrefix}</span>
-                                <span className="num">{curesIncr}</span>
+                                <span>较{shanghaiData.cityIncr.curesIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.curesIncrStr}</span>
                             </p>
-                            <p className="num">{this.props.shanghaiData.cityTotal.curesTotal}</p>
+                            <p className="num">{shanghaiData.cityTotal.curesTotal}</p>
                             <p className="text">治愈</p>
                         </div>
                     </div>
@@ -58,6 +64,7 @@ class Epidemic extends React.Component {
                         <ReactEcharts option={this.getOption()} style={{height: "250px"}}/>
                         <div className="epidemic-trends-legend">
                             <span className="confirmed">确诊</span>
+                            <span className="treating">现存</span>
                             <span className="heal">治愈</span>
                             <span className="dead">死亡</span>
                         </div>
@@ -100,16 +107,19 @@ class Epidemic extends React.Component {
             return new Date(a.date) - new Date(b.date);
         });
 
-        const xAxis = series.map((item) => {
+        const xAxis = series.map(item => {
             return item.date.slice(5).replace("-", ".");
         });
-        const confirmedSeries = series.map((item) => {
+        const confirmedSeries = series.map(item => {
             return item.confirmedNum;
         });
-        const deathsSeries = series.map((item) => {
+        const treatingSeries = series.map(item => {
+            return item.treatingNum;
+        });
+        const deathsSeries = series.map(item => {
             return item.deathsNum;
         });
-        const curesSeries = series.map((item) => {
+        const curesSeries = series.map(item => {
             return item.curesNum;
         });
 
@@ -123,7 +133,7 @@ class Epidemic extends React.Component {
             tooltip: {
                 trigger: 'axis'
             },
-            color: ["#d96322", "#0f3046", "#39c4c4"],
+            color: ["#ae212c", "#d96322", "#0f3046", "#39c4c4"],
             grid: {
                 top: '14%',
                 left: '3%',
@@ -179,6 +189,13 @@ class Epidemic extends React.Component {
                     smooth: true,
                     showAllSymbol: false,
                     data: confirmedSeries
+                },
+                {
+                    name: '现存',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: treatingSeries
                 },
                 {
                     name: '死亡',

@@ -40,6 +40,10 @@
 }
 
 .total-confirm .num, .total-confirm .compare .num {
+    color: #ae212c;
+}
+
+.total-treating .num, .total-treating .compare .num {
     color: #d96322;
 }
 
@@ -52,9 +56,9 @@
 }
 
 .pneumonia-block-container .total .text {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
-    width: 80px;
+    width: 68px;
     margin: 0 auto;
     background: rgba(216, 216, 216, 0.2);
     border-radius: 3px;
@@ -74,10 +78,14 @@
 
 .epidemic-trends-legend span {
     font-size: 8px;
-    margin-left: 10px;
+    margin-left: 8px;
 }
 
 .epidemic-trends-legend .confirmed {
+    color: #ae212c;
+}
+
+.epidemic-trends-legend .treating {
     color: #d96322;
 }
 
@@ -96,10 +104,14 @@
     transform: translateY(-1px);
     width: 6px;
     height: 6px;
-    margin-right: 4px;
+    margin-right: 2px;
 }
 
 .epidemic-trends-legend .confirmed::before {
+    background-color: #ae212c;
+}
+
+.epidemic-trends-legend .treating::before {
     background-color: #d96322;
 }
 
