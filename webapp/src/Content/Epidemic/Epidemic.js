@@ -5,13 +5,12 @@ import EpidemicTitleImg from "../../assets/img/epidemic_title.png";
 import logoImg from "../../assets/img/logo.png";
 import moment from "moment";
 import ReactEcharts from "echarts-for-react";
+import {tooltipStyle} from "../../Utils/Utils";
 
 
 class Epidemic extends React.Component {
     render() {
-        const confirmedIncr = `+${this.props.shanghaiData.cityIncr.confirmedIncr}`;
-        const deathsIncr = `+${this.props.shanghaiData.cityIncr.deathsIncr}`;
-        const curesIncr = `+${this.props.shanghaiData.cityIncr.curesIncr}`;
+        const shanghaiData = this.props.shanghaiData;
 
         return (
             <div className="pneumonia-container">
@@ -24,33 +23,41 @@ class Epidemic extends React.Component {
                     <div className="block-title">
                         <p className="title">上海疫情</p>
                         <p className="update-time">
-                            更新时间 {moment(this.props.shanghaiData.updateTime * 1000).format("YYYY/MM/DD HH:mm")}
+                            更新时间 {moment(shanghaiData.updateTime * 1000).format("YYYY/MM/DD HH:mm")}
                             {/*<i style={{backgroundImage: `url("${QuestionMarkImg}")`}}/>*/}
                         </p>
                     </div>
                     <div className="total">
                         <div className="total-confirm">
                             <p className="compare">
-                                <span>较{this.props.shanghaiData.cityIncr.confirmedIncrPrefix}</span>
-                                <span className="num">{confirmedIncr}</span>
+                                <span>较{shanghaiData.cityIncr.confirmedIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.confirmedIncrStr}</span>
                             </p>
-                            <p className="num">{this.props.shanghaiData.cityTotal.confirmedTotal}</p>
+                            <p className="num">{shanghaiData.cityTotal.confirmedTotal}</p>
                             <p className="text">累计确诊</p>
+                        </div>
+                        <div className="total-treating">
+                            <p className="compare">
+                                <span>较{shanghaiData.cityIncr.treatingIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.treatingIncrStr}</span>
+                            </p>
+                            <p className="num">{shanghaiData.cityTotal.treatingTotal}</p>
+                            <p className="text">现存确诊</p>
                         </div>
                         <div className="total-dead">
                             <p className="compare">
-                                <span>较{this.props.shanghaiData.cityIncr.deathsIncrPrefix}</span>
-                                <span className="num">{deathsIncr}</span>
+                                <span>较{shanghaiData.cityIncr.deathsIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.deathsIncrStr}</span>
                             </p>
-                            <p className="num">{this.props.shanghaiData.cityTotal.deathsTotal}</p>
+                            <p className="num">{shanghaiData.cityTotal.deathsTotal}</p>
                             <p className="text">死亡</p>
                         </div>
                         <div className="total-heal">
                             <p className="compare">
-                                <span>较{this.props.shanghaiData.cityIncr.curesIncrPrefix}</span>
-                                <span className="num">{curesIncr}</span>
+                                <span>较{shanghaiData.cityIncr.curesIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.curesIncrStr}</span>
                             </p>
-                            <p className="num">{this.props.shanghaiData.cityTotal.curesTotal}</p>
+                            <p className="num">{shanghaiData.cityTotal.curesTotal}</p>
                             <p className="text">治愈</p>
                         </div>
                     </div>
@@ -87,8 +94,9 @@ class Epidemic extends React.Component {
                         <div className="table-head">
                             <p className="th-1">区县</p>
                             <p className="th-2">确诊</p>
-                            <p className="th-3">死亡</p>
-                            <p className="th-4">治愈</p>
+                            <p className="th-3">现存</p>
+                            <p className="th-4">死亡</p>
+                            <p className="th-5">治愈</p>
                         </div>
                         <div className="table-content">
                             {
@@ -97,8 +105,9 @@ class Epidemic extends React.Component {
                                         <div className="table-item" key={index}>
                                             <p className="p1">{city.name}</p>
                                             <p className="p2">{city.confirmedNum === 0 ? "" : city.confirmedNum}</p>
-                                            <p className="p3">{city.deathsNum === 0 ? "" : city.deathsNum}</p>
-                                            <p className="p4">{city.curesNum === 0 ? "" : city.curesNum}</p>
+                                            <p className="p3">{city.treatingNum <= 0 ? "" : city.treatingNum}</p>
+                                            <p className="p4">{city.deathsNum === 0 ? "" : city.deathsNum}</p>
+                                            <p className="p5">{city.curesNum === 0 ? "" : city.curesNum}</p>
                                         </div>
                                     );
                                 })
@@ -115,28 +124,24 @@ class Epidemic extends React.Component {
             return new Date(a.date) - new Date(b.date);
         });
 
-        const xAxis = series.map((item) => {
+        const xAxis = series.map(item => {
             return item.date.slice(5).replace("-", ".");
         });
-
-        const confirmedSeries = series.map((item) => {
+        const confirmedSeries = series.map(item => {
             return item.confirmedNum;
         });
-
-        const deathsSeries = series.map((item) => {
+        const deathsSeries = series.map(item => {
             return item.deathsNum;
         });
-
-        const curesSeries = series.map((item) => {
+        const curesSeries = series.map(item => {
             return item.curesNum;
         });
 
-        var confirmedAdd = [0];
-        var deathAdd = [0];
-        var cureAdd = [0];
+        const confirmedAdd = [0];
+        const deathAdd = [0];
+        const cureAdd = [0];
 
-
-        for (var i = 1; i < confirmedSeries.length; i++) {
+        for (let i = 1; i < confirmedSeries.length; i++) {
             confirmedAdd.push(confirmedSeries[i] - confirmedSeries[i - 1]);
             deathAdd.push(deathsSeries[i] - deathsSeries[i - 1]);
             cureAdd.push(curesSeries[i] - curesSeries[i - 1]);
@@ -149,36 +154,7 @@ class Epidemic extends React.Component {
                     fontSize: 14
                 }
             },
-            tooltip: {
-                trigger: 'axis',
-                triggerOn: 'click',
-                axisPointer: {
-                    lineStyle: {
-                        type: 'dashed'
-                    }
-                },
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                borderColor: '#ebebeb',
-                borderWidth: 1,
-                textStyle: {
-                    color: '#515151'
-                },
-                formatter: function (params, ticket, callback) {
-                    const date_list = params[0].name.split('.');
-                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
-
-                    const tooltip_items = params.map(param => {
-                        return `<div class='tooltip-item'>
-                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
-                        <span>${param.seriesName}</span>
-                        <span>:</span>
-                        <span>${param.value}</span>
-                    </div>`;
-                    }).join('');
-
-                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
-                }
-            },
+            tooltip: tooltipStyle,
             color: ["#d96322", "#0f3046", "#39c4c4"],
             grid: {
                 top: '14%',
@@ -254,7 +230,6 @@ class Epidemic extends React.Component {
         };
     };
     kLineOption = () => {
-
         const series = this.props.shanghaiData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
@@ -274,35 +249,35 @@ class Epidemic extends React.Component {
             return item.curesNum;
         });
 
-        var confirmedItemSeries = [];
-        var deathItemSeries = [];
-        var cureItemSeries = [];
+        const confirmedItemSeries = [];
+        const deathItemSeries = [];
+        const cureItemSeries = [];
 
         confirmedItemSeries.push([xAxis[0], confirmedSeries[0], confirmedSeries[0], confirmedSeries[0], confirmedSeries[0]]);
         deathItemSeries.push([xAxis[0], deathsSeries[0], deathsSeries[0], deathsSeries[0], deathsSeries[0]]);
         cureItemSeries.push([xAxis[0], curesSeries[0], curesSeries[0], curesSeries[0], curesSeries[0]]);
 
-        for (var i = 1; i < confirmedSeries.length; i++) {
-            var confirmedItem = [xAxis[i], confirmedSeries[i - 1], confirmedSeries[i], confirmedSeries[i - 1], confirmedSeries[i]];
-            var cureItem = [xAxis[i], curesSeries[i - 1], curesSeries[i], curesSeries[i - 1], curesSeries[i]];
-            var deathItem = [deathsSeries[i - 1], deathsSeries[i], deathsSeries[i - 1], deathsSeries[i]];
+        for (let i = 1; i < confirmedSeries.length; i++) {
+            const confirmedItem = [xAxis[i], confirmedSeries[i - 1], confirmedSeries[i], confirmedSeries[i - 1], confirmedSeries[i]];
+            const cureItem = [xAxis[i], curesSeries[i - 1], curesSeries[i], curesSeries[i - 1], curesSeries[i]];
+            const deathItem = [deathsSeries[i - 1], deathsSeries[i], deathsSeries[i - 1], deathsSeries[i]];
             confirmedItemSeries.push(confirmedItem);
             deathItemSeries.push(deathItem);
             cureItemSeries.push(cureItem);
         }
 
-        var upColor = '#ec0000';
-        var upBorderColor = '#8A0000';
-        var downColor = '#00da3c';
-        var downBorderColor = '#008F28';
+        const upColor = '#ec0000';
+        const upBorderColor = '#8A0000';
+        const downColor = '#00da3c';
+        const downBorderColor = '#008F28';
 
-        var data0 = splitData(confirmedItemSeries);
-        var data1 = splitData(cureItemSeries);
-        var data2 = splitData(deathItemSeries);
+        const data0 = splitData(confirmedItemSeries);
+        const data1 = splitData(cureItemSeries);
+        const data2 = splitData(deathItemSeries);
 
         function splitData(rawData) {
-            var categoryData = [];
-            var values = []
+            const categoryData = [];
+            const values = [];
             for (var i = 0; i < rawData.length; i++) {
                 categoryData.push(rawData[i].splice(0, 1)[0]);
                 values.push(rawData[i])
@@ -324,9 +299,10 @@ class Epidemic extends React.Component {
                 trigger: 'item'
             },
             grid: {
-                left: '10%',
-                right: '10%',
-                bottom: '15%'
+                top: '18%',
+                left: '8%',
+                right: '4%',
+                bottom: '10%',
             },
             xAxis: {
                 type: 'category',
@@ -422,26 +398,19 @@ class Epidemic extends React.Component {
 
     };
     getNestedPiesOption = () => {
-
         const cityTotal = this.props.shanghaiData.cityTotal.confirmedTotal;
-
-        const cities_names = [];
 
         const cities = this.props.shanghaiData.cities;
         const cities_list = [];
         cities.forEach(city => {
             if (city.name !== '未公布来源') {
-                cities_names.push(city.name);
                 const dict = {'value': city.confirmedNum, 'name': city.name};
                 cities_list.push(dict);
             }
         });
 
-        cities_names.push('本市');
-
         const outside_num = cities.filter(city => city.name === "外地来沪")[0].confirmedNum;
         const local_num = cityTotal - outside_num;
-
 
         return {
             title: {

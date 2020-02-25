@@ -4,6 +4,8 @@ import Tabs from './Tabs';
 import EpidemicTitleImg from "../../assets/img/index_title.png";
 import logoImg from "../../assets/img/logo.png";
 import ReactEcharts from "echarts-for-react";
+import {tooltipStyle} from "../../Utils/Utils";
+
 
 class SearchIndex extends React.Component {
     render() {
@@ -56,6 +58,9 @@ class SearchIndex extends React.Component {
         const confirmedSeries = series.map((item) => {
             return item.confirmedNum;
         });
+        const treatingSeries = series.map(item => {
+            return item.treatingNum;
+        });
         const deathsSeries = series.map((item) => {
             return item.deathsNum;
         });
@@ -67,42 +72,13 @@ class SearchIndex extends React.Component {
 
         return {
             title: {
-                text: '混合版本',
+                text: '指数随疫情趋势',
                 textStyle: {
                     fontSize: 14
                 }
             },
-            tooltip: {
-                trigger: 'axis',
-                triggerOn: 'click',
-                axisPointer: {
-                    lineStyle: {
-                        type: 'dashed'
-                    }
-                },
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                borderColor: '#ebebeb',
-                borderWidth: 1,
-                textStyle: {
-                    color: '#515151'
-                },
-                formatter: function (params, ticket, callback) {
-                    const date_list = params[0].name.split('.');
-                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
-
-                    const tooltip_items = params.map(param => {
-                        return `<div class='tooltip-item'>
-                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
-                        <span>${param.seriesName}</span>
-                        <span>:</span>
-                        <span>${param.value}</span>
-                    </div>`;
-                    }).join('');
-
-                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
-                }
-            },
-            color: ["#d96322", "#0f3046", "#39c4c4", "#bcafb1"],
+            tooltip: tooltipStyle,
+            color: ["#ae212c", "#d96322", "#0f3046", "#39c4c4", "#bcafb1"],
             grid: {
                 top: '14%',
                 left: '3%',
@@ -180,6 +156,13 @@ class SearchIndex extends React.Component {
                     data: confirmedSeries
                 },
                 {
+                    name: '存量',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: treatingSeries
+                },
+                {
                     name: '死亡',
                     type: 'line',
                     smooth: true,
@@ -236,41 +219,12 @@ class SearchIndex extends React.Component {
 
         return {
             title: {
-                text: '混合版本',
+                text: '指数随疫情趋势',
                 textStyle: {
                     fontSize: 14
                 }
             },
-            tooltip: {
-                trigger: 'axis',
-                triggerOn: 'click',
-                axisPointer: {
-                    lineStyle: {
-                        type: 'dashed'
-                    }
-                },
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                borderColor: '#ebebeb',
-                borderWidth: 1,
-                textStyle: {
-                    color: '#515151'
-                },
-                formatter: function (params, ticket, callback) {
-                    const date_list = params[0].name.split('.');
-                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
-
-                    const tooltip_items = params.map(param => {
-                        return `<div class='tooltip-item'>
-                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
-                        <span>${param.seriesName}</span>
-                        <span>:</span>
-                        <span>${param.value}</span>
-                    </div>`;
-                    }).join('');
-
-                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
-                }
-            },
+            tooltip: tooltipStyle,
             color: ["#d96322", "#0f3046", "#39c4c4", "#bcafb1"],
             grid: {
                 top: '14%',
@@ -403,36 +357,7 @@ class SearchIndex extends React.Component {
                     fontSize: 14
                 }
             },
-            tooltip: {
-                trigger: 'axis',
-                triggerOn: 'click',
-                axisPointer: {
-                    lineStyle: {
-                        type: 'dashed'
-                    }
-                },
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                borderColor: '#ebebeb',
-                borderWidth: 1,
-                textStyle: {
-                    color: '#515151'
-                },
-                formatter: function (params, ticket, callback) {
-                    const date_list = params[0].name.split('.');
-                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
-
-                    const tooltip_items = params.map(param => {
-                        return `<div class='tooltip-item'>
-                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
-                        <span>${param.seriesName}</span>
-                        <span>:</span>
-                        <span>${param.value}</span>
-                    </div>`;
-                    }).join('');
-
-                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
-                }
-            },
+            tooltip: tooltipStyle,
             grid: {
                 top: '14%',
                 left: '3%',
@@ -511,36 +436,7 @@ class SearchIndex extends React.Component {
                     fontSize: 14
                 }
             },
-            tooltip: {
-                trigger: 'axis',
-                triggerOn: 'click',
-                axisPointer: {
-                    lineStyle: {
-                        type: 'dashed'
-                    }
-                },
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                borderColor: '#ebebeb',
-                borderWidth: 1,
-                textStyle: {
-                    color: '#515151'
-                },
-                formatter: function (params, ticket, callback) {
-                    const date_list = params[0].name.split('.');
-                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
-
-                    const tooltip_items = params.map(param => {
-                        return `<div class='tooltip-item'>
-                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
-                        <span>${param.seriesName}</span>
-                        <span>:</span>
-                        <span>${param.value}</span>
-                    </div>`;
-                    }).join('');
-
-                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
-                }
-            },
+            tooltip: tooltipStyle,
             grid: {
                 top: '14%',
                 left: '3%',

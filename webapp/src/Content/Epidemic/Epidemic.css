@@ -40,6 +40,10 @@
 }
 
 .total-confirm .num, .total-confirm .compare .num {
+    color: #ae212c;
+}
+
+.total-treating .num, .total-treating .compare .num {
     color: #d96322;
 }
 
@@ -52,9 +56,9 @@
 }
 
 .pneumonia-block-container .total .text {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
-    width: 80px;
+    width: 68px;
     margin: 0 auto;
     background: rgba(216, 216, 216, 0.2);
     border-radius: 3px;
@@ -74,10 +78,14 @@
 
 .epidemic-trends-legend span {
     font-size: 8px;
-    margin-left: 10px;
+    margin-left: 8px;
 }
 
 .epidemic-trends-legend .confirmed {
+    color: #ae212c;
+}
+
+.epidemic-trends-legend .treating {
     color: #d96322;
 }
 
@@ -108,7 +116,7 @@
     transform: translateY(-1px);
     width: 6px;
     height: 6px;
-    margin-right: 4px;
+    margin-right: 2px;
 }
 
 .epidemic-trends-legend .confirmed::before {
@@ -135,6 +143,14 @@
     background-color: #993333;
 }
 
+.tooltip-point {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transform: translateY(-1px);
+}
+
 .pneumonia-table-container {
     border: .5px solid #e5e5e5;
 }
@@ -157,17 +173,23 @@
 
 .pneumonia-table-container .table-head .th-2 {
     width: 72px;
+    color: #ae212c;
+    background: rgba(220, 20, 60, 0.1);
+}
+
+.pneumonia-table-container .table-head .th-3 {
+    width: 72px;
     color: #d96322;
     background: rgba(255, 117, 40, 0.1);
 }
 
-.pneumonia-table-container .table-head .th-3 {
+.pneumonia-table-container .table-head .th-4 {
     width: 72px;
     color: #0f3046;
     background: rgba(26, 116, 255, 0.1);
 }
 
-.pneumonia-table-container .table-head .th-4 {
+.pneumonia-table-container .table-head .th-5 {
     width: 72px;
     color: #39c460;
     background: rgba(0, 171, 171, 0.1);
@@ -198,5 +220,9 @@
 }
 
 .pneumonia-table-container .table-content .table-item .p4 {
+    width: 72px;
+}
+
+.pneumonia-table-container .table-content .table-item .p5 {
     width: 72px;
 }

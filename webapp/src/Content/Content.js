@@ -1,5 +1,6 @@
 import React from "react";
 import "./Content.css";
+import Loading from "../Loading/Loading";
 import Epidemic from "./Epidemic/Epidemic";
 import Community from "./Community/Community";
 import News from "./News/News";
@@ -9,7 +10,7 @@ import SearchIndex from "./SearchIndex/SearchIndex";
 
 class Content extends React.Component {
     render() {
-        let content = "";
+        let content = <Loading/>;
         switch (this.props.active) {
             case 0:
                 if (this.props.shanghaiData)
