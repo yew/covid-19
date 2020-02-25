@@ -135,6 +135,11 @@ class Epidemic extends React.Component {
             tooltip: {
                 trigger: 'axis',
                 triggerOn: 'click',
+                axisPointer: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                },
                 backgroundColor: 'rgba(255, 255, 255, 0.9)',
                 borderColor: '#ebebeb',
                 borderWidth: 1,
