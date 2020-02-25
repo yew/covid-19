@@ -13,7 +13,8 @@ class App extends React.Component {
             activeIndex: 0,
             shanghaiData: null,
             news: null,
-            safeguard: null
+            safeguard: null,
+            indexData:null
         }
     }
 
@@ -21,7 +22,8 @@ class App extends React.Component {
         this.setState({
             shanghaiData: (await Axios.get(API.shanghai)).data,
             news: (await Axios.get(API.news)).data,
-            safeguard: (await Axios.get(API.safeguard)).data
+            safeguard: (await Axios.get(API.safeguard)).data,
+            indexData:(await Axios.get(API.index)).data
         });
     };
 
@@ -34,6 +36,7 @@ class App extends React.Component {
                     shanghaiData={this.state.shanghaiData}
                     news={this.state.news}
                     safeguard={this.state.safeguard}
+                    indexData={this.state.indexData}
                 />
             </div>
         );
