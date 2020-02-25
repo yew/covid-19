@@ -30,7 +30,7 @@ class Community extends React.Component {
             })
         });
 
-        await this.createMap();
+        this.createMap();
         this.getPosition();
         this.createMarkers();
     };
@@ -40,7 +40,7 @@ class Community extends React.Component {
             const amap = new AMap.Map("map", {
                 center: this.state.center,
                 resizeEnable: true,
-                mapStyle: "amap://styles/whitesmoke",
+                mapStyle: "amap://styles/normal",
                 zoom: 10
             });
             return new Promise(resolve => {
