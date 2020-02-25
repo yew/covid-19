@@ -1,3 +1,7 @@
+.index-container .header .title {
+    width: 180px;
+}
+
 .tab-list {
     border-bottom: 1px solid #ccc;
     padding-left: 0;

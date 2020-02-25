@@ -60,7 +60,7 @@ class Epidemic extends React.Component {
                             <span className="confirmed">确诊人数</span>
                             <span className="heal">治愈人数</span>
                             <span className="dead">死亡人数</span>
-                        <br/>
+                            <br/>
                             <span className="new-confirmed">新增确诊</span>
                             <span className="new-heal">新增治愈</span>
                             <span className="new-dead">新增死亡</span>
@@ -68,11 +68,11 @@ class Epidemic extends React.Component {
                     </div>
                     <div className="epidemic-trends">
                         <ReactEcharts option={this.getAddOption()} style={{height: "250px"}}/>
-                            <div className="epidemic-trends-legend">
-                                <span className="confirmed">新增确诊</span>
-                                <span className="heal">新增治愈</span>
-                                <span className="dead">新增死亡</span>
-                            </div>
+                        <div className="epidemic-trends-legend">
+                            <span className="confirmed">新增确诊</span>
+                            <span className="heal">新增治愈</span>
+                            <span className="dead">新增死亡</span>
+                        </div>
                     </div>
                 </div>
                 <div className="pneumonia-block-container">
@@ -136,96 +136,96 @@ class Epidemic extends React.Component {
         var cureAdd = [0];
 
 
-        for(var i=1;i<confirmedSeries.length;i++){
-            confirmedAdd.push(confirmedSeries[i]-confirmedSeries[i-1]);
-            deathAdd.push(deathsSeries[i]-deathsSeries[i-1]);
-            cureAdd.push(curesSeries[i]-curesSeries[i-1]);
+        for (var i = 1; i < confirmedSeries.length; i++) {
+            confirmedAdd.push(confirmedSeries[i] - confirmedSeries[i - 1]);
+            deathAdd.push(deathsSeries[i] - deathsSeries[i - 1]);
+            cureAdd.push(curesSeries[i] - curesSeries[i - 1]);
         }
 
         return {
-        title: {
-            text: '疫情增长趋势',
-            textStyle: {
-                fontSize: 14
-            }
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        color: ["#d96322", "#0f3046", "#39c4c4"],
-        grid: {
-            top: '14%',
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            axisLabel: {
-                rotate: 40,
-                interval: 1,
-                color: "#9e9e9e",
-                fontSize: 9,
-                showMaxLabel: true
-            },
-            axisLine: {
-                lineStyle: {
-                    color: "#ebebeb"
+            title: {
+                text: '疫情增长趋势',
+                textStyle: {
+                    fontSize: 14
                 }
             },
-            axisTick: {
-                show: false
+            tooltip: {
+                trigger: 'axis'
             },
-            data: xAxis
-        },
-        yAxis: {
-            type: 'value',
-            axisLabel: {
-                color: "#505050",
-                fontSize: 10,
-                showMaxLabel: true
+            color: ["#d96322", "#0f3046", "#39c4c4"],
+            grid: {
+                top: '14%',
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
             },
-            axisLine: {
-                lineStyle: {
-                    color: "#ebebeb"
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                axisLabel: {
+                    rotate: 40,
+                    interval: 1,
+                    color: "#9e9e9e",
+                    fontSize: 9,
+                    showMaxLabel: true
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                data: xAxis
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    color: "#505050",
+                    fontSize: 10,
+                    showMaxLabel: true
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+            },
+            series: [
+                {
+                    name: '新增确诊',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: confirmedAdd
+                },
+                {
+                    name: '新增死亡',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: deathAdd
+                },
+                {
+                    name: '新增治愈',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: cureAdd
                 }
-            },
-            splitLine: {
-                lineStyle: {
-                    color: "#ebebeb"
-                }
-            },
-            axisTick: {
-                show: false
-            },
-        },
-        series: [
-            {
-                name: '新增确诊',
-                type: 'line',
-                smooth: true,
-                showAllSymbol: false,
-                data: confirmedAdd
-            },
-            {
-                name: '新增死亡',
-                type: 'line',
-                smooth: true,
-                showAllSymbol: false,
-                data: deathAdd
-            },
-            {
-                name: '新增治愈',
-                type: 'line',
-                smooth: true,
-                showAllSymbol: false,
-                data: cureAdd
-            }
-        ]
+            ]
+        };
     };
-};
     kLineOption = () => {
 
         const series = this.props.shanghaiData.series.sort((a, b) => {
@@ -251,14 +251,14 @@ class Epidemic extends React.Component {
         var deathItemSeries = [];
         var cureItemSeries = [];
 
-        confirmedItemSeries.push([xAxis[0],confirmedSeries[0],confirmedSeries[0],confirmedSeries[0],confirmedSeries[0]]);
-        deathItemSeries.push([xAxis[0],deathsSeries[0],deathsSeries[0],deathsSeries[0],deathsSeries[0]]);
-        cureItemSeries.push([xAxis[0],curesSeries[0],curesSeries[0],curesSeries[0],curesSeries[0]]);
+        confirmedItemSeries.push([xAxis[0], confirmedSeries[0], confirmedSeries[0], confirmedSeries[0], confirmedSeries[0]]);
+        deathItemSeries.push([xAxis[0], deathsSeries[0], deathsSeries[0], deathsSeries[0], deathsSeries[0]]);
+        cureItemSeries.push([xAxis[0], curesSeries[0], curesSeries[0], curesSeries[0], curesSeries[0]]);
 
-        for(var i=1;i<confirmedSeries.length;i++){
-            var confirmedItem = [xAxis[i],confirmedSeries[i-1],confirmedSeries[i],confirmedSeries[i-1],confirmedSeries[i]];
-            var cureItem = [xAxis[i],curesSeries[i-1],curesSeries[i],curesSeries[i-1],curesSeries[i]];
-            var deathItem = [deathsSeries[i-1],deathsSeries[i],deathsSeries[i-1],deathsSeries[i]];
+        for (var i = 1; i < confirmedSeries.length; i++) {
+            var confirmedItem = [xAxis[i], confirmedSeries[i - 1], confirmedSeries[i], confirmedSeries[i - 1], confirmedSeries[i]];
+            var cureItem = [xAxis[i], curesSeries[i - 1], curesSeries[i], curesSeries[i - 1], curesSeries[i]];
+            var deathItem = [deathsSeries[i - 1], deathsSeries[i], deathsSeries[i - 1], deathsSeries[i]];
             confirmedItemSeries.push(confirmedItem);
             deathItemSeries.push(deathItem);
             cureItemSeries.push(cureItem);
@@ -343,7 +343,7 @@ class Epidemic extends React.Component {
                     type: 'line',
                     data: confirmedSeries,
                     smooth: true,
-                    color:"#d96322",
+                    color: "#d96322",
                     lineStyle: {
                         opacity: 0.5
                     }
@@ -364,7 +364,7 @@ class Epidemic extends React.Component {
                     type: 'line',
                     data: curesSeries,
                     smooth: true,
-                    color:"#39c4c4",
+                    color: "#39c4c4",
                     lineStyle: {
                         opacity: 0.5
                     }
@@ -384,16 +384,16 @@ class Epidemic extends React.Component {
                     name: '死亡',
                     type: 'line',
                     data: deathsSeries,
-                    color:"#0f3046",
+                    color: "#0f3046",
                     smooth: true,
                     lineStyle: {
                         opacity: 0.5
                     }
                 }
             ]
-    };
+        };
 
-};
+    };
     getNestedPiesOption = () => {
 
         const cityTotal = this.props.shanghaiData.cityTotal.confirmedTotal;
@@ -403,9 +403,9 @@ class Epidemic extends React.Component {
         const cities = this.props.shanghaiData.cities;
         const cities_list = [];
         cities.forEach(city => {
-            if(city.name !=='未公布来源'){
+            if (city.name !== '未公布来源') {
                 cities_names.push(city.name);
-                const dict = {'value':city.confirmedNum,'name':city.name};
+                const dict = {'value': city.confirmedNum, 'name': city.name};
                 cities_list.push(dict);
             }
         });
@@ -416,12 +416,11 @@ class Epidemic extends React.Component {
         const local_num = cityTotal - outside_num;
 
 
-
-        return{
-            title:{
+        return {
+            title: {
                 text: '区域分布比例图',
-                textStyle:{
-                    fontSize:14
+                textStyle: {
+                    fontSize: 14
                 }
             },
             tooltip: {
@@ -451,7 +450,7 @@ class Epidemic extends React.Component {
                     name: '确诊人数',
                     type: 'pie',
                     radius: ['40%', '55%'],
-                    data:cities_list
+                    data: cities_list
                 }
             ]
         };
