@@ -153,17 +153,23 @@
 
 .pneumonia-table-container .table-head .th-2 {
     width: 72px;
+    color: #ae212c;
+    background: rgba(220, 20, 60, 0.1);
+}
+
+.pneumonia-table-container .table-head .th-3 {
+    width: 72px;
     color: #d96322;
     background: rgba(255, 117, 40, 0.1);
 }
 
-.pneumonia-table-container .table-head .th-3 {
+.pneumonia-table-container .table-head .th-4 {
     width: 72px;
     color: #0f3046;
     background: rgba(26, 116, 255, 0.1);
 }
 
-.pneumonia-table-container .table-head .th-4 {
+.pneumonia-table-container .table-head .th-5 {
     width: 72px;
     color: #39c460;
     background: rgba(0, 171, 171, 0.1);
@@ -194,5 +200,9 @@
 }
 
 .pneumonia-table-container .table-content .table-item .p4 {
+    width: 72px;
+}
+
+.pneumonia-table-container .table-content .table-item .p5 {
     width: 72px;
 }

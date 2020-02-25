@@ -79,8 +79,9 @@ class Epidemic extends React.Component {
                         <div className="table-head">
                             <p className="th-1">区县</p>
                             <p className="th-2">确诊</p>
-                            <p className="th-3">死亡</p>
-                            <p className="th-4">治愈</p>
+                            <p className="th-3">现存</p>
+                            <p className="th-4">死亡</p>
+                            <p className="th-5">治愈</p>
                         </div>
                         <div className="table-content">
                             {
@@ -89,8 +90,9 @@ class Epidemic extends React.Component {
                                         <div className="table-item" key={index}>
                                             <p className="p1">{city.name}</p>
                                             <p className="p2">{city.confirmedNum === 0 ? "" : city.confirmedNum}</p>
-                                            <p className="p3">{city.deathsNum === 0 ? "" : city.deathsNum}</p>
-                                            <p className="p4">{city.curesNum === 0 ? "" : city.curesNum}</p>
+                                            <p className="p3">{city.treatingNum <= 0 ? "" : city.treatingNum}</p>
+                                            <p className="p4">{city.deathsNum === 0 ? "" : city.deathsNum}</p>
+                                            <p className="p5">{city.curesNum === 0 ? "" : city.curesNum}</p>
                                         </div>
                                     );
                                 })
