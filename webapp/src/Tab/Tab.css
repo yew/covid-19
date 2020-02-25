@@ -1,5 +1,13 @@
 .tab {
-    width: 100%;
+    overflow-x: auto;
+}
+
+.tab::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-wrapper {
+    width: 480px;
     height: 44px;
     line-height: 44px;
     text-align: center;
@@ -18,7 +26,7 @@
 }
 
 .tab-line {
-    width: 20%;
+    width: 16.666666667%;
     height: 3px;
     position: absolute;
     bottom: 0;

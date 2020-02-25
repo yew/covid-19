@@ -15,17 +15,20 @@ class Content extends React.Component {
                     content = <Epidemic shanghaiData={this.props.shanghaiData}/>;
                 break;
             case 1:
-                content = <Community/>;
+                content = <div>搜索指数专区</div>;
                 break;
             case 2:
+                content = <Community/>;
+                break;
+            case 3:
                 if (this.props.news)
                     content = <News news={this.props.news}/>;
                 break;
-            case 3:
+            case 4:
                 if (this.props.safeguard)
                     content = <Safeguard safeguard={this.props.safeguard}/>;
                 break;
-            case 4:
+            case 5:
                 content = <QnA/>;
                 break;
             default:
