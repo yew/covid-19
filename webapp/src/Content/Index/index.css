@@ -1,0 +1,178 @@
+.header .title {
+    width: 180px;
+    margin-top: 10px;
+}
+
+.pneumonia-block-container .block-title .update-time {
+    font-size: 13px;
+    color: #999999;
+}
+
+.pneumonia-block-container .block-title .update-time i {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    transform: translateY(-1px);
+    vertical-align: middle;
+    background-size: contain;
+    margin-left: 2px;
+}
+
+.pneumonia-block-container .total {
+    display: flex;
+    text-align: center;
+    padding: 10px 20px 10px;
+    justify-content: space-between;
+}
+
+.total .num {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+
+.total .compare span {
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: bold;
+    color: #808080;
+}
+
+.total-confirm .num, .total-confirm .compare .num {
+    color: #d96322;
+}
+
+.total-dead .num, .total-dead .compare .num {
+    color: #0f3046;
+}
+
+.total-heal .num, .total-heal .compare .num {
+    color: #39c4c4;
+}
+
+.pneumonia-block-container .total .text {
+    font-size: 14px;
+    font-weight: bold;
+    width: 80px;
+    margin: 0 auto;
+    background: rgba(216, 216, 216, 0.2);
+    border-radius: 3px;
+    color: #505050;
+}
+
+.epidemic-trends {
+    position: relative;
+    padding: 10px 5px;
+}
+
+.epidemic-trends-legend {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.epidemic-trends-legend span {
+    font-size: 8px;
+    margin-left: 10px;
+}
+
+.epidemic-trends-legend .confirmed {
+    color: #d96322;
+}
+
+.epidemic-trends-legend .heal {
+    color: #39c4c4;
+}
+
+.epidemic-trends-legend .dead {
+    color: #0f3046;
+}
+
+.epidemic-trends-legend span::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateY(-1px);
+    width: 6px;
+    height: 6px;
+    margin-right: 4px;
+}
+
+.epidemic-trends-legend .confirmed::before {
+    background-color: #d96322;
+}
+
+.epidemic-trends-legend .heal::before {
+    background-color: #39c4c4;
+}
+
+.epidemic-trends-legend .dead::before {
+    background-color: #0f3046;
+}
+
+.pneumonia-table-container {
+    border: .5px solid #e5e5e5;
+}
+
+.pneumonia-table-container .table-head {
+    display: flex;
+    line-height: 35px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pneumonia-table-container .table-head .th-1 {
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    color: #222222;
+    background-color: #f4f4f4;
+}
+
+.pneumonia-table-container .table-head .th-2 {
+    width: 72px;
+    color: #d96322;
+    background: rgba(255, 117, 40, 0.1);
+}
+
+.pneumonia-table-container .table-head .th-3 {
+    width: 72px;
+    color: #0f3046;
+    background: rgba(26, 116, 255, 0.1);
+}
+
+.pneumonia-table-container .table-head .th-4 {
+    width: 72px;
+    color: #39c460;
+    background: rgba(0, 171, 171, 0.1);
+}
+
+
+.pneumonia-table-container .table-content .table-item {
+    display: flex;
+    line-height: 35px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pneumonia-table-container .table-content .table-item .p1 {
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    font-weight: normal;
+}
+
+.pneumonia-table-container .table-content .table-item .p2 {
+    width: 72px;
+}
+
+.pneumonia-table-container .table-content .table-item .p3 {
+    width: 72px;
+}
+
+.pneumonia-table-container .table-content .table-item .p4 {
+    width: 72px;
+}

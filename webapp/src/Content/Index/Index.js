@@ -1,5 +1,5 @@
 import React from "react";
-import "./Epidemic.css";
+import "./index.css";
 import EpidemicTitleImg from "../../assets/img/index_title.png";
 // import QuestionMarkImg from "../../assets/img/question_mark.png";
 import logoImg from "../../assets/img/logo.png";
