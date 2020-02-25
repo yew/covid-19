@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class Tab extends Component {
@@ -9,9 +9,9 @@ class Tab extends Component {
     };
 
     onClick = () => {
-        const { label, onClick } = this.props;
+        const {label, onClick} = this.props;
         onClick(label);
-    }
+    };
 
     render() {
         const {
@@ -29,10 +29,7 @@ class Tab extends Component {
         }
 
         return (
-            <li
-                className={className}
-                onClick={onClick}
-            >
+            <li className={className} onClick={onClick}>
                 {label}
             </li>
         );

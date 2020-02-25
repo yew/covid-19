@@ -1,15 +1,15 @@
 import React from "react";
-import "./Index.css";
+import "./SearchIndex.css";
 import Tabs from './Tabs';
 import EpidemicTitleImg from "../../assets/img/index_title.png";
 import logoImg from "../../assets/img/logo.png";
 import ReactEcharts from "echarts-for-react";
 
-class Index extends React.Component {
+class SearchIndex extends React.Component {
     render() {
         return (
             <div className="index-container">
-                <div className="header" style={{backgroundColor: "#426abd"}}>
+                <div className="header" style={{backgroundColor: "#3366cc"}}>
                     <p>抗击肺炎</p>
                     <img className="title" src={EpidemicTitleImg} alt="搜索指数"/>
                     <img className="logo" src={logoImg} alt=""/>
@@ -45,7 +45,6 @@ class Index extends React.Component {
         );
     }
 
-
     shanghaiMultiplyOption = () => {
         const series = this.props.indexData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
@@ -73,12 +72,35 @@ class Index extends React.Component {
                     fontSize: 14
                 }
             },
-            legend: {
-                data: ['确诊', '治愈', '死亡', '指数'],
-                left: 'right'
-            },
             tooltip: {
-                trigger: 'axis'
+                trigger: 'axis',
+                triggerOn: 'click',
+                axisPointer: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                },
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#ebebeb',
+                borderWidth: 1,
+                textStyle: {
+                    color: '#515151'
+                },
+                formatter: function (params, ticket, callback) {
+                    const date_list = params[0].name.split('.');
+                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
+
+                    const tooltip_items = params.map(param => {
+                        return `<div class='tooltip-item'>
+                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
+                        <span>${param.seriesName}</span>
+                        <span>:</span>
+                        <span>${param.value}</span>
+                    </div>`;
+                    }).join('');
+
+                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
+                }
             },
             color: ["#d96322", "#0f3046", "#39c4c4", "#bcafb1"],
             grid: {
@@ -219,12 +241,35 @@ class Index extends React.Component {
                     fontSize: 14
                 }
             },
-            legend: {
-                data: ['确诊', '治愈', '死亡', '指数'],
-                left: 'right'
-            },
             tooltip: {
-                trigger: 'axis'
+                trigger: 'axis',
+                triggerOn: 'click',
+                axisPointer: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                },
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#ebebeb',
+                borderWidth: 1,
+                textStyle: {
+                    color: '#515151'
+                },
+                formatter: function (params, ticket, callback) {
+                    const date_list = params[0].name.split('.');
+                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
+
+                    const tooltip_items = params.map(param => {
+                        return `<div class='tooltip-item'>
+                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
+                        <span>${param.seriesName}</span>
+                        <span>:</span>
+                        <span>${param.value}</span>
+                    </div>`;
+                    }).join('');
+
+                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
+                }
             },
             color: ["#d96322", "#0f3046", "#39c4c4", "#bcafb1"],
             grid: {
@@ -349,19 +394,44 @@ class Index extends React.Component {
 
         xAxis.pop();
 
-
         const index = this.props.indexData.shanghai_index;
 
         return {
             title: {
                 text: '新冠病毒搜索指数',
-                // subtext:'数据来源百度搜索指数',
                 textStyle: {
                     fontSize: 14
                 }
             },
             tooltip: {
-                trigger: 'axis'
+                trigger: 'axis',
+                triggerOn: 'click',
+                axisPointer: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                },
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#ebebeb',
+                borderWidth: 1,
+                textStyle: {
+                    color: '#515151'
+                },
+                formatter: function (params, ticket, callback) {
+                    const date_list = params[0].name.split('.');
+                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
+
+                    const tooltip_items = params.map(param => {
+                        return `<div class='tooltip-item'>
+                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
+                        <span>${param.seriesName}</span>
+                        <span>:</span>
+                        <span>${param.value}</span>
+                    </div>`;
+                    }).join('');
+
+                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
+                }
             },
             grid: {
                 top: '14%',
@@ -432,19 +502,44 @@ class Index extends React.Component {
 
         xAxis.pop();
 
-
         const index = this.props.indexData.national_index;
 
         return {
             title: {
                 text: '新冠病毒搜索指数',
-                // subtext:'数据来源百度搜索指数',
                 textStyle: {
                     fontSize: 14
                 }
             },
             tooltip: {
-                trigger: 'axis'
+                trigger: 'axis',
+                triggerOn: 'click',
+                axisPointer: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                },
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#ebebeb',
+                borderWidth: 1,
+                textStyle: {
+                    color: '#515151'
+                },
+                formatter: function (params, ticket, callback) {
+                    const date_list = params[0].name.split('.');
+                    const dateStr = parseInt(date_list[0]) + '月' + parseInt(date_list[1]) + '日';
+
+                    const tooltip_items = params.map(param => {
+                        return `<div class='tooltip-item'>
+                        <span class='tooltip-point' style='background-color: ${param.color}'></span>
+                        <span>${param.seriesName}</span>
+                        <span>:</span>
+                        <span>${param.value}</span>
+                    </div>`;
+                    }).join('');
+
+                    return `<div style='font-size: 10px;line-height: 16px;'>${dateStr}${tooltip_items}</div>`
+                }
             },
             grid: {
                 top: '14%',
@@ -503,7 +598,6 @@ class Index extends React.Component {
             }]
         }
     };
-
 }
 
-export default Index;
+export default SearchIndex;

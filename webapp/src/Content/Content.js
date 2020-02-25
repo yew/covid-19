@@ -5,7 +5,7 @@ import Community from "./Community/Community";
 import News from "./News/News";
 import Safeguard from "./Safeguard/Safeguard";
 import QnA from "./QnA/QnA";
-import Index from "./Index/Index";
+import SearchIndex from "./SearchIndex/SearchIndex";
 
 class Content extends React.Component {
     render() {
@@ -17,7 +17,7 @@ class Content extends React.Component {
                 break;
             case 1:
                 if (this.props.indexData)
-                    content = <Index indexData={this.props.indexData}/>;
+                    content = <SearchIndex indexData={this.props.indexData}/>;
                 break;
             case 2:
                 content = <QnA/>;

@@ -2,6 +2,14 @@
     width: 180px;
 }
 
+.tooltip-point {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transform: translateY(-1px);
+}
+
 .tab-list {
     border-bottom: 1px solid #ccc;
     padding-left: 0;
