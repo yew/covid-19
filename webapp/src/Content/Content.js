@@ -43,7 +43,7 @@ class Content extends React.Component {
         }
 
         return (
-            <div className="content">
+            <div className="content" id="content">
                 {content}
             </div>
         );
