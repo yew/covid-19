@@ -97,7 +97,7 @@ class Epidemic extends React.Component {
                 <div className="pneumonia-block-container">
                     <div className="block-title">
                         <p className="title">区县分布</p>
-                        <p className="update-time">依据卫健委数据按日更新，非实时数据</p>
+                        {/*<p className="update-time">依据卫健委数据按日更新，非实时数据</p>*/}
                     </div>
                     <div>
                         <ReactEcharts option={this.getNestedPiesOption()} style={{height: "300px"}}/>
@@ -116,10 +116,10 @@ class Epidemic extends React.Component {
                                     return (
                                         <div className="table-item" key={index}>
                                             <p className="p1">{city.name}</p>
-                                            <p className="p2">{city.confirmedNum === 0 ? "" : city.confirmedNum}</p>
-                                            <p className="p3">{city.treatingNum < 0 ? "" : city.treatingNum}</p>
-                                            <p className="p4">{city.deathsNum === 0 ? "" : city.deathsNum}</p>
-                                            <p className="p5">{city.curesNum === 0 ? "" : city.curesNum}</p>
+                                            <p className="p2">{city.confirmedNum}</p>
+                                            <p className="p3">{city.treatingNum < 0 ? "-" : city.treatingNum}</p>
+                                            <p className="p4">{city.deathsNum}</p>
+                                            <p className="p5">{city.curesNum}</p>
                                         </div>
                                     );
                                 })
