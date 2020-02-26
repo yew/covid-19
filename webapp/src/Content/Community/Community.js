@@ -22,7 +22,7 @@ class Community extends React.Component {
         };
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         this.setState({
             track_list: (await Axios.get(API.track)).data.map(area => {
                 area.poi = area.poi.split(",");

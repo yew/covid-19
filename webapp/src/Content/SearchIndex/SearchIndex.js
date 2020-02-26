@@ -43,32 +43,37 @@ class SearchIndex extends React.Component {
                             上海市数据科学重点实验室
                         </p>
                     </div>
-                    <div className="pneumonia-block-container">
-
-                        <div className="block-title">
-                            <p className="title">搜索指数对比图</p>
-                            <p className="update-time">数据来源于百度搜索指数</p>
-                        </div>
-                        <div>
-                            <Tabs>
-                                <div label="上海搜索指数">
-                                    <div className="epidemic-index">
-                                        <ReactEcharts option={this.shanghaiIndexOption()} style={{height: "250px"}}/>
-                                    </div>
-                                    <div className="epidemic-index">
-                                        <ReactEcharts option={this.shanghaiMultiplyOption()} style={{height: "250px"}}/>
+                    <div>
+                        <Tabs>
+                            <div label="上海搜索指数">
+                                <div className="epidemic-trends">
+                                    <ReactEcharts option={this.shanghaiIndexOption()} style={{height: "250px"}}/>
+                                </div>
+                                <div className="epidemic-trends">
+                                    <ReactEcharts option={this.shanghaiMultiplyOption()} style={{height: "300px"}}/>
+                                    <div className="epidemic-trends-legend">
+                                        <span className="confirmed">确诊</span>
+                                        <span className="heal">治愈</span>
+                                        <span className="dead">死亡</span>
+                                        <span className="index">搜索指数</span>
                                     </div>
                                 </div>
-                                <div label="全国搜索指数">
-                                    <div className="epidemic-index">
-                                        <ReactEcharts option={this.nationalIndexOption()} style={{height: "250px"}}/>
-                                    </div>
-                                    <div className="epidemic-multiply">
-                                        <ReactEcharts option={this.nationalMultiplyOption()} style={{height: "250px"}}/>
+                            </div>
+                            <div label="全国搜索指数">
+                                <div className="epidemic-trends">
+                                    <ReactEcharts option={this.nationalIndexOption()} style={{height: "250px"}}/>
+                                </div>
+                                <div className="epidemic-trends">
+                                    <ReactEcharts option={this.nationalMultiplyOption()} style={{height: "250px"}}/>
+                                    <div className="epidemic-trends-legend">
+                                        <span className="confirmed">确诊</span>
+                                        <span className="heal">治愈</span>
+                                        <span className="dead">死亡</span>
+                                        <span className="index">搜索指数</span>
                                     </div>
                                 </div>
-                            </Tabs>
-                        </div>
+                            </div>
+                        </Tabs>
                     </div>
                 </div>
         }
@@ -439,6 +444,7 @@ class SearchIndex extends React.Component {
                 smooth: true,
                 type: 'line',
                 showAllSymbol: false,
+                color: '#CCFF99',
                 data: index
             }]
         }
@@ -518,7 +524,8 @@ class SearchIndex extends React.Component {
                 smooth: true,
                 type: 'line',
                 showAllSymbol: false,
-                data: index
+                data: index,
+                color: '#CCFF99'
             }]
         }
     };

@@ -97,9 +97,7 @@ class Epidemic extends React.Component {
                             <span className="heal">治愈人数</span>
                             <span className="dead">死亡人数</span>
                             <br/>
-                            <span className="new-confirmed">新增确诊</span>
-                            <span className="new-heal">新增治愈</span>
-                            <span className="new-dead">新增死亡</span>
+                            <span className="new-confirmed">*红色系柱状表示新增幅度</span>
                         </div>
                     </div>
                     <div className="epidemic-trends">
@@ -161,29 +159,15 @@ class Epidemic extends React.Component {
         const xAxis = series.map(item => {
             return item.date.slice(5).replace("-", ".");
         });
-        const confirmedSeries = series.map(item => {
-            return item.confirmedNum;
-        });
-        const deathsSeries = series.map(item => {
-            return item.deathsNum;
-        });
-        const curesSeries = series.map(item => {
-            return item.curesNum;
-        });
 
-        const confirmedAdd = [0];
-        const deathAdd = [0];
-        const cureAdd = [0];
+        const confirmedAdd = this.state.shanghaiData.confirmedAdd;
+        const deathAdd = this.state.shanghaiData.deathAdd;
+        const cureAdd = this.state.shanghaiData.curedAdd;
 
-        for (let i = 1; i < confirmedSeries.length; i++) {
-            confirmedAdd.push(confirmedSeries[i] - confirmedSeries[i - 1]);
-            deathAdd.push(deathsSeries[i] - deathsSeries[i - 1]);
-            cureAdd.push(curesSeries[i] - curesSeries[i - 1]);
-        }
 
         return {
             title: {
-                text: '疫情增长趋势',
+                text: '新增疫情趋势',
                 textStyle: {
                     fontSize: 14
                 }
@@ -328,9 +312,6 @@ class Epidemic extends React.Component {
                 textStyle: {
                     fontSize: 14
                 },
-            },
-            tooltip: {
-                trigger: 'item'
             },
             grid: {
                 top: '18%',
