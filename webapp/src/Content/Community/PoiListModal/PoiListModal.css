@@ -76,7 +76,7 @@
 .poi-list-modal-area-search img {
     position: absolute;
     top: 9px;
-    right: 25px;
+    left: 25px;
     height: 24px;
 }
 
@@ -88,8 +88,7 @@
 
 .poi-list-modal-area-search input {
     width: calc(100% - 50px);
-    padding: 0 40px 0 8px;
-
+    padding: 0 8px 0 40px;
     font-size: 14px;
     height: 32px;
     border: 1px solid #505050;
@@ -97,6 +96,12 @@
     outline: none;
     text-shadow: none;
     -webkit-appearance: none;
+}
+
+.district-title {
+    margin: 20px 15px 5px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .poi-list-modal-list-section {
@@ -127,6 +132,7 @@
 }
 
 .poi-list-modal-list-item-name {
+    color: #505050;
     font-size: 16px;
     font-weight: bold;
 }

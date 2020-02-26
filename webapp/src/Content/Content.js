@@ -1,15 +1,17 @@
 import React from "react";
 import "./Content.css";
+import Loading from "../Loading/Loading";
 import Epidemic from "./Epidemic/Epidemic";
 import Community from "./Community/Community";
 import News from "./News/News";
 import Safeguard from "./Safeguard/Safeguard";
 import QnA from "./QnA/QnA";
-import Index from "./Index/Index";
+import SearchIndex from "./SearchIndex/SearchIndex";
+import Join from "./Join/Join";
 
 class Content extends React.Component {
     render() {
-        let content = "";
+        let content = <Loading/>;
         switch (this.props.active) {
             case 0:
                 if (this.props.shanghaiData)
@@ -17,7 +19,7 @@ class Content extends React.Component {
                 break;
             case 1:
                 if (this.props.indexData)
-                    content = <Index indexData={this.props.indexData}/>;
+                    content = <SearchIndex indexData={this.props.indexData}/>;
                 break;
             case 2:
                 content = <QnA/>;
@@ -32,6 +34,9 @@ class Content extends React.Component {
             case 5:
                 if (this.props.safeguard)
                     content = <Safeguard safeguard={this.props.safeguard}/>;
+                break;
+            case 6:
+                content = <Join/>;
                 break;
             default:
                 break;

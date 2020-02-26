@@ -1,56 +1,75 @@
 import React from "react";
 import "./Epidemic.css";
+import Banner from "../../assets/img/banner.jpg";
 import EpidemicTitleImg from "../../assets/img/epidemic_title.png";
-// import QuestionMarkImg from "../../assets/img/question_mark.png";
+import QuestionMarkImg from "../../assets/img/question_mark.png";
 import logoImg from "../../assets/img/logo.png";
 import moment from "moment";
 import ReactEcharts from "echarts-for-react";
+import {tooltipStyle} from "../../Utils/Utils";
+import Modal from "./Modal/Modal";
 
 
 class Epidemic extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modal_visible: false
+        }
+    }
+
     render() {
-        const confirmedIncr = `+${this.props.shanghaiData.cityIncr.confirmedIncr}`;
-        const deathsIncr = `+${this.props.shanghaiData.cityIncr.deathsIncr}`;
-        const curesIncr = `+${this.props.shanghaiData.cityIncr.curesIncr}`;
+        const shanghaiData = this.props.shanghaiData;
 
         return (
             <div className="pneumonia-container">
-                <div className="header" style={{backgroundColor: "#426abd"}}>
-                    <p>上海市</p>
+                <div className="header" style={{backgroundImage: `url("${Banner}")`}}>
                     <img className="title" src={EpidemicTitleImg} alt="新型冠状病毒疫情追踪"/>
-                    <img className="logo" src={logoImg} alt=""/>
+                    <p className="cooperate">
+                        <img src={logoImg} alt=""/>
+                        上海市数据科学重点实验室
+                    </p>
                 </div>
                 <div className="pneumonia-block-container">
                     <div className="block-title">
                         <p className="title">上海疫情</p>
                         <p className="update-time">
-                            更新时间 {moment(this.props.shanghaiData.updateTime * 1000).format("YYYY/MM/DD HH:mm")}
-                            {/*<i style={{backgroundImage: `url("${QuestionMarkImg}")`}}/>*/}
+                            更新时间 {moment(shanghaiData.updateTime * 1000).format("YYYY/MM/DD HH:mm")}
+                            <i style={{backgroundImage: `url("${QuestionMarkImg}")`}}
+                               onClick={() => this.setState({modal_visible: true})}/>
                         </p>
                     </div>
                     <div className="total">
                         <div className="total-confirm">
                             <p className="compare">
-                                <span>较{this.props.shanghaiData.cityIncr.confirmedIncrPrefix}</span>
-                                <span className="num">{confirmedIncr}</span>
+                                <span>较{shanghaiData.cityIncr.confirmedIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.confirmedIncrStr}</span>
                             </p>
-                            <p className="num">{this.props.shanghaiData.cityTotal.confirmedTotal}</p>
+                            <p className="num">{shanghaiData.cityTotal.confirmedTotal}</p>
                             <p className="text">累计确诊</p>
+                        </div>
+                        <div className="total-treating">
+                            <p className="compare">
+                                <span>较{shanghaiData.cityIncr.treatingIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.treatingIncrStr}</span>
+                            </p>
+                            <p className="num">{shanghaiData.cityTotal.treatingTotal}</p>
+                            <p className="text">现存确诊</p>
                         </div>
                         <div className="total-dead">
                             <p className="compare">
-                                <span>较{this.props.shanghaiData.cityIncr.deathsIncrPrefix}</span>
-                                <span className="num">{deathsIncr}</span>
+                                <span>较{shanghaiData.cityIncr.deathsIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.deathsIncrStr}</span>
                             </p>
-                            <p className="num">{this.props.shanghaiData.cityTotal.deathsTotal}</p>
+                            <p className="num">{shanghaiData.cityTotal.deathsTotal}</p>
                             <p className="text">死亡</p>
                         </div>
                         <div className="total-heal">
                             <p className="compare">
-                                <span>较{this.props.shanghaiData.cityIncr.curesIncrPrefix}</span>
-                                <span className="num">{curesIncr}</span>
+                                <span>较{shanghaiData.cityIncr.curesIncrPrefix}</span>
+                                <span className="num">{shanghaiData.cityIncr.curesIncrStr}</span>
                             </p>
-                            <p className="num">{this.props.shanghaiData.cityTotal.curesTotal}</p>
+                            <p className="num">{shanghaiData.cityTotal.curesTotal}</p>
                             <p className="text">治愈</p>
                         </div>
                     </div>
@@ -60,7 +79,7 @@ class Epidemic extends React.Component {
                             <span className="confirmed">确诊人数</span>
                             <span className="heal">治愈人数</span>
                             <span className="dead">死亡人数</span>
-                        <br/>
+                            <br/>
                             <span className="new-confirmed">新增确诊</span>
                             <span className="new-heal">新增治愈</span>
                             <span className="new-dead">新增死亡</span>
@@ -68,17 +87,17 @@ class Epidemic extends React.Component {
                     </div>
                     <div className="epidemic-trends">
                         <ReactEcharts option={this.getAddOption()} style={{height: "250px"}}/>
-                            <div className="epidemic-trends-legend">
-                                <span className="confirmed">新增确诊</span>
-                                <span className="heal">新增治愈</span>
-                                <span className="dead">新增死亡</span>
-                            </div>
+                        <div className="epidemic-trends-legend">
+                            <span className="confirmed">新增确诊</span>
+                            <span className="heal">新增治愈</span>
+                            <span className="dead">新增死亡</span>
+                        </div>
                     </div>
                 </div>
                 <div className="pneumonia-block-container">
                     <div className="block-title">
                         <p className="title">区县分布</p>
-                        <p className="update-time">依据卫健委数据按日更新，非实时数据</p>
+                        {/*<p className="update-time">依据卫健委数据按日更新，非实时数据</p>*/}
                     </div>
                     <div>
                         <ReactEcharts option={this.getNestedPiesOption()} style={{height: "300px"}}/>
@@ -87,8 +106,9 @@ class Epidemic extends React.Component {
                         <div className="table-head">
                             <p className="th-1">区县</p>
                             <p className="th-2">确诊</p>
-                            <p className="th-3">死亡</p>
-                            <p className="th-4">治愈</p>
+                            <p className="th-3">现存</p>
+                            <p className="th-4">死亡</p>
+                            <p className="th-5">治愈</p>
                         </div>
                         <div className="table-content">
                             {
@@ -96,9 +116,10 @@ class Epidemic extends React.Component {
                                     return (
                                         <div className="table-item" key={index}>
                                             <p className="p1">{city.name}</p>
-                                            <p className="p2">{city.confirmedNum === 0 ? "" : city.confirmedNum}</p>
-                                            <p className="p3">{city.deathsNum === 0 ? "" : city.deathsNum}</p>
-                                            <p className="p4">{city.curesNum === 0 ? "" : city.curesNum}</p>
+                                            <p className="p2">{city.confirmedNum}</p>
+                                            <p className="p3">{city.treatingNum < 0 ? "-" : city.treatingNum}</p>
+                                            <p className="p4">{city.deathsNum}</p>
+                                            <p className="p5">{city.curesNum}</p>
                                         </div>
                                     );
                                 })
@@ -106,6 +127,10 @@ class Epidemic extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Modal visible={this.state.modal_visible}
+                       close={() => {
+                           this.setState({modal_visible: false})
+                       }}/>
             </div>
         );
     }
@@ -115,119 +140,112 @@ class Epidemic extends React.Component {
             return new Date(a.date) - new Date(b.date);
         });
 
-        const xAxis = series.map((item) => {
+        const xAxis = series.map(item => {
             return item.date.slice(5).replace("-", ".");
         });
-
-        const confirmedSeries = series.map((item) => {
+        const confirmedSeries = series.map(item => {
             return item.confirmedNum;
         });
-
-        const deathsSeries = series.map((item) => {
+        const deathsSeries = series.map(item => {
             return item.deathsNum;
         });
-
-        const curesSeries = series.map((item) => {
+        const curesSeries = series.map(item => {
             return item.curesNum;
         });
 
-        var confirmedAdd = [0];
-        var deathAdd = [0];
-        var cureAdd = [0];
+        const confirmedAdd = [0];
+        const deathAdd = [0];
+        const cureAdd = [0];
 
-
-        for(var i=1;i<confirmedSeries.length;i++){
-            confirmedAdd.push(confirmedSeries[i]-confirmedSeries[i-1]);
-            deathAdd.push(deathsSeries[i]-deathsSeries[i-1]);
-            cureAdd.push(curesSeries[i]-curesSeries[i-1]);
+        for (let i = 1; i < confirmedSeries.length; i++) {
+            confirmedAdd.push(confirmedSeries[i] - confirmedSeries[i - 1]);
+            deathAdd.push(deathsSeries[i] - deathsSeries[i - 1]);
+            cureAdd.push(curesSeries[i] - curesSeries[i - 1]);
         }
 
         return {
-        title: {
-            text: '疫情增长趋势',
-            textStyle: {
-                fontSize: 14
-            }
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        color: ["#d96322", "#0f3046", "#39c4c4"],
-        grid: {
-            top: '14%',
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            axisLabel: {
-                rotate: 40,
-                interval: 1,
-                color: "#9e9e9e",
-                fontSize: 9,
-                showMaxLabel: true
-            },
-            axisLine: {
-                lineStyle: {
-                    color: "#ebebeb"
+            title: {
+                text: '疫情增长趋势',
+                textStyle: {
+                    fontSize: 14
                 }
             },
-            axisTick: {
-                show: false
+            tooltip: tooltipStyle,
+            color: ["#d96322", "#0f3046", "#39c4c4"],
+            grid: {
+                top: '14%',
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
             },
-            data: xAxis
-        },
-        yAxis: {
-            type: 'value',
-            axisLabel: {
-                color: "#505050",
-                fontSize: 10,
-                showMaxLabel: true
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                axisLabel: {
+                    rotate: 40,
+                    interval: 1,
+                    color: "#9e9e9e",
+                    fontSize: 9,
+                    showMaxLabel: true
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                data: xAxis
             },
-            axisLine: {
-                lineStyle: {
-                    color: "#ebebeb"
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    color: "#505050",
+                    fontSize: 10,
+                    showMaxLabel: true
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+            },
+            series: [
+                {
+                    name: '新增确诊',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: confirmedAdd
+                },
+                {
+                    name: '新增死亡',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: deathAdd
+                },
+                {
+                    name: '新增治愈',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: cureAdd
                 }
-            },
-            splitLine: {
-                lineStyle: {
-                    color: "#ebebeb"
-                }
-            },
-            axisTick: {
-                show: false
-            },
-        },
-        series: [
-            {
-                name: '新增确诊',
-                type: 'line',
-                smooth: true,
-                showAllSymbol: false,
-                data: confirmedAdd
-            },
-            {
-                name: '新增死亡',
-                type: 'line',
-                smooth: true,
-                showAllSymbol: false,
-                data: deathAdd
-            },
-            {
-                name: '新增治愈',
-                type: 'line',
-                smooth: true,
-                showAllSymbol: false,
-                data: cureAdd
-            }
-        ]
+            ]
+        };
     };
-};
     kLineOption = () => {
-
         const series = this.props.shanghaiData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
@@ -247,35 +265,35 @@ class Epidemic extends React.Component {
             return item.curesNum;
         });
 
-        var confirmedItemSeries = [];
-        var deathItemSeries = [];
-        var cureItemSeries = [];
+        const confirmedItemSeries = [];
+        const deathItemSeries = [];
+        const cureItemSeries = [];
 
-        confirmedItemSeries.push([xAxis[0],confirmedSeries[0],confirmedSeries[0],confirmedSeries[0],confirmedSeries[0]]);
-        deathItemSeries.push([xAxis[0],deathsSeries[0],deathsSeries[0],deathsSeries[0],deathsSeries[0]]);
-        cureItemSeries.push([xAxis[0],curesSeries[0],curesSeries[0],curesSeries[0],curesSeries[0]]);
+        confirmedItemSeries.push([xAxis[0], confirmedSeries[0], confirmedSeries[0], confirmedSeries[0], confirmedSeries[0]]);
+        deathItemSeries.push([xAxis[0], deathsSeries[0], deathsSeries[0], deathsSeries[0], deathsSeries[0]]);
+        cureItemSeries.push([xAxis[0], curesSeries[0], curesSeries[0], curesSeries[0], curesSeries[0]]);
 
-        for(var i=1;i<confirmedSeries.length;i++){
-            var confirmedItem = [xAxis[i],confirmedSeries[i-1],confirmedSeries[i],confirmedSeries[i-1],confirmedSeries[i]];
-            var cureItem = [xAxis[i],curesSeries[i-1],curesSeries[i],curesSeries[i-1],curesSeries[i]];
-            var deathItem = [deathsSeries[i-1],deathsSeries[i],deathsSeries[i-1],deathsSeries[i]];
+        for (let i = 1; i < confirmedSeries.length; i++) {
+            const confirmedItem = [xAxis[i], confirmedSeries[i - 1], confirmedSeries[i], confirmedSeries[i - 1], confirmedSeries[i]];
+            const cureItem = [xAxis[i], curesSeries[i - 1], curesSeries[i], curesSeries[i - 1], curesSeries[i]];
+            const deathItem = [deathsSeries[i - 1], deathsSeries[i], deathsSeries[i - 1], deathsSeries[i]];
             confirmedItemSeries.push(confirmedItem);
             deathItemSeries.push(deathItem);
             cureItemSeries.push(cureItem);
         }
 
-        var upColor = '#ec0000';
-        var upBorderColor = '#8A0000';
-        var downColor = '#00da3c';
-        var downBorderColor = '#008F28';
+        const upColor = '#ec0000';
+        const upBorderColor = '#8A0000';
+        const downColor = '#00da3c';
+        const downBorderColor = '#008F28';
 
-        var data0 = splitData(confirmedItemSeries);
-        var data1 = splitData(cureItemSeries);
-        var data2 = splitData(deathItemSeries);
+        const data0 = splitData(confirmedItemSeries);
+        const data1 = splitData(cureItemSeries);
+        const data2 = splitData(deathItemSeries);
 
         function splitData(rawData) {
-            var categoryData = [];
-            var values = []
+            const categoryData = [];
+            const values = [];
             for (var i = 0; i < rawData.length; i++) {
                 categoryData.push(rawData[i].splice(0, 1)[0]);
                 values.push(rawData[i])
@@ -297,9 +315,10 @@ class Epidemic extends React.Component {
                 trigger: 'item'
             },
             grid: {
-                left: '10%',
-                right: '10%',
-                bottom: '15%'
+                top: '18%',
+                left: '8%',
+                right: '4%',
+                bottom: '10%',
             },
             xAxis: {
                 type: 'category',
@@ -343,7 +362,7 @@ class Epidemic extends React.Component {
                     type: 'line',
                     data: confirmedSeries,
                     smooth: true,
-                    color:"#d96322",
+                    color: "#d96322",
                     lineStyle: {
                         opacity: 0.5
                     }
@@ -364,7 +383,7 @@ class Epidemic extends React.Component {
                     type: 'line',
                     data: curesSeries,
                     smooth: true,
-                    color:"#39c4c4",
+                    color: "#39c4c4",
                     lineStyle: {
                         opacity: 0.5
                     }
@@ -384,44 +403,36 @@ class Epidemic extends React.Component {
                     name: '死亡',
                     type: 'line',
                     data: deathsSeries,
-                    color:"#0f3046",
+                    color: "#0f3046",
                     smooth: true,
                     lineStyle: {
                         opacity: 0.5
                     }
                 }
             ]
+        };
+
     };
-
-};
     getNestedPiesOption = () => {
-
         const cityTotal = this.props.shanghaiData.cityTotal.confirmedTotal;
-
-        const cities_names = [];
 
         const cities = this.props.shanghaiData.cities;
         const cities_list = [];
         cities.forEach(city => {
-            if(city.name !=='未公布来源'){
-                cities_names.push(city.name);
-                const dict = {'value':city.confirmedNum,'name':city.name};
+            if (city.name !== '未公布来源') {
+                const dict = {'value': city.confirmedNum, 'name': city.name};
                 cities_list.push(dict);
             }
         });
 
-        cities_names.push('本市');
-
         const outside_num = cities.filter(city => city.name === "外地来沪")[0].confirmedNum;
         const local_num = cityTotal - outside_num;
 
-
-
-        return{
-            title:{
+        return {
+            title: {
                 text: '区域分布比例图',
-                textStyle:{
-                    fontSize:14
+                textStyle: {
+                    fontSize: 14
                 }
             },
             tooltip: {
@@ -451,7 +462,7 @@ class Epidemic extends React.Component {
                     name: '确诊人数',
                     type: 'pie',
                     radius: ['40%', '55%'],
-                    data:cities_list
+                    data: cities_list
                 }
             ]
         };

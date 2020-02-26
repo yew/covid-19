@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
 import Tab from './Tab';
 
 class Tabs extends Component {
@@ -17,7 +16,7 @@ class Tabs extends Component {
     }
 
     onClickTabItem = (tab) => {
-        this.setState({ activeTab: tab });
+        this.setState({activeTab: tab});
     };
 
     render() {
@@ -35,7 +34,7 @@ class Tabs extends Component {
             <div className="tabs">
                 <ol className="tab-list">
                     {children.map((child) => {
-                        const { label } = child.props;
+                        const {label} = child.props;
 
                         return (
                             <Tab

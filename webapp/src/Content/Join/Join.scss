@@ -1,0 +1,13 @@
+.join-container {
+  font-size: 15px;
+  position: relative;
+  background-color: #f2f3f5;
+  height: 100%;
+  text-align: center;
+
+  img.qr-code {
+    border-radius: 10px;
+    width: 70%;
+    margin: 80px auto 40px;
+  }
+}

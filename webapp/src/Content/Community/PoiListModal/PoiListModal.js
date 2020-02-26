@@ -2,13 +2,15 @@ import React from "react";
 import "./PoiListModal.css";
 import searchIcon from "../../../assets/img/search.png";
 import {getDistance, getDistanceStr} from "../../../Utils/Utils";
+
 const AMap = window.AMap;
 
 class PoiListModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            district_data: []
+            near: [],
+            district: []
         };
     }
 
@@ -30,23 +32,16 @@ class PoiListModal extends React.Component {
                 }
             }
         );
-        const temp_data = [];
-        Object.keys(district_data).forEach(key => {
-            temp_data.push(district_data[key]);
-        });
-        temp_data.sort((a, b) => b.length - a.length);
-
         near.sort((a, b) => a.distance - b.distance);
-        temp_data.unshift(near);
+        this.setState({near});
 
-        this.setState({
-            district_data: temp_data.map((district, index) => {
-                if (index === 0) {
-                    return ["5公里以内", district];
-                }
-                return [district[0].area_name, district];
-            })
-        })
+        const district = [];
+        Object.keys(district_data).forEach(key => {
+            district.push(district_data[key]);
+        });
+        district.sort((a, b) => b.length - a.length);
+
+        this.setState({district});
     };
 
     handleInputChange = (e) => {
@@ -57,9 +52,9 @@ class PoiListModal extends React.Component {
 
         AMap.plugin('AMap.Geocoder', () => {
             const geocoder = new AMap.Geocoder({
-                city: "021", //城市设为北京，默认：“全国”
+                city: "021",
             });
-            geocoder.getLocation(text, function(status, result) {
+            geocoder.getLocation(text, function (status, result) {
                 if (status === 'complete') {
                     const location = result.geocodes[0].location;
                     getPositionComplete(location);
@@ -68,7 +63,7 @@ class PoiListModal extends React.Component {
         });
 
         const getPositionComplete = (data) => {
-            const position = [data.lng,data.lat];
+            const position = [data.lng, data.lat];
             this.props.track_list.forEach(area => {
                 area.distance = getDistance(area.poi, position);
                 area.distanceStr = getDistanceStr(area.distance);
@@ -110,16 +105,45 @@ class PoiListModal extends React.Component {
                         </div>
                         <div className="poi-list-modal-area-filter"></div>
                         <div className="poi-list-modal-list">
+                            {this.state.near.length ? (
+                                <div className="poi-list-modal-list-section">
+                                    <div className="poi-list-modal-list-section-title">5公里以内</div>
+                                    <div className="poi-list-modal-list-section-content">
+                                        {
+                                            this.state.near.map((area, index) => {
+                                                return (
+                                                    <div className="poi-list-modal-list-item" key={index}>
+                                                        <div className="poi-list-modal-list-item-info">
+                                                            <p className="poi-list-modal-list-item-name">{area.poi_name}</p>
+                                                            <div className="poi-list-modal-list-item-location">
+                                                                {area.distanceStr ?
+                                                                    <div
+                                                                        className="poi-list-modal-list-item-distance">{area.distanceStr}
+                                                                    </div> : null
+                                                                }
+                                                                <div
+                                                                    className="poi-list-modal-list-item-address">{area.city + area.area_name + area.township}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <i className="poi-list-modal-list-item-icon"/>
+                                                    </div>
+                                                );
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            ) : null}
+                            {this.state.district.length ? <div className="district-title">所有上海场所列表（按区县）</div> : null}
                             {
-                                this.state.district_data.map((section, section_index) => {
+                                this.state.district.map((section, section_index) => {
                                     return (
-                                        section[1].length ?
+                                        section.length ? (
                                             <div className="poi-list-modal-list-section" key={section_index}>
-                                                <div className="poi-list-modal-list-section-title">
-                                                    {section[0]}（{section[1].length}个场所）
-                                                </div>
+                                                <div
+                                                    className="poi-list-modal-list-section-title">{section[0].area_name}</div>
                                                 <div className="poi-list-modal-list-section-content">
-                                                    {section[1].map((area, index) => {
+                                                    {section.map((area, index) => {
                                                         return (
                                                             <div className="poi-list-modal-list-item" key={index}>
                                                                 <div className="poi-list-modal-list-item-info">
@@ -136,7 +160,8 @@ class PoiListModal extends React.Component {
                                                         );
                                                     })}
                                                 </div>
-                                            </div> : null
+                                            </div>
+                                        ) : null
                                     );
                                 })
                             }
