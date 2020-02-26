@@ -159,8 +159,8 @@ class QnA extends React.Component {
     };
 
     requestQA = async (questionContent) => {
-        // const response = await Axios.post(API.qa, {question: questionContent});
-        const response = await Axios.post("http://192.168.1.136:8000/api/qa", {question: questionContent});
+        const response = await Axios.post(API.qa, {question: questionContent});
+        // const response = await Axios.post("http://192.168.1.136:8000/api/qa", {question: questionContent});
         const {question, answer, related} = response.data;
         console.log(response.data);
         this.state.messages.push({
