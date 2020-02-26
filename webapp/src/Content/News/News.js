@@ -9,7 +9,7 @@ class News extends React.Component {
         return (
             <div className="pneumonia-container">
                 <div className="header" style={{backgroundColor: "#367ccf"}}>
-                    <p>抗击肺炎</p>
+                    <p className="title">抗击肺炎</p>
                     <img className="news-title" src={NewsTitleImg} alt="最新进展专区"/>
                     <div className="source">引自今日头条</div>
                 </div>

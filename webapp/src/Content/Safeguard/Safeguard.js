@@ -36,7 +36,7 @@ class Safeguard extends React.Component {
 
             <div className="pneumonia-container">
                 <div className="header" style={{backgroundColor: "#4ea1eb"}}>
-                    <p>抗击肺炎</p>
+                    <p className="title">抗击肺炎</p>
                     <img className="news-title" src={SafeguardTitleImg} alt="最新进展专区"/>
                     <div className="source">引自今日头条</div>
                 </div>
