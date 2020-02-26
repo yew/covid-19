@@ -106,64 +106,73 @@ class PoiListModal extends React.Component {
                         <div className="poi-list-modal-area-filter"></div>
                         <div className="poi-list-modal-list">
                             {this.state.near.length ? (
-                                <div className="poi-list-modal-list-section">
-                                    <div className="poi-list-modal-list-section-title">5公里以内</div>
-                                    <div className="poi-list-modal-list-section-content">
-                                        {
-                                            this.state.near.map((area, index) => {
-                                                return (
-                                                    <div className="poi-list-modal-list-item" key={index}>
-                                                        <div className="poi-list-modal-list-item-info">
-                                                            <p className="poi-list-modal-list-item-name">{area.poi_name}</p>
-                                                            <div className="poi-list-modal-list-item-location">
-                                                                {area.distanceStr ?
-                                                                    <div
-                                                                        className="poi-list-modal-list-item-distance">{area.distanceStr}
-                                                                    </div> : null
-                                                                }
-                                                                <div
-                                                                    className="poi-list-modal-list-item-address">{area.city + area.area_name + area.township}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <i className="poi-list-modal-list-item-icon"/>
-                                                    </div>
-                                                );
-                                            })
-                                        }
-                                    </div>
-                                </div>
-                            ) : null}
-                            {this.state.district.length ? <div className="district-title">所有上海场所列表（按区县）</div> : null}
-                            {
-                                this.state.district.map((section, section_index) => {
-                                    return (
-                                        section.length ? (
-                                            <div className="poi-list-modal-list-section" key={section_index}>
-                                                <div
-                                                    className="poi-list-modal-list-section-title">{section[0].area_name}</div>
-                                                <div className="poi-list-modal-list-section-content">
-                                                    {section.map((area, index) => {
-                                                        return (
-                                                            <div className="poi-list-modal-list-item" key={index}>
-                                                                <div className="poi-list-modal-list-item-info">
-                                                                    <p className="poi-list-modal-list-item-name">{area.poi_name}</p>
-                                                                    <div className="poi-list-modal-list-item-location">
-                                                                        {area.distanceStr ? <div
-                                                                            className="poi-list-modal-list-item-distance">{area.distanceStr}</div> : null}
+                                <div className="near-container">
+                                    <div className="district-title">距您5公里以内的场所</div>
+                                    <div className="poi-list-modal-list-section">
+                                        <div className="poi-list-modal-list-section-title">共{this.state.near.length}个场所</div>
+                                        <div className="poi-list-modal-list-section-content">
+                                            {
+                                                this.state.near.map((area, index) => {
+                                                    return (
+                                                        <div className="poi-list-modal-list-item" key={index}>
+                                                            <div className="poi-list-modal-list-item-info">
+                                                                <p className="poi-list-modal-list-item-name">{area.poi_name}</p>
+                                                                <div className="poi-list-modal-list-item-location">
+                                                                    {area.distanceStr ?
                                                                         <div
-                                                                            className="poi-list-modal-list-item-address">{area.city + area.area_name + area.township}</div>
+                                                                            className="poi-list-modal-list-item-distance">{area.distanceStr}
+                                                                        </div> : null
+                                                                    }
+                                                                    <div
+                                                                        className="poi-list-modal-list-item-address">{area.city + area.area_name + area.township}
                                                                     </div>
                                                                 </div>
-                                                                <i className="poi-list-modal-list-item-icon"/>
                                                             </div>
-                                                        );
-                                                    })}
-                                                </div>
-                                            </div>
-                                        ) : null
-                                    );
-                                })
+                                                            <i className="poi-list-modal-list-item-icon"/>
+                                                        </div>
+                                                    );
+                                                })
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            ) : null}
+                            {this.state.district.length ?
+                                <div className="district-container">
+                                    <div className="district-title">所有上海场所列表（按区县）</div>
+                                    {
+                                        this.state.district.map((section, section_index) => {
+                                            return (
+                                                section.length ? (
+                                                    <div className="poi-list-modal-list-section" key={section_index}>
+                                                        <div className="poi-list-modal-list-section-title">{section[0].area_name}（{section.length}个场所）</div>
+                                                        <div className="poi-list-modal-list-section-content">
+                                                            {section.map((area, index) => {
+                                                                return (
+                                                                    <div className="poi-list-modal-list-item"
+                                                                         key={index}>
+                                                                        <div className="poi-list-modal-list-item-info">
+                                                                            <p className="poi-list-modal-list-item-name">{area.poi_name}</p>
+                                                                            <div
+                                                                                className="poi-list-modal-list-item-location">
+                                                                                {area.distanceStr ? <div
+                                                                                    className="poi-list-modal-list-item-distance">{area.distanceStr}</div> : null}
+                                                                                <div
+                                                                                    className="poi-list-modal-list-item-address">{area.city + area.area_name + area.township}</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <i className="poi-list-modal-list-item-icon"/>
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    </div>
+                                                ) : null
+                                            );
+                                        })
+                                    }
+                                </div> : null
                             }
                         </div>
                     </div>
