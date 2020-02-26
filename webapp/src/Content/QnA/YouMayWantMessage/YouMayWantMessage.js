@@ -9,9 +9,10 @@ class YouMayWantMessage extends React.Component {
                     <p><span>您可能还想知道：</span></p>
                     {this.props.related.map((s, idx) => <p
                         key={idx}
+                        style={{display: "flex"}}
                         onClick={this.getHandleClick(idx)}
                     ><span role="img" aria-label="heart">❤️</span><span style={{
-                        marginLeft: "1em",
+                        marginLeft: ".5em",
                         pointer: "cursor",
                         color: "#3764ed",
                         textDecoration: "underline",
