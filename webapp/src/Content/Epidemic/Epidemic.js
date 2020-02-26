@@ -111,7 +111,7 @@ class Epidemic extends React.Component {
                                         <div className="table-item" key={index}>
                                             <p className="p1">{city.name}</p>
                                             <p className="p2">{city.confirmedNum === 0 ? "" : city.confirmedNum}</p>
-                                            <p className="p3">{city.treatingNum <= 0 ? "" : city.treatingNum}</p>
+                                            <p className="p3">{city.treatingNum < 0 ? "" : city.treatingNum}</p>
                                             <p className="p4">{city.deathsNum === 0 ? "" : city.deathsNum}</p>
                                             <p className="p5">{city.curesNum === 0 ? "" : city.curesNum}</p>
                                         </div>
