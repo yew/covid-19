@@ -16,9 +16,8 @@ const pseudoMessages = [
         content: "什么是新冠病毒",
         type: "welcome",
         related: [
-            "如何正确佩戴口罩",
-            "口罩的使用注意事项有哪些",
-            "怎样正确洗手更有效预防病毒",
+            "密切接触者，担心自己受到感染，怎么办",
+            "居家隔离的人，如果出现烦躁恐慌等情绪怎么办",
         ]
     },
     // {content: "什么是新冠病毒", type: "out", related: []},
@@ -67,9 +66,12 @@ class QnA extends React.Component {
                                 type={"search"}
                                 onChange={this.handleQuestionInputChange}
                                 onFocus={() => this.setState({inputting: true})}
-                                onBlur={() => this.setState({inputting: false})}
+                                // onBlur={() => this.setState({inputting: false})}
                                 onfocusout={() => this.setState({inputting: false})}
-                                value={this.state.question}/>
+                                value={this.state.question}
+                                ref={(el) => {
+                                    this.searchInputRef = el;
+                                }}/>
                         </div>
                         <div className="btn-wrapper">
                             <div
@@ -105,7 +107,6 @@ class QnA extends React.Component {
                          }}>
                     </div>
                 </div>
-
             </div>
         );
     }
@@ -133,6 +134,7 @@ class QnA extends React.Component {
     handleSendClick = (e) => {
         e.preventDefault();
         if (this.state.question.length > 0) {
+            this.searchInputRef.blur();
             this.sendQ(this.state.question).then(() => {
                 this.setState({
                     inputting: false,
@@ -140,6 +142,7 @@ class QnA extends React.Component {
                 });
             });
         }
+        return false;
     };
 
     sendQ = async (questionContent) => {
@@ -157,6 +160,7 @@ class QnA extends React.Component {
 
     requestQA = async (questionContent) => {
         const response = await Axios.post(API.qa, {question: questionContent});
+        // const response = await Axios.post("http://192.168.1.136:8000/api/qa", {question: questionContent});
         const {question, answer, related} = response.data;
         console.log(response.data);
         this.state.messages.push({
