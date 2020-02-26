@@ -2,14 +2,22 @@ import React from "react";
 import "./Epidemic.css";
 import Banner from "../../assets/img/banner.jpg";
 import EpidemicTitleImg from "../../assets/img/epidemic_title.png";
-// import QuestionMarkImg from "../../assets/img/question_mark.png";
+import QuestionMarkImg from "../../assets/img/question_mark.png";
 import logoImg from "../../assets/img/logo.png";
 import moment from "moment";
 import ReactEcharts from "echarts-for-react";
 import {tooltipStyle} from "../../Utils/Utils";
+import Modal from "./Modal/Modal";
 
 
 class Epidemic extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modal_visible: false
+        }
+    }
+
     render() {
         const shanghaiData = this.props.shanghaiData;
 
@@ -30,7 +38,8 @@ class Epidemic extends React.Component {
                         <p className="title">上海疫情</p>
                         <p className="update-time">
                             更新时间 {moment(shanghaiData.updateTime * 1000).format("YYYY/MM/DD HH:mm")}
-                            {/*<i style={{backgroundImage: `url("${QuestionMarkImg}")`}}/>*/}
+                            <i style={{backgroundImage: `url("${QuestionMarkImg}")`}}
+                               onClick={() => this.setState({modal_visible: true})}/>
                         </p>
                     </div>
                     <div className="total">
@@ -121,6 +130,10 @@ class Epidemic extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Modal visible={this.state.modal_visible}
+                       close={() => {
+                           this.setState({modal_visible: false})
+                       }}/>
             </div>
         );
     }
