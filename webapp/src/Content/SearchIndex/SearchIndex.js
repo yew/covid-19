@@ -43,7 +43,11 @@ class SearchIndex extends React.Component {
                             上海市数据科学重点实验室
                         </p>
                     </div>
-                    <div>
+                    <div className="pneumonia-block-container">
+                        <div className="block-title">
+                            <p className="title">搜索指数</p>
+                            <p className="update-time">数据来源于百度指数</p>
+                        </div>
                         <Tabs>
                             <div label="上海搜索指数">
                                 <div className="epidemic-trends">
