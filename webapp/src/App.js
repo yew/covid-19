@@ -2,6 +2,8 @@ import React from 'react';
 import Tab from './Tab/Tab';
 import Content from './Content/Content';
 import './App.css';
+import Axios from "axios";
+import API from "./Utils/Config";
 
 
 class App extends React.Component {
@@ -10,6 +12,10 @@ class App extends React.Component {
         this.state = {
             activeIndex: 0
         }
+    }
+
+    componentDidMount() {
+        Axios.get(API.ok);
     }
 
     render() {
