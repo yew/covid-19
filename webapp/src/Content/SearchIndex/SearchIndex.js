@@ -6,52 +6,77 @@ import logoImg from "../../assets/img/logo.png";
 import ReactEcharts from "echarts-for-react";
 import {tooltipStyle} from "../../Utils/Utils";
 import Banner from "../../assets/img/banner.jpg";
+import Loading from "../../Loading/Loading";
+import Axios from "axios";
+import API from "../../Utils/Config";
 
 
 class SearchIndex extends React.Component {
-    render() {
-        return (
-            <div className="index-container">
-                <div className="header" style={{backgroundImage: `url("${Banner}")`}}>
-                    <img className="title" src={EpidemicTitleImg} alt="搜索指数"/>
-                    <p className="cooperate">
-                        <img src={logoImg} alt=""/>
-                        上海市数据科学重点实验室
-                    </p>
-                </div>
-                <div className="pneumonia-block-container">
+    constructor(props) {
+        super(props);
+        this.state = {
+            indexData: null
+        }
+    }
 
-                    <div className="block-title">
-                        <p className="title">搜索指数对比图</p>
-                        <p className="update-time">数据来源于百度搜索指数</p>
+    async componentDidMount() {
+        if (this.props.indexData) {
+            this.setState({indexData: this.props.indexData})
+        } else {
+            const data = (await Axios.get(API.index)).data;
+            this.setState({
+                indexData: data
+            });
+            this.props.collectData("indexData", data);
+        }
+    }
+
+    render() {
+        let dom = <Loading/>;
+        if (this.state.indexData) {
+            dom =
+                <div className="index-container">
+                    <div className="header" style={{backgroundImage: `url("${Banner}")`}}>
+                        <img className="title" src={EpidemicTitleImg} alt="搜索指数"/>
+                        <p className="cooperate">
+                            <img src={logoImg} alt=""/>
+                            上海市数据科学重点实验室
+                        </p>
                     </div>
-                    <div>
-                        <Tabs>
-                            <div label="上海搜索指数">
-                                <div className="epidemic-index">
-                                    <ReactEcharts option={this.shanghaiIndexOption()} style={{height: "250px"}}/>
+                    <div className="pneumonia-block-container">
+
+                        <div className="block-title">
+                            <p className="title">搜索指数对比图</p>
+                            <p className="update-time">数据来源于百度搜索指数</p>
+                        </div>
+                        <div>
+                            <Tabs>
+                                <div label="上海搜索指数">
+                                    <div className="epidemic-index">
+                                        <ReactEcharts option={this.shanghaiIndexOption()} style={{height: "250px"}}/>
+                                    </div>
+                                    <div className="epidemic-index">
+                                        <ReactEcharts option={this.shanghaiMultiplyOption()} style={{height: "250px"}}/>
+                                    </div>
                                 </div>
-                                <div className="epidemic-index">
-                                    <ReactEcharts option={this.shanghaiMultiplyOption()} style={{height: "250px"}}/>
+                                <div label="全国搜索指数">
+                                    <div className="epidemic-index">
+                                        <ReactEcharts option={this.nationalIndexOption()} style={{height: "250px"}}/>
+                                    </div>
+                                    <div className="epidemic-multiply">
+                                        <ReactEcharts option={this.nationalMultiplyOption()} style={{height: "250px"}}/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div label="全国搜索指数">
-                                <div className="epidemic-index">
-                                    <ReactEcharts option={this.nationalIndexOption()} style={{height: "250px"}}/>
-                                </div>
-                                <div className="epidemic-multiply">
-                                    <ReactEcharts option={this.nationalMultiplyOption()} style={{height: "250px"}}/>
-                                </div>
-                            </div>
-                        </Tabs>
+                            </Tabs>
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+        }
+        return dom;
     }
 
     shanghaiMultiplyOption = () => {
-        const series = this.props.indexData.series.sort((a, b) => {
+        const series = this.state.indexData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
 
@@ -71,7 +96,7 @@ class SearchIndex extends React.Component {
             return item.curesNum;
         });
 
-        const index = this.props.indexData.shanghai_index;
+        const index = this.state.indexData.shanghai_index;
 
         return {
             title: {
@@ -201,7 +226,7 @@ class SearchIndex extends React.Component {
     };
 
     nationalMultiplyOption = () => {
-        const series = this.props.indexData.national_series.sort((a, b) => {
+        const series = this.state.indexData.national_series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
 
@@ -218,7 +243,7 @@ class SearchIndex extends React.Component {
             return item.curesNum;
         });
 
-        const index = this.props.indexData.national_index;
+        const index = this.state.indexData.national_index;
 
         return {
             title: {
@@ -341,7 +366,7 @@ class SearchIndex extends React.Component {
     };
 
     shanghaiIndexOption = () => {
-        const series = this.props.indexData.series.sort((a, b) => {
+        const series = this.state.indexData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
 
@@ -351,7 +376,7 @@ class SearchIndex extends React.Component {
 
         xAxis.pop();
 
-        const index = this.props.indexData.shanghai_index;
+        const index = this.state.indexData.shanghai_index;
 
         return {
             title: {
@@ -420,7 +445,7 @@ class SearchIndex extends React.Component {
     };
 
     nationalIndexOption = () => {
-        const series = this.props.indexData.series.sort((a, b) => {
+        const series = this.state.indexData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
 
@@ -430,7 +455,7 @@ class SearchIndex extends React.Component {
 
         xAxis.pop();
 
-        const index = this.props.indexData.national_index;
+        const index = this.state.indexData.national_index;
 
         return {
             title: {

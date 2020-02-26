@@ -8,21 +8,38 @@ import moment from "moment";
 import ReactEcharts from "echarts-for-react";
 import {tooltipStyle} from "../../Utils/Utils";
 import Modal from "./Modal/Modal";
+import Axios from "axios";
+import API from "../../Utils/Config";
+import Loading from "../../Loading/Loading";
 
 
 class Epidemic extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            shanghaiData: null,
             modal_visible: false
         }
     }
 
-    render() {
-        const shanghaiData = this.props.shanghaiData;
+    async componentDidMount() {
+        if (this.props.shanghaiData) {
+            this.setState({shanghaiData: this.props.shanghaiData})
+        } else {
+            const data = (await Axios.get(API.shanghai)).data;
+            this.setState({
+                shanghaiData: data
+            });
+            this.props.collectData("shanghaiData", data);
+        }
+    }
 
-        return (
-            <div className="pneumonia-container">
+    render() {
+        const shanghaiData = this.state.shanghaiData;
+
+        let dom = <Loading/>;
+        if (this.state.shanghaiData) {
+            dom = <div className="pneumonia-container">
                 <div className="header" style={{backgroundImage: `url("${Banner}")`}}>
                     <img className="title" src={EpidemicTitleImg} alt="新型冠状病毒疫情追踪"/>
                     <p className="cooperate">
@@ -112,7 +129,7 @@ class Epidemic extends React.Component {
                         </div>
                         <div className="table-content">
                             {
-                                this.props.shanghaiData.cities.map((city, index) => {
+                                this.state.shanghaiData.cities.map((city, index) => {
                                     return (
                                         <div className="table-item" key={index}>
                                             <p className="p1">{city.name}</p>
@@ -132,11 +149,12 @@ class Epidemic extends React.Component {
                            this.setState({modal_visible: false})
                        }}/>
             </div>
-        );
+        }
+        return dom;
     }
 
     getAddOption = () => {
-        const series = this.props.shanghaiData.series.sort((a, b) => {
+        const series = this.state.shanghaiData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
 
@@ -246,7 +264,7 @@ class Epidemic extends React.Component {
         };
     };
     kLineOption = () => {
-        const series = this.props.shanghaiData.series.sort((a, b) => {
+        const series = this.state.shanghaiData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         });
 
@@ -414,9 +432,9 @@ class Epidemic extends React.Component {
 
     };
     getNestedPiesOption = () => {
-        const cityTotal = this.props.shanghaiData.cityTotal.confirmedTotal;
+        const cityTotal = this.state.shanghaiData.cityTotal.confirmedTotal;
 
-        const cities = this.props.shanghaiData.cities;
+        const cities = this.state.shanghaiData.cities;
         const cities_list = [];
         cities.forEach(city => {
             if (city.name !== '未公布来源') {

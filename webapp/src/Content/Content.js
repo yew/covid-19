@@ -10,16 +10,30 @@ import SearchIndex from "./SearchIndex/SearchIndex";
 import Join from "./Join/Join";
 
 class Content extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            shanghaiData: null,
+            news: null,
+            safeguard: null,
+            indexData: null
+        }
+    }
+
+    collectData = (key, value) => {
+        this.setState({
+            [key]: value
+        })
+    };
+
     render() {
         let content = <Loading/>;
         switch (this.props.active) {
             case 0:
-                if (this.props.shanghaiData)
-                    content = <Epidemic shanghaiData={this.props.shanghaiData}/>;
+                content = <Epidemic shanghaiData={this.state.shanghaiData} collectData={this.collectData}/>;
                 break;
             case 1:
-                if (this.props.indexData)
-                    content = <SearchIndex indexData={this.props.indexData}/>;
+                content = <SearchIndex indexData={this.state.indexData} collectData={this.collectData}/>;
                 break;
             case 2:
                 content = <QnA/>;
@@ -28,12 +42,10 @@ class Content extends React.Component {
                 content = <Community/>;
                 break;
             case 4:
-                if (this.props.news)
-                    content = <News news={this.props.news}/>;
+                content = <News news={this.state.news} collectData={this.collectData}/>;
                 break;
             case 5:
-                if (this.props.safeguard)
-                    content = <Safeguard safeguard={this.props.safeguard}/>;
+                content = <Safeguard safeguard={this.state.safeguard} collectData={this.collectData}/>;
                 break;
             case 6:
                 content = <Join/>;
