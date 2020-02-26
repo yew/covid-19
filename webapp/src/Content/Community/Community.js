@@ -31,7 +31,7 @@ class Community extends React.Component {
         });
 
         this.createMap();
-        // this.getPosition();
+        this.getPosition();
         this.createMarkers();
     };
 

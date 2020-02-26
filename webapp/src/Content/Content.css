@@ -32,11 +32,17 @@
     background-repeat: no-repeat;
 }
 
-.header .logo {
+.header .cooperate {
+    width: 80px;
+    transform: translateY(5px);
+}
+
+.header .source {
     position: absolute;
     top: 12px;
     right: 35px;
-    width: 100px;
+    color: #fff;
+    font-style: italic;
 }
 
 .header p {

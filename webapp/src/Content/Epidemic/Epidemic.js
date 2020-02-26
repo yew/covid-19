@@ -1,5 +1,6 @@
 import React from "react";
 import "./Epidemic.css";
+import Banner from "../../assets/img/banner.jpg";
 import EpidemicTitleImg from "../../assets/img/epidemic_title.png";
 // import QuestionMarkImg from "../../assets/img/question_mark.png";
 import logoImg from "../../assets/img/logo.png";
@@ -14,10 +15,15 @@ class Epidemic extends React.Component {
 
         return (
             <div className="pneumonia-container">
-                <div className="header" style={{backgroundColor: "#426abd"}}>
-                    <p>上海市</p>
+                <div className="header" style={{backgroundImage: `url("${Banner}")`}}>
+                    <p>
+                        <img className="cooperate" src={logoImg} alt=""/>
+                        <img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF42lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDggNzkuMTY0MDM2LCAyMDE5LzA4LzEzLTAxOjA2OjU3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTAyLTI2VDExOjE2OjIxKzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wMi0yNlQxMToxODo1NiswODowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wMi0yNlQxMToxODo1NiswODowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4MTA0NWI1OS1iMTNkLTFiNGEtOTUxMi00MDI5MmQ5NjZjYmMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTQ5MGVjYTMtZmQwNS1lNTRmLTg4ZjEtNGQxZDY0ZTU0NTEwIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6NTQ5MGVjYTMtZmQwNS1lNTRmLTg4ZjEtNGQxZDY0ZTU0NTEwIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo1NDkwZWNhMy1mZDA1LWU1NGYtODhmMS00ZDFkNjRlNTQ1MTAiIHN0RXZ0OndoZW49IjIwMjAtMDItMjZUMTE6MTY6MjErMDg6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMS4wIChXaW5kb3dzKSIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ODEwNDViNTktYjEzZC0xYjRhLTk1MTItNDAyOTJkOTY2Y2JjIiBzdEV2dDp3aGVuPSIyMDIwLTAyLTI2VDExOjE4OjU2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+0rfMsgAAAdBJREFUeJzt2lFrw0AMA2B17P//5fRlfWggVZKzZK9IMBgMdr5vXZJz/Ni2DclxfroLmJ4AkQSIJEAkASIJEEmASAJEEiCSAJEEiCRAJAEiqQDa/r6mpaSuVaBt9/0EqH0dSzWtAB0t3IlUXpPqGtSBJFlzBehBfu5EYmuxWg+jvos5kKRrrAKd+csoN3Dmd9/+9AA1n6AuJDkOUPcv5kay4AC11yAXkg0HqL9Iq5GsOIDmLqZCsuMAutt8NVILDqB9DqpCasMB9A+Kq0itOICnH3QXqR0H8DXMriKNwAG8HcWzSGNwAH/LtWJjNhygpye9skErDtDXtL+zUTsO0PtW48qGW3CAvPah6QSqPmpI0gWkOqyWpwNI3e4ojRvI1TArixPo7BNy94uAt7iArh4fxiA5gO6erUYgTXhx+AmiHUkJVHUqb0XqHF6oPmqMG144iqqf04JUDaRudtmRKoFcnUArUhWQu01qQ6oa4mRR9HMsSJVDnEdRNrvkSBNeHI5eQzHl+oqzTSqbl+wcXvgXayqmXNsa7B/Wbpty3bcoOnFe2dexVNPvWi3rBQgzbkbxKxMgkgCRBIgkQCQBIgkQSYBIAkQSIJIAkQSIJEAkT/MXUY10wyFQAAAAAElFTkSuQmCC"
+                            style={{height: "12px", transform: "translateY(2px)", margin: "0 4px"}} alt=""/>
+                        上海市
+                    </p>
                     <img className="title" src={EpidemicTitleImg} alt="新型冠状病毒疫情追踪"/>
-                    <img className="logo" src={logoImg} alt=""/>
                 </div>
                 <div className="pneumonia-block-container">
                     <div className="block-title">
