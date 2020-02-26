@@ -28,19 +28,31 @@ class SearchIndex extends React.Component {
                     <div>
                         <Tabs>
                             <div label="上海搜索指数">
-                                <div className="epidemic-index">
+                                <div className="epidemic-trends">
                                     <ReactEcharts option={this.shanghaiIndexOption()} style={{height: "250px"}}/>
                                 </div>
-                                <div className="epidemic-index">
-                                    <ReactEcharts option={this.shanghaiMultiplyOption()} style={{height: "250px"}}/>
+                                <div className="epidemic-trends">
+                                    <ReactEcharts option={this.shanghaiMultiplyOption()}style={{height: "300px"}}/>
+                                    <div className="epidemic-trends-legend">
+                                        <span className="confirmed">确诊</span>
+                                        <span className="heal">治愈</span>
+                                        <span className="dead">死亡</span>
+                                        <span className="index">搜索指数</span>
+                                    </div>
                                 </div>
                             </div>
                             <div label="全国搜索指数">
-                                <div className="epidemic-index">
+                                <div className="epidemic-trends">
                                     <ReactEcharts option={this.nationalIndexOption()} style={{height: "250px"}}/>
                                 </div>
-                                <div className="epidemic-multiply">
+                                <div className="epidemic-trends">
                                     <ReactEcharts option={this.nationalMultiplyOption()} style={{height: "250px"}}/>
+                                    <div className="epidemic-trends-legend">
+                                        <span className="confirmed">确诊</span>
+                                        <span className="heal">治愈</span>
+                                        <span className="dead">死亡</span>
+                                        <span className="index">搜索指数</span>
+                                    </div>
                                 </div>
                             </div>
                         </Tabs>
@@ -414,6 +426,7 @@ class SearchIndex extends React.Component {
                 smooth: true,
                 type: 'line',
                 showAllSymbol: false,
+                color:'#CCFF99',
                 data: index
             }]
         }
@@ -493,7 +506,8 @@ class SearchIndex extends React.Component {
                 smooth: true,
                 type: 'line',
                 showAllSymbol: false,
-                data: index
+                data: index,
+                color:'#CCFF99'
             }]
         }
     };
