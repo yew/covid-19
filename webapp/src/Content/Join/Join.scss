@@ -4,18 +4,10 @@
   background-color: #f2f3f5;
   height: 100%;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 
   img.qr-code {
-    border-radius: 15px;
-    width: 80%;
-    margin: auto auto;
-  }
-
-  div {
-    margin: 1em auto 10em auto;
-    text-align: center;
+    border-radius: 10px;
+    width: 70%;
+    margin: 80px auto 40px;
   }
 }
