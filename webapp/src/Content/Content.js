@@ -7,6 +7,7 @@ import News from "./News/News";
 import Safeguard from "./Safeguard/Safeguard";
 import QnA from "./QnA/QnA";
 import SearchIndex from "./SearchIndex/SearchIndex";
+import Join from "./Join/Join";
 
 class Content extends React.Component {
     render() {
@@ -33,6 +34,9 @@ class Content extends React.Component {
             case 5:
                 if (this.props.safeguard)
                     content = <Safeguard safeguard={this.props.safeguard}/>;
+                break;
+            case 6:
+                content = <Join/>;
                 break;
             default:
                 break;
