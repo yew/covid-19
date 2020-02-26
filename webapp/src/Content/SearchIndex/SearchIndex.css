@@ -85,7 +85,7 @@
 }
 
 .epidemic-trends-legend .index {
-    color: #bcafb1;
+    color: #b1398c;
 }
 
 .epidemic-trends-legend .new-confirmed {
@@ -115,5 +115,5 @@
 }
 
 .epidemic-trends-legend .index::before {
-    background-color: #bcafb1;
+    background-color: #b1398c;
 }

@@ -219,7 +219,7 @@ class SearchIndex extends React.Component {
                         normal: {
                             lineStyle: {
                                 width: 2,
-                                color: '#bcafb1',
+                                color: '#b1398c',
                                 type: 'dotted'  //'dotted'虚线 'solid'实线
                             }
                         }
@@ -359,7 +359,7 @@ class SearchIndex extends React.Component {
                         normal: {
                             lineStyle: {
                                 width: 2,
-                                color: '#bcafb1',
+                                color: '#b1398c',
                                 type: 'dotted'  //'dotted'虚线 'solid'实线
                             }
                         }
@@ -444,7 +444,7 @@ class SearchIndex extends React.Component {
                 smooth: true,
                 type: 'line',
                 showAllSymbol: false,
-                color: '#CCFF99',
+                color: '#b1398c',
                 data: index
             }]
         }
@@ -525,7 +525,7 @@ class SearchIndex extends React.Component {
                 type: 'line',
                 showAllSymbol: false,
                 data: index,
-                color: '#CCFF99'
+                color: '#b1398c'
             }]
         }
     };
