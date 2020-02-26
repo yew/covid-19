@@ -2,6 +2,38 @@
     width: 180px;
 }
 
+.pneumonia-block-container .block-title .update-time {
+    font-size: 13px;
+    color: #999999;
+}
+
+.pneumonia-block-container .block-title .update-time i {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    transform: translateY(-1px);
+    vertical-align: middle;
+    background-size: contain;
+    margin-left: 2px;
+}
+
+.pneumonia-block-container .total {
+    display: flex;
+    text-align: center;
+    padding: 10px 20px 10px;
+    justify-content: space-between;
+}
+
+.pneumonia-block-container .total .text {
+    font-size: 12px;
+    font-weight: bold;
+    width: 68px;
+    margin: 0 auto;
+    background: rgba(216, 216, 216, 0.2);
+    border-radius: 3px;
+    color: #505050;
+}
+
 .tab-list {
     border-bottom: 1px solid #ccc;
     padding-left: 0;
@@ -18,4 +50,70 @@
     background-color: white;
     border: solid #ccc;
     border-width: 1px 1px 0 1px;
+}
+
+.epidemic-trends {
+    position: relative;
+    padding: 10px 5px;
+}
+
+.epidemic-trends-legend {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.epidemic-trends-legend span {
+    font-size: 8px;
+    margin-left: 8px;
+}
+
+.epidemic-trends-legend .confirmed {
+    color: #ae212c;
+}
+
+.epidemic-trends-legend .treating {
+    color: #d96322;
+}
+
+.epidemic-trends-legend .heal {
+    color: #39c4c4;
+}
+
+.epidemic-trends-legend .dead {
+      color: #0f3046;
+}
+
+.epidemic-trends-legend .index {
+    color: #bcafb1;
+}
+
+.epidemic-trends-legend .new-confirmed {
+    color: #ec0000;
+}
+
+.epidemic-trends-legend span::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateY(-1px);
+    width: 6px;
+    height: 6px;
+    margin-right: 2px;
+}
+
+.epidemic-trends-legend .confirmed::before {
+    background-color: #d96322;
+}
+
+.epidemic-trends-legend .heal::before {
+    background-color: #39c4c4;
+}
+
+.epidemic-trends-legend .dead::before {
+    background-color: #0f3046;
+}
+
+.epidemic-trends-legend .index::before {
+    background-color: #bcafb1;
 }
