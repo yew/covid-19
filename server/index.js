@@ -14,6 +14,7 @@ const qaList = JSON.parse(fs.readFileSync("./assets/qa/qa.json", "utf8"));
 const stringSimilarity = require('string-similarity');
 
 app.get("/", (req, res) => {
+    utils.log(req);
     res.send("OK");
 });
 
