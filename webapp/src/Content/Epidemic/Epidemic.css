@@ -72,13 +72,20 @@
 
 .epidemic-trends-legend {
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 24px;
+    right: 20px;
+}
+
+.epidemic-trends-legend-container {
+    width: 100%;
+    height: 14px;
+    float: right;
 }
 
 .epidemic-trends-legend span {
     font-size: 8px;
     margin-left: 8px;
+    float: right;
 }
 
 .epidemic-trends-legend .confirmed {
@@ -98,7 +105,8 @@
 }
 
 .epidemic-trends-legend .new-confirmed {
-    color: #ec0000;
+    color: #505050;
+    float: right;
 }
 
 .epidemic-trends-legend span::before {
@@ -112,6 +120,10 @@
 }
 
 .epidemic-trends-legend .confirmed::before {
+    background-color: #ae212c;
+}
+
+.epidemic-trends-legend .treating::before {
     background-color: #d96322;
 }
 
@@ -122,8 +134,6 @@
 .epidemic-trends-legend .dead::before {
     background-color: #0f3046;
 }
-
-
 
 .tooltip-point {
     display: inline-block;

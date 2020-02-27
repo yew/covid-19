@@ -56,10 +56,11 @@ class SearchIndex extends React.Component {
                                 <div className="epidemic-trends">
                                     <ReactEcharts option={this.shanghaiMultiplyOption()} style={{height: "300px"}}/>
                                     <div className="epidemic-trends-legend">
-                                        <span className="confirmed">确诊</span>
-                                        <span className="heal">治愈</span>
+                                        <span className="index">指数</span>
                                         <span className="dead">死亡</span>
-                                        <span className="index">搜索指数</span>
+                                        <span className="heal">治愈</span>
+                                        <span className="treating">存量</span>
+                                        <span className="confirmed">确诊</span>
                                     </div>
                                 </div>
                             </div>
@@ -70,10 +71,12 @@ class SearchIndex extends React.Component {
                                 <div className="epidemic-trends">
                                     <ReactEcharts option={this.nationalMultiplyOption()} style={{height: "250px"}}/>
                                     <div className="epidemic-trends-legend">
-                                        <span className="confirmed">确诊</span>
-                                        <span className="heal">治愈</span>
-                                        <span className="dead">死亡</span>
-                                        <span className="index">搜索指数</span>
+                                        <div className="epidemic-trends-legend-container">
+                                            <span className="index">指数</span>
+                                            <span className="dead">死亡</span>
+                                            <span className="heal">治愈</span>
+                                            <span className="confirmed">确诊</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +118,7 @@ class SearchIndex extends React.Component {
                 }
             },
             tooltip: tooltipStyle,
-            color: ["#ae212c", "#d96322", "#0f3046", "#39c4c4", "#bcafb1"],
+            color: ["#ae212c", "#d96322", "#39c4c4", "#0f3046", "#b1398c"],
             grid: {
                 top: '14%',
                 left: '3%',
@@ -200,18 +203,18 @@ class SearchIndex extends React.Component {
                     data: treatingSeries
                 },
                 {
-                    name: '死亡',
-                    type: 'line',
-                    smooth: true,
-                    showAllSymbol: false,
-                    data: deathsSeries
-                },
-                {
                     name: '治愈',
                     type: 'line',
                     smooth: true,
                     showAllSymbol: false,
                     data: curesSeries
+                },
+                {
+                    name: '死亡',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: deathsSeries
                 },
                 {
                     name: '指数',
@@ -223,8 +226,7 @@ class SearchIndex extends React.Component {
                         normal: {
                             lineStyle: {
                                 width: 2,
-                                color: '#b1398c',
-                                type: 'dotted'  //'dotted'虚线 'solid'实线
+                                type: 'dotted'
                             }
                         }
                     },
@@ -262,7 +264,7 @@ class SearchIndex extends React.Component {
                 }
             },
             tooltip: tooltipStyle,
-            color: ["#d96322", "#0f3046", "#39c4c4", "#bcafb1"],
+            color: ["#ae212c", "#39c4c4", "#0f3046", "#b1398c"],
             grid: {
                 top: '14%',
                 left: '3%',
@@ -340,18 +342,18 @@ class SearchIndex extends React.Component {
                     data: confirmedSeries
                 },
                 {
-                    name: '死亡',
-                    type: 'line',
-                    smooth: true,
-                    showAllSymbol: false,
-                    data: deathsSeries
-                },
-                {
                     name: '治愈',
                     type: 'line',
                     smooth: true,
                     showAllSymbol: false,
                     data: curesSeries
+                },
+                {
+                    name: '死亡',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: deathsSeries
                 },
                 {
                     name: '指数',

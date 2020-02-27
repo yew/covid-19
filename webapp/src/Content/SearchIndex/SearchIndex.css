@@ -52,66 +52,8 @@
     border-width: 1px 1px 0 1px;
 }
 
-.epidemic-trends {
-    position: relative;
-    padding: 10px 5px;
-}
-
-.epidemic-trends-legend {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-}
-
-.epidemic-trends-legend span {
-    font-size: 8px;
-    margin-left: 8px;
-}
-
-.epidemic-trends-legend .confirmed {
-    color: #ae212c;
-}
-
-.epidemic-trends-legend .treating {
-    color: #d96322;
-}
-
-.epidemic-trends-legend .heal {
-    color: #39c4c4;
-}
-
-.epidemic-trends-legend .dead {
-      color: #0f3046;
-}
-
 .epidemic-trends-legend .index {
     color: #b1398c;
-}
-
-.epidemic-trends-legend .new-confirmed {
-    color: #ec0000;
-}
-
-.epidemic-trends-legend span::before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    transform: translateY(-1px);
-    width: 6px;
-    height: 6px;
-    margin-right: 2px;
-}
-
-.epidemic-trends-legend .confirmed::before {
-    background-color: #d96322;
-}
-
-.epidemic-trends-legend .heal::before {
-    background-color: #39c4c4;
-}
-
-.epidemic-trends-legend .dead::before {
-    background-color: #0f3046;
 }
 
 .epidemic-trends-legend .index::before {

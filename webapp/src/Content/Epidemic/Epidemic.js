@@ -93,19 +93,24 @@ class Epidemic extends React.Component {
                     <div className="epidemic-trends">
                         <ReactEcharts option={this.kLineOption()} style={{height: "250px"}}/>
                         <div className="epidemic-trends-legend">
-                            <span className="confirmed">确诊人数</span>
-                            <span className="heal">治愈人数</span>
-                            <span className="dead">死亡人数</span>
-                            <br/>
-                            <span className="new-confirmed">*红色系柱状表示新增幅度</span>
+                            <div className="epidemic-trends-legend-container">
+                                <span className="dead">死亡</span>
+                                <span className="heal">治愈</span>
+                                <span className="confirmed">确诊</span>
+                            </div>
+                            <div className="epidemic-trends-legend-container">
+                                <span className="new-confirmed">*折线下的柱状图表示新增幅度</span>
+                            </div>
                         </div>
                     </div>
                     <div className="epidemic-trends">
                         <ReactEcharts option={this.getAddOption()} style={{height: "250px"}}/>
                         <div className="epidemic-trends-legend">
-                            <span className="confirmed">新增确诊</span>
-                            <span className="heal">新增治愈</span>
-                            <span className="dead">新增死亡</span>
+                            <div className="epidemic-trends-legend-container">
+                                <span className="dead">新增死亡</span>
+                                <span className="heal">新增治愈</span>
+                                <span className="confirmed">新增确诊</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -187,7 +192,7 @@ class Epidemic extends React.Component {
                 }
             },
             tooltip: tooltipStyle,
-            color: ["#d96322", "#39c4c4", "#0f3046"],
+            color: ["#ae212c", "#39c4c4", "#0f3046"],
             grid: {
                 top: '14%',
                 left: '3%',
@@ -299,11 +304,6 @@ class Epidemic extends React.Component {
             cureItemSeries.push(cureItem);
         }
 
-        const upColor = '#ec0000';
-        const upBorderColor = '#8A0000';
-        const downColor = '#00da3c';
-        const downBorderColor = '#008F28';
-
         const data0 = splitData(confirmedItemSeries);
         const data1 = splitData(cureItemSeries);
         const data2 = splitData(deathItemSeries);
@@ -354,10 +354,25 @@ class Epidemic extends React.Component {
                 }
             },
             yAxis: {
-                scale: true,
-                splitArea: {
-                    show: true
-                }
+                type: 'value',
+                axisLabel: {
+                    color: "#505050",
+                    fontSize: 10,
+                    showMaxLabel: true
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: "#ebebeb"
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
             },
             series: [
                 {
@@ -365,10 +380,10 @@ class Epidemic extends React.Component {
                     type: 'candlestick',
                     data: data0.values,
                     itemStyle: {
-                        color: upColor,
-                        color0: downColor,
-                        borderColor: upBorderColor,
-                        borderColor0: downBorderColor
+                        color: "#ff6666",
+                        color0: "#ff6666",
+                        borderColor: null,
+                        borderColor0: null
                     }
                 },
                 {
@@ -376,7 +391,7 @@ class Epidemic extends React.Component {
                     type: 'line',
                     data: confirmedSeries,
                     smooth: true,
-                    color: "#d96322",
+                    color: "#ae212c",
                     lineStyle: {
                         opacity: 0.5
                     }
@@ -386,10 +401,10 @@ class Epidemic extends React.Component {
                     type: 'candlestick',
                     data: data1.values,
                     itemStyle: {
-                        color: "#FF6666",
-                        color0: "#FF6666",
-                        borderColor: "#FF6666",
-                        borderColor0: "#FF6666"
+                        color: "#8fdada",
+                        color0: "#8fdada",
+                        borderColor: null,
+                        borderColor0: null
                     }
                 },
                 {
@@ -409,8 +424,8 @@ class Epidemic extends React.Component {
                     itemStyle: {
                         color: '#993333',
                         color0: '#993333',
-                        borderColor: '#993333',
-                        borderColor0: '#993333'
+                        borderColor: null,
+                        borderColor0: null
                     }
                 },
                 {
