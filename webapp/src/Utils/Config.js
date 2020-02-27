@@ -2,7 +2,7 @@ const server = "http://localhost:8000/api/";
 
 const API = {
     ok: server.replace('api/', ''),
-    shanghai: "http://121.36.4.93:5001/shanghai",
+    shanghai: server + "data/shanghai",
     index: server + "data/index",
     track: server + "data/track_list",
     news: server + "data/news",

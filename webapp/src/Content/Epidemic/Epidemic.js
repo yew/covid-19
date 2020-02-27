@@ -159,21 +159,35 @@ class Epidemic extends React.Component {
         const xAxis = series.map(item => {
             return item.date.slice(5).replace("-", ".");
         });
+        const confirmedSeries = series.map(item => {
+            return item.confirmedNum;
+        });
+        const deathsSeries = series.map(item => {
+            return item.deathsNum;
+        });
+        const curesSeries = series.map(item => {
+            return item.curesNum;
+        });
 
-        const confirmedAdd = this.state.shanghaiData.confirmedAdd;
-        const deathAdd = this.state.shanghaiData.deathAdd;
-        const cureAdd = this.state.shanghaiData.curedAdd;
+        const confirmedAdd = [0];
+        const deathAdd = [0];
+        const cureAdd = [0];
 
+        for (let i = 1; i < confirmedSeries.length; i++) {
+            confirmedAdd.push(confirmedSeries[i] - confirmedSeries[i - 1]);
+            cureAdd.push(curesSeries[i] - curesSeries[i - 1]);
+            deathAdd.push(deathsSeries[i] - deathsSeries[i - 1]);
+        }
 
         return {
             title: {
-                text: '新增疫情趋势',
+                text: '疫情增长趋势',
                 textStyle: {
                     fontSize: 14
                 }
             },
             tooltip: tooltipStyle,
-            color: ["#d96322", "#0f3046", "#39c4c4"],
+            color: ["#d96322", "#39c4c4", "#0f3046"],
             grid: {
                 top: '14%',
                 left: '3%',
@@ -231,22 +245,23 @@ class Epidemic extends React.Component {
                     data: confirmedAdd
                 },
                 {
-                    name: '新增死亡',
-                    type: 'line',
-                    smooth: true,
-                    showAllSymbol: false,
-                    data: deathAdd
-                },
-                {
                     name: '新增治愈',
                     type: 'line',
                     smooth: true,
                     showAllSymbol: false,
                     data: cureAdd
+                },
+                {
+                    name: '新增死亡',
+                    type: 'line',
+                    smooth: true,
+                    showAllSymbol: false,
+                    data: deathAdd
                 }
             ]
         };
     };
+
     kLineOption = () => {
         const series = this.state.shanghaiData.series.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);

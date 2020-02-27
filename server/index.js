@@ -36,12 +36,17 @@ app.post("/api/qa", async (req, res) => {
 });
 
 app.get("/api/data/shanghai", async (req, res) => {
-    utils.log(req);
-    result = await axios.get("http://121.36.4.93:5001/shanghai");
+    const result_series = await axios.get("https://i.snssdk.com/forum/ncov_data/?data_type=%5B1%5D&city_code=%5B%22310000%22%5D");
+    const ret = JSON.parse(result_series.data.ncov_city_data["310000"]);
 
-    ret = {"data":result["data"]}
-    res.json(ret['data']);
+    const result_all = await axios.get("https://i.snssdk.com/forum/home/v1/info/?forum_id=1656784762444839");
+    const data_all = JSON.parse(result_all.data.forum.extra.ncov_string_list);
+    const data_shanghai = data_all.provinces.filter(province => province.id === "31")[0];
 
+    ret["updateTime"] = data_all.updateTime;
+    ret["cities"] = data_shanghai.cities;
+
+    res.json(ret);
 });
 
 app.get("/api/data/index",async(req,res) => {
