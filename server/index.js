@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
     res.send("OK");
 });
 
-app.post("/api/qa", async (req, res) => {
+app.post("/qa", async (req, res) => {
     const question = req.body.question;
     const {ratings: qRatings} = stringSimilarity.findBestMatch(question, qaList.map(a => a.question));
     const {ratings: aRatings} = stringSimilarity.findBestMatch(question, qaList.map(a => a.answer));
@@ -35,7 +35,7 @@ app.post("/api/qa", async (req, res) => {
     })
 });
 
-app.get("/api/data/shanghai", async (req, res) => {
+app.get("/data/shanghai", async (req, res) => {
     const result_series = await axios.get("https://i.snssdk.com/forum/ncov_data/?data_type=%5B1%5D&city_code=%5B%22310000%22%5D");
     const ret = JSON.parse(result_series.data.ncov_city_data["310000"]);
 
@@ -49,11 +49,11 @@ app.get("/api/data/shanghai", async (req, res) => {
     res.json(ret);
 });
 
-app.get("/api/data/index",async(req,res) => {
+app.get("/data/index", async (req, res) => {
     utils.log(req);
 
     const result_series = await axios.get("https://i.snssdk.com/forum/ncov_data/?data_type=%5B1%5D&city_code=%5B%22310000%22%5D");
-    var ret = {"series":result_series.data.ncov_city_data["310000"].series};
+    var ret = {"series": result_series.data.ncov_city_data["310000"].series};
 
     ret["series"] = JSON.parse(result_series.data.ncov_city_data["310000"]).series;
 
@@ -69,7 +69,7 @@ app.get("/api/data/index",async(req,res) => {
     res.json(ret);
 });
 
-app.get("/api/data/news", async (req, res) => {
+app.get("/data/news", async (req, res) => {
     const result = await axios.get("https://i.snssdk.com/api/feed/forum_flow/v1/?query_id=1656810113086509&tab_id=1656810113086525&category=forum_flow_subject&is_preview=0&stream_api_version=82&aid=13&offset=0&count=20");
 
     const origin_news = JSON.parse(result.data.data[0].content).sub_raw_datas;
@@ -90,13 +90,13 @@ app.get("/api/data/news", async (req, res) => {
     res.json(news);
 });
 
-app.get("/api/data/track_list", async (req, res) => {
+app.get("/data/track_list", async (req, res) => {
     const result = await axios.get("https://i.snssdk.com/toutiao/normandy/pneumonia_trending/track_list/?city_code=310000");
     const ret = result.data.data.list;
     res.json(ret);
 });
 
-app.get("/api/data/safeguard", async (req, res) => {
+app.get("/data/safeguard", async (req, res) => {
     const result = await axios.get("https://i.snssdk.com/api/feed/forum_flow/v1/?query_id=1656806647707693&tab_id=1656806647707709&category=forum_flow_subject&is_preview=0&stream_api_version=82&aid=13&offset=0&count=20");
     const ret = result.data.data.map(block => {
         const block_content = JSON.parse(block.content);
