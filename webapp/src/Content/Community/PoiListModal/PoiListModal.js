@@ -107,7 +107,7 @@ class PoiListModal extends React.Component {
                         <div className="poi-list-modal-list">
                             {this.state.near.length ? (
                                 <div className="near-container">
-                                    <div className="district-title">距您5公里以内的场所</div>
+                                    <div className="district-title">距您5公里以内</div>
                                     <div className="poi-list-modal-list-section">
                                         <div className="poi-list-modal-list-section-title">共{this.state.near.length}个场所</div>
                                         <div className="poi-list-modal-list-section-content">
