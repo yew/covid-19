@@ -8,7 +8,7 @@ import {tooltipStyle} from "../../Utils/Utils";
 import Banner from "../../assets/img/banner.jpg";
 import Loading from "../../Loading/Loading";
 import Axios from "axios";
-import API from "../../Utils/Config";
+import API, {lineChartInterval} from "../../Utils/Config";
 
 
 class SearchIndex extends React.Component {
@@ -131,7 +131,7 @@ class SearchIndex extends React.Component {
                 boundaryGap: false,
                 axisLabel: {
                     rotate: 40,
-                    interval: 1,
+                    interval: lineChartInterval,
                     color: "#9e9e9e",
                     fontSize: 9,
                     showMaxLabel: true
@@ -277,7 +277,7 @@ class SearchIndex extends React.Component {
                 boundaryGap: false,
                 axisLabel: {
                     rotate: 40,
-                    interval: 1,
+                    interval: lineChartInterval,
                     color: "#9e9e9e",
                     fontSize: 9,
                     showMaxLabel: true
@@ -409,7 +409,7 @@ class SearchIndex extends React.Component {
                 boundaryGap: false,
                 axisLabel: {
                     rotate: 40,
-                    interval: 1,
+                    interval: lineChartInterval,
                     color: "#9e9e9e",
                     fontSize: 9,
                     showMaxLabel: true
@@ -489,7 +489,7 @@ class SearchIndex extends React.Component {
                 boundaryGap: false,
                 axisLabel: {
                     rotate: 40,
-                    interval: 1,
+                    interval: lineChartInterval,
                     color: "#9e9e9e",
                     fontSize: 9,
                     showMaxLabel: true

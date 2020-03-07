@@ -9,7 +9,7 @@ import ReactEcharts from "echarts-for-react";
 import {tooltipStyle} from "../../Utils/Utils";
 import Modal from "./Modal/Modal";
 import Axios from "axios";
-import API from "../../Utils/Config";
+import API, {lineChartInterval} from "../../Utils/Config";
 import Loading from "../../Loading/Loading";
 
 
@@ -210,7 +210,7 @@ class Epidemic extends React.Component {
                 boundaryGap: false,
                 axisLabel: {
                     rotate: 40,
-                    interval: 1,
+                    interval: lineChartInterval,
                     color: "#9e9e9e",
                     fontSize: 9,
                     showMaxLabel: true
@@ -344,7 +344,7 @@ class Epidemic extends React.Component {
                 data: xAxis,
                 axisLabel: {
                     rotate: 40,
-                    interval: 1,
+                    interval: lineChartInterval,
                     color: "#9e9e9e",
                     fontSize: 9,
                     showMaxLabel: true
@@ -384,6 +384,7 @@ class Epidemic extends React.Component {
                     //确诊新增
                     type: 'candlestick',
                     data: data0.values,
+                    showAllSymbol: false,
                     itemStyle: {
                         color: "#ff6666",
                         color0: "#ff6666",
@@ -395,6 +396,7 @@ class Epidemic extends React.Component {
                     name: '确诊',
                     type: 'line',
                     data: confirmedSeries,
+                    showAllSymbol: false,
                     smooth: true,
                     color: "#ae212c",
                     lineStyle: {
@@ -405,6 +407,7 @@ class Epidemic extends React.Component {
                     //治愈新增
                     type: 'candlestick',
                     data: data1.values,
+                    showAllSymbol: false,
                     itemStyle: {
                         color: "#8fdada",
                         color0: "#8fdada",
@@ -416,6 +419,7 @@ class Epidemic extends React.Component {
                     name: '治愈',
                     type: 'line',
                     data: curesSeries,
+                    showAllSymbol: false,
                     smooth: true,
                     color: "#39c4c4",
                     lineStyle: {
@@ -426,6 +430,7 @@ class Epidemic extends React.Component {
                     //死亡新增
                     type: 'candlestick',
                     data: data2.values,
+                    showAllSymbol: false,
                     itemStyle: {
                         color: '#993333',
                         color0: '#993333',
@@ -437,6 +442,7 @@ class Epidemic extends React.Component {
                     name: '死亡',
                     type: 'line',
                     data: deathsSeries,
+                    showAllSymbol: false,
                     color: "#0f3046",
                     smooth: true,
                     lineStyle: {
