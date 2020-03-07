@@ -94,9 +94,9 @@ class Epidemic extends React.Component {
                         <ReactEcharts option={this.kLineOption()} style={{height: "250px"}}/>
                         <div className="epidemic-trends-legend">
                             <div className="epidemic-trends-legend-container">
-                                <span className="dead">死亡</span>
-                                <span className="heal">治愈</span>
                                 <span className="confirmed">确诊</span>
+                                <span className="heal">治愈</span>
+                                <span className="dead">死亡</span>
                             </div>
                             <div className="epidemic-trends-legend-container">
                                 <span className="new-confirmed">*折线下的柱状图表示新增幅度</span>
@@ -107,9 +107,9 @@ class Epidemic extends React.Component {
                         <ReactEcharts option={this.getAddOption()} style={{height: "250px"}}/>
                         <div className="epidemic-trends-legend">
                             <div className="epidemic-trends-legend-container">
-                                <span className="dead">新增死亡</span>
-                                <span className="heal">新增治愈</span>
                                 <span className="confirmed">新增确诊</span>
+                                <span className="heal">新增治愈</span>
+                                <span className="dead">新增死亡</span>
                             </div>
                         </div>
                     </div>

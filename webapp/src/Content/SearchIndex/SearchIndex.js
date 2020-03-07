@@ -56,11 +56,11 @@ class SearchIndex extends React.Component {
                                 <div className="epidemic-trends">
                                     <ReactEcharts option={this.shanghaiMultiplyOption()} style={{height: "300px"}}/>
                                     <div className="epidemic-trends-legend">
-                                        <span className="index">指数</span>
-                                        <span className="dead">死亡</span>
-                                        <span className="heal">治愈</span>
-                                        <span className="treating">存量</span>
                                         <span className="confirmed">确诊</span>
+                                        <span className="treating">存量</span>
+                                        <span className="heal">治愈</span>
+                                        <span className="dead">死亡</span>
+                                        <span className="index">指数</span>
                                     </div>
                                 </div>
                             </div>
@@ -72,10 +72,10 @@ class SearchIndex extends React.Component {
                                     <ReactEcharts option={this.nationalMultiplyOption()} style={{height: "250px"}}/>
                                     <div className="epidemic-trends-legend">
                                         <div className="epidemic-trends-legend-container">
-                                            <span className="index">指数</span>
-                                            <span className="dead">死亡</span>
-                                            <span className="heal">治愈</span>
                                             <span className="confirmed">确诊</span>
+                                            <span className="heal">治愈</span>
+                                            <span className="dead">死亡</span>
+                                            <span className="index">指数</span>
                                         </div>
                                     </div>
                                 </div>
