@@ -31,7 +31,7 @@ class Safeguard extends React.Component {
 
     getCover = (article) => {
         let cover;
-        if (article.has_video) {
+        if (article.video_duration) {
             cover = (
                 <div className="image-container">
                     <img src={article.img_url} alt="新闻图片"/>
