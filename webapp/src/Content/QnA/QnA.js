@@ -65,7 +65,7 @@ class QnA extends React.Component {
                         <div className="input-wrapper">
                             <input
                                 placeholder={"输入想要咨询的问题"}
-                                type={"search"}
+                                type="text"
                                 onChange={this.handleQuestionInputChange}
                                 onFocus={() => this.setState({inputting: true})}
                                 // onBlur={() => this.setState({inputting: false})}
@@ -75,12 +75,8 @@ class QnA extends React.Component {
                                     this.searchInputRef = el;
                                 }}/>
                         </div>
-                        <div className="btn-wrapper">
-                            <div
-                                className={"send-btn"}
-                                onClick={this.handleSendClick}
-                            >发送
-                            </div>
+                        <div className={"send-btn"} onClick={this.handleSendClick}>
+                            发送
                         </div>
                     </form>
                 </div>

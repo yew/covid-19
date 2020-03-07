@@ -4,61 +4,48 @@
   background-color: #f2f3f5;
   height: 100%;
 
-  $input-area-height: 4em;
-
   .qa-input-area {
-    max-width: 640px;
-    margin: 0 auto;
-    height: $input-area-height;
-    line-height: 4em;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 5px 5px 0 #efefef;
 
-    box-sizing: border-box;
-    box-shadow: 0 5px 5px 0 #e6e6e6;
+    form {
+      height: 40px;
+      padding: 10px 15px;
+      display: flex;
 
-    .input-wrapper {
-      box-sizing: border-box;
-      display: inline-block;
-      width: calc(100% - 7em);
-      margin-right: 1em;
-      padding: 0 1em;
+      .input-wrapper {
+        flex: 1;
 
-      input {
-        width: 100%;
-        height: 3em;
-        line-height: 3em;
-        border-radius: 1em;
-        box-shadow: inset 0 0;
-        border: 0;
-        text-indent: 1em;
-
-        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-          color: #cccccc;
+        input {
+          height: 100%;
+          width: calc(100% - 20px);
+          border-radius: 0;
+          border: 1px solid #b8b8b8;
+          padding: 0 10px;
+          border-bottom: 1px solid #ccc;
+          outline: none;
+          -webkit-appearance: none;
         }
       }
-    }
-
-    .btn-wrapper {
-      display: inline-block;
-      width: 5em;
-      margin-right: 1em;
 
       .send-btn {
+        width: 70px;
+        height: 100%;
+        line-height: 40px;
         text-align: center;
-        background-color: #335ad3;
-        color: #ffffff;
-        width: 100%;
-        height: 3em;
-        line-height: 3em;
-        border-radius: 1em;
-        margin-right: 1em;
+        color: #fff;
+        font-weight: bold;
+        background-color: #38f;
+        border: 1px solid #38f;
+        border-bottom: 1px solid #2e7ae5;
       }
     }
-
   }
 
   .qa-content-area {
     position: absolute;
-    top: $input-area-height;
+    top: 60px;
     bottom: 1em; // to avoid iphone home banner
     left: 0;
     right: 0;
