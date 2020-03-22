@@ -125,24 +125,25 @@ class Epidemic extends React.Component {
                     <div className="pneumonia-table-container">
                         <div className="table-head">
                             <p className="th-1">区县</p>
-                            <p className="th-2">确诊</p>
                             <p className="th-3">现存</p>
+                            <p className="th-2">累计</p>
                             <p className="th-4">死亡</p>
                             <p className="th-5">治愈</p>
                         </div>
                         <div className="table-content">
                             {
-                                this.state.shanghaiData.cities.map((city, index) => {
+                                this.state.shanghaiData.cities.sort((a, b)=>b.treatingNum-a.treatingNum)
+                                    .map((city, index) => {
                                     return (
                                         <div className="table-item" key={index}>
                                             <p className="p1">{city.name}</p>
-                                            <p className="p2">{city.confirmedNum}</p>
                                             <p className="p3">{
                                                 city.treatingNum < 0 ? "-" :
                                                     city.treatingNum === 0 ?
                                                         <span style={{color: "#39c460"}}>{city.treatingNum}</span> :
                                                         <span style={{color: "#d96322"}}>{city.treatingNum}</span>
                                             }</p>
+                                            <p className="p2">{city.confirmedNum}</p>
                                             <p className="p4">{city.deathsNum}</p>
                                             <p className="p5">{city.curesNum}</p>
                                         </div>
