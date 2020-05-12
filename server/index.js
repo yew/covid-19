@@ -43,6 +43,28 @@ app.get("/data/shanghai", async (req, res) => {
     const data_all = JSON.parse(result_all.data.forum.extra.ncov_string_list);
     const data_shanghai = data_all.provinces.filter(province => province.id === "31")[0];
 
+    let flag = 0;
+    data_shanghai.cities.forEach(city => {
+        if (city.treatingNum > 0) {
+            if (city.name === "宝山" && city.confirmedNum === 22) {
+                flag++;
+                city.curesNum++;
+                city.treatingNum--;
+                city.treatingNumStr = String(city.treatingNum);
+                city.isTreatingNumClear = true;
+            } else if (city.name === "嘉定" && city.confirmedNum === 9) {
+                flag++;
+                city.deathsNum++;
+                city.treatingNum--;
+                city.treatingNumStr = String(city.treatingNum);
+                city.isTreatingNumClear = true;
+            }
+        }
+    })
+    if (flag === 2 && data_shanghai.cities[data_shanghai.cities.length - 1].name === "未公布来源") {
+        data_shanghai.cities.splice(data_shanghai.cities.length - 1, 1);
+    }
+
     ret["updateTime"] = data_all.updateTime;
     ret["cities"] = data_shanghai.cities;
 
