@@ -62,8 +62,8 @@ app.get("/data/index", async (req, res) => {
     const data_national = data_all.nationwide;
     ret["national_series"] = data_national;
 
-    const national_index = await axios.get("http://121.36.4.93:5000/national");
-    const shanghai_index = await axios.get("http://121.36.4.93:5000/shanghai");
+    const national_index = await axios.get("http://127.0.0.1:5000/national");
+    const shanghai_index = await axios.get("http://127.0.0.1:5000/shanghai");
     ret["national_index"] = national_index.data.data;
     ret["shanghai_index"] = shanghai_index.data.data;
     res.json(ret);
@@ -97,8 +97,8 @@ app.get("/data/track_list", async (req, res) => {
 });
 
 app.get("/data/safeguard", async (req, res) => {
-    const result = await axios.get("https://i.snssdk.com/api/feed/forum_flow/v1/?query_id=1656806647707693&tab_id=1656806647707709&category=forum_flow_subject&is_preview=0&stream_api_version=82&aid=13&offset=0&count=20");
-    const ret = result.data.data.map(block => {
+    const result = JSON.parse(fs.readFileSync("./assets/safeguard/safeguard.json", "utf8"));
+    const ret = result.data.map(block => {
         const block_content = JSON.parse(block.content);
         const article_list = block_content.sub_raw_datas.map(article => {
             const forum_extra_data = JSON.parse(article.forum_extra_data);
@@ -125,6 +125,10 @@ app.get("/data/safeguard", async (req, res) => {
             article_list
         };
     });
+    // 删除：监狱系统爆出四百余名感染者，防控出了什么问题？
+    ret[0].article_list.splice(0, 1);
+    // 删除：疫情期间，是否放宽慢性病患者开药量？
+    ret[0].article_list.splice(1, 1);
 
     res.json(ret);
 });

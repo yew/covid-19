@@ -10,7 +10,7 @@ const API = {
     qa: server + "qa",
 };
 
-const lineChartInterval = 2;
+const lineChartInterval = 4;
 
 export default API;
 export {lineChartInterval};

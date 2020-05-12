@@ -40,7 +40,7 @@ class Community extends React.Component {
             const amap = new AMap.Map("map", {
                 center: this.state.center,
                 resizeEnable: true,
-                mapStyle: "amap://styles/normal",
+                mapStyle: "amap://styles/whitesmoke",
                 zoom: 9
             });
             return new Promise(resolve => {
